@@ -1,0 +1,67 @@
+/*HOME*/
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: "Lato", sans-serif;
+}
+
+.imgHome {
+    background-position: center;
+    background-size: cover;
+    background-image: url("../img/fondoHome.jpg");
+    min-height: 100%;
+}
+
+.w3-bar, h1, button {
+    font-family: "Montserrat", sans-serif
+}
+
+.fa-map-marked-alt, .fa-truck-moving, .fa-address-book {
+    font-size: 200px !important;
+}
+
+.header {
+    padding: 300px 16px
+}
+
+.animado {
+    opacity: 0;
+    transition: all 1s;
+}
+
+.animadoArriba {
+    animation: mostrarArriba 0.5s;
+}
+
+@keyframes mostrarArriba {
+    0% {
+        transform: translateY(200px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/*LOGIN*/
+.form-input-login {
+    outline: none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+}
+
+.form-input-login:focus {
+    border-bottom: 2px solid #00b0ff;
+
+}
+
+.link-estilo {
+    text-decoration: none;
+}
+
+/*ACTUALIZAR USUARIO*/
+#formularioUsuario {
+    width: 300px;
+    margin-top: 120px;
+}
+
+
+
