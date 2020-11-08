@@ -6,7 +6,7 @@ body, h1, h2, h3, h4, h5, h6 {
 .imgHome {
     background-position: center;
     background-size: cover;
-    background-image: url("../img/fondoHome.jpg");
+    background-image: url("../view/img/fondoHome.jpg");
     min-height: 100%;
 }
 
@@ -42,6 +42,12 @@ body, h1, h2, h3, h4, h5, h6 {
 
 
 /*LOGIN*/
+.imgLogin{
+    background-position: center;
+    background-size: cover;
+    background-image: url("../view/img/fondo-loginsvg.svg");
+    min-height: 100%;
+}
 .form-input-login {
     outline: none !important;
     outline-width: 0 !important;

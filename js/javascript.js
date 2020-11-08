@@ -7,7 +7,7 @@ function myFunction() {
     }
 }
 
-let animado = document.querySelectorAll(".animado");
+/*let animado = document.querySelectorAll(".animado");
 
 function mostrarScroll() {
     let scrollTop = document.documentElement.scrollTop;
@@ -19,4 +19,4 @@ function mostrarScroll() {
         }
     }
 }
-window.addEventListener('scroll',mostrarScroll);
+window.addEventListener('scroll',mostrarScroll);*/

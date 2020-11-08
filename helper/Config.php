@@ -1,4 +1,6 @@
 <?php
+include_once("Renderer.php");
+include_once("third-party/mustache/src/Mustache/Autoloader.php");
 
 class Config{
     private $config;
@@ -10,4 +12,9 @@ class Config{
     public function get($section,$key){
         return $this->config[$section][$key];
     }
+
+    public static function getRender(){
+        return new Renderer('view/partial',);
+    }
+
 }
