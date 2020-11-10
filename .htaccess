@@ -4,10 +4,12 @@
     RewriteRule ^tango/(.*)\.css$ tango/$1.css [L]
     RewriteRule ^(.*)\.png$ $1.png [L]
     RewriteRule ^(.*)\.jpg$ $1.jpg [L]
-    RewriteRule ^(.*)\.svg$ $1.svg [L]
+    RewriteRule ^(.*)\.svg $1.svg [L]
     RewriteRule ^(.*)\.js$ $1.js [L]
     RewriteRule ^js/(.*)\.js$ js/$1.js [L]
-    RewriteRule ^fotos/(.*)\.jpg$ $fotos/1.jpg [L]
+    RewriteRule ^view/img/(.*)\.jpg$ $img/1.jpg [L]
+    RewriteRule ^view/img/(.*)\.png$ $img/1.png [L]
+    RewriteRule ^view/img/(.*)\.svg$ $img/1.svg [L]
     RewriteBase /truckelite
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
