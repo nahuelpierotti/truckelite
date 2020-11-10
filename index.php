@@ -1,5 +1,13 @@
 <?php
-include_once ("helper/Config.php");
-$render = Config::getRender();
+include_once("helper/Configuration.php");
 
-echo $render->render("view/indexView.php");
+session_start();
+$configuration = new Configuration();
+
+$urlHelper = $configuration->getUrlHelper();
+$module = $urlHelper->getModuleFromRequestOr("login");
+$action = $urlHelper->getActionFromRequestOr("execute");
+
+
+$router = $configuration->getRouter();
+$router->executeActionFromModule($action, $module);

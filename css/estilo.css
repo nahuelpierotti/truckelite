@@ -42,11 +42,17 @@ body, h1, h2, h3, h4, h5, h6 {
 
 
 /*LOGIN*/
+.img-user-login {
+    background-position: center;
+    background-size: cover;
+    background-image: url("../view/img/user.svg");
+    min-height: 100%;
+}
 .imgLogin{
     background-position: center;
     background-size: cover;
     background-image: url("../view/img/fondo-loginsvg.svg");
-    min-height: 100%;
+    height: 50em;
 }
 .form-input-login {
     outline: none !important;

@@ -1,7 +1,7 @@
 <?php
+
 class Renderer
 {
-
     private $mustache;
 
     public function __construct($partialsPathLoader)

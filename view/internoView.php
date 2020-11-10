@@ -1,7 +1,14 @@
 {{> header}}
+{{> navBar}}
 <!-- Header -->
 <header class="w3-display-container w3-center w3-grayscale-min header imgHome">
     <h1 class="w3-margin w3-jumbo w3-text-white">TRUCK ELITE</h1>
+    {{#usuario}}
+    <h1 class="w3-margin w3-jumbo w3-text-white">{{user_name}}</h1>
+    {{/usuario}}
+    {{^usuario}}
+        Error usuario no encontrado
+    {{/usuario}}
     <p class="w3-xlarge w3-text-white">Web de camiones</p>
     <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">About us</button>
 </header>
@@ -68,5 +75,8 @@
             <i class="fas fa-truck-moving w3-padding-64 w3-text-blue"></i>
         </div>
     </div>
+</div>
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
 </div>
 {{> footer}}
