@@ -2,7 +2,7 @@ CREATE DATABASE grupo09;
 USE grupo09;
 
 CREATE TABLE Usuario(
- id_usuario INT NOT NULL ,
+ id_usuario INT NOT NULL AUTO_INCREMENT,
  dni INT UNIQUE NOT NULL,
  user_name VARCHAR(50) UNIQUE NOT NULL,
  rol VARCHAR(60),
@@ -107,8 +107,18 @@ FOREIGN KEY(id_chofer)REFERENCES Chofer(id_usuario),
 FOREIGN KEY(id_vehiculo) REFERENCES Vehiculo(id_vehiculo));
 
 
-INSERT INTO Usuario
-(id_usuario, dni, user_name, rol, nombre,telefono,mail,clave)
-VALUES
-(1, 35600493, "pepeadmin", "administrador", "pepe",44547777,"pedro123@hotmal.com","soyadmin");
+INSERT INTO usuario
+(dni, user_name, rol, nombre,telefono,mail,clave)
+values
+( 123450, "pepito66", "conductor", "Pedro",12345678,"pedro123@hotmal.com",123456789),
+( 123451, "taladro88", "administrador", "Leonel",87654321,"leonel123@yahoo.com",12345678),
+( 123452, "pepo1236", "mecanico", "Ruben",87456321,"ruben123@hotmail.com",1234567),
+( 123453, "bubaloo894", "supervisor", "Juan",12365478,"juan123@gmail.com",123456),
+( 123454, "nosequeponer65485", "conductor", "Jose",96325874,"jose123@gmail.com",12345),
+( 123455, "simba3451", "mecanico", "Axel",14785236,"axelabalosss@gmail.com",1234);
 
+INSERT INTO Chofer
+(id_usuario,Licencia)
+values
+(1,"vigente"),
+(3,"no vigente");
