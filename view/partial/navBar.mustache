@@ -20,14 +20,30 @@
                 <a href="consultarVehiculo" class="w3-bar-item w3-button w3-hover-blue">Consultar vehiculo</a>
             </div>
         </div>
+
         <div class="w3-dropdown-hover w3-hide-small w3-right">
-            <a class="w3-button w3-hide-small w3-padding-large w3-hover-white"><i
-                    class="fas fa-user" style="width: 30px"></i>user</a>
-            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+    {{#_SESSION.user}}
+        <a class="w3-button w3-hide-small w3-padding-large w3-hover-white"
+           href="login">
+            <i class="fas fa-user" style="width: 30px"></i>
+            Bienvenido {{user.nombre}} </a>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="#logOut"
+               class="w3-bar-item w3-button w3-hover-blue w3-padding-large">Log Out</a>
+        </div>
+    {{/_SESSION.user}}
+    {{^_SESSION.user}}
+            <a class="w3-button w3-hide-small w3-padding-large w3-hover-white"
+            href="login">
+                <i class="fas fa-user" style="width: 30px"></i>
+            Login</a>
+            <!--div class="w3-dropdown-content w3-bar-block w3-card-4">
                 <a href="#logOut"
                    class="w3-bar-item w3-button w3-hover-blue w3-padding-large">Log Out</a>
-            </div>
+            </div-->
+    {{/_SESSION.user}}
         </div>
+
     </div>
 
     <!-- Navbar on small screens -->
