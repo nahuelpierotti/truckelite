@@ -14,7 +14,7 @@ class InternoController
         if(!$_SESSION["usuario"]){
             header("Location: /truckelite");
         }
-        echo $this->render->render("view/internoView.php");
+        echo $this->render->render("view/internoView.php",$_SESSION["usuario"]);
     }
 
 }

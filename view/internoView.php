@@ -4,7 +4,7 @@
 <header class="w3-display-container w3-center w3-grayscale-min header imgHome">
     <h1 class="w3-margin w3-jumbo w3-text-white">TRUCK ELITE</h1>
     {{#usuario}}
-    <h1 class="w3-margin w3-jumbo w3-text-white">{{user_name}}</h1>
+    <h1 class="w3-margin w3-jumbo w3-text-white">Bienvenido <strong>{{nombre}}</strong></h1>
     {{/usuario}}
     {{^usuario}}
         Error usuario no encontrado

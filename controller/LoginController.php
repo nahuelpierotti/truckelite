@@ -19,9 +19,9 @@ class LoginController
 
     public function procesarLogin(){
         session_start();
-        $data = $this->usuarioModel->consultarUsuario($_POST["nombre"],$_POST["clave"]);
-        $_SESSION["usuario"] = $data[0]["user_name"];
-        if(!$data[0]){
+        $data["usuario"] = $this->usuarioModel->consultarUsuario($_POST["nombre"],$_POST["clave"]);
+        $_SESSION["usuario"] = $data;
+        if(!$data["usuario"]){
             session_destroy();
             header("Location: /truckelite");
         }else{
