@@ -19,8 +19,6 @@ class LoginController
 
     public function procesarLogin(){
         session_start();
-        //$nameUser = $_POST["nombre"];
-        //$claveUser = $_POST["clave"];
         $data = $this->usuarioModel->consultarUsuario($_POST["nombre"],$_POST["clave"]);
         $_SESSION["usuario"] = $data[0]["user_name"];
         if(!$data[0]){
@@ -31,4 +29,3 @@ class LoginController
         }
     }
 }
-//Notice: session_start(): A session had already been started - ignoring in C:\xampp\htdocs\truckelite\controller\InternoController.php on line 13

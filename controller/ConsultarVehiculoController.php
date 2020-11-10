@@ -10,7 +10,7 @@ class ConsultarVehiculoController
     }
 
     public function execute(){
-        session_start();
+
         if(!$_SESSION["usuario"]){
             header("Location: /truckelite");
         }

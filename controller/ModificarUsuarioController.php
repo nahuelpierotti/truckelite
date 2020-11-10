@@ -10,7 +10,7 @@ class ModificarUsuarioController
     }
 
     public function execute(){
-        session_start();
+        //session_start();
         if(!$_SESSION["usuario"]){
             header("Location: /truckelite");
         }

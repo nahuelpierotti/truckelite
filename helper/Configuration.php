@@ -33,7 +33,7 @@ class Configuration{
     }
 
     public static function getRender(){
-        return new Renderer('view/partial',);
+        return new Renderer('view/partial');
     }
 
     public function getRouter(){
