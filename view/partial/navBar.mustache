@@ -1,0 +1,58 @@
+<!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue"
+           href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i
+                class="fa fa-bars"></i></a>
+        <a href="/truckelite" class="w3-bar-item w3-button w3-white w3-padding-large">Home</a>
+        <a href="#viajes" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Viajes</a>
+        <a href="#empleados" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Plantel
+            empleados</a>
+        <a href="#flota" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Flota</a>
+        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Reportes</a>
+
+        <div class="w3-dropdown-hover w3-hide-small">
+            <a class="w3-button w3-hide-small w3-padding-large w3-hover-white">Acciones <i
+                    class="fa fa-caret-down"></i></a>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="modificarUsuario" class="w3-bar-item w3-button w3-hover-blue">Modificar Usuario</a>
+                <a href="#" class="w3-bar-item w3-button w3-hover-blue">Actualizar datos del viaje</a>
+                <a href="consultarVehiculo" class="w3-bar-item w3-button w3-hover-blue">Consultar vehiculo</a>
+            </div>
+        </div>
+
+        <div class="w3-dropdown-hover w3-hide-small w3-right">
+    {{#_SESSION.user}}
+        <a class="w3-button w3-hide-small w3-padding-large w3-hover-white"
+           href="login">
+            <i class="fas fa-user" style="width: 30px"></i>
+            Bienvenido {{user.nombre}} </a>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="#logOut"
+               class="w3-bar-item w3-button w3-hover-blue w3-padding-large">Log Out</a>
+        </div>
+    {{/_SESSION.user}}
+    {{^_SESSION.user}}
+            <a class="w3-button w3-hide-small w3-padding-large w3-hover-white"
+            href="login">
+                <i class="fas fa-user" style="width: 30px"></i>
+            Login</a>
+            <!--div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="#logOut"
+                   class="w3-bar-item w3-button w3-hover-blue w3-padding-large">Log Out</a>
+            </div-->
+    {{/_SESSION.user}}
+        </div>
+
+    </div>
+
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-blue">Viajes</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-blue">Panel empleados</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-blue">Flota</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-blue">Reportes</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-blue">Log Out <i
+                class="fas fa-sign-out-alt w3-right"></i></a>
+    </div>
+</div>

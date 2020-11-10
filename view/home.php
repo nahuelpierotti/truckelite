@@ -1,5 +1,4 @@
 {{> header}}
-<!-- Header -->
 <header class="w3-display-container w3-center w3-grayscale-min header imgHome">
     <h1 class="w3-margin w3-jumbo w3-text-white">TRUCK ELITE</h1>
     <p class="w3-xlarge w3-text-white">Web de camiones</p>
@@ -28,7 +27,7 @@
     </div>
 </div>
 <!-- Second Grid -->
-<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container animado">
     <div class="w3-content">
         <div class="w3-third w3-center">
             <i class="fas fa-address-book w3-padding-64 w3-text-blue w3-margin-right"></i>
@@ -69,4 +68,4 @@
         </div>
     </div>
 </div>
-{{> footer}}
+{{>footer}}

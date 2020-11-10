@@ -1,4 +1,5 @@
 {{> header}}
+{{> navBar}}
 <div class="w3-container w3-display-container">
 <div id="formularioUsuario" class="w3-container w3-content w3-card-4" style="margin-bottom: 4em;">
         <div class=" w3-blue">
