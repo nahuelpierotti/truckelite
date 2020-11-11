@@ -19,9 +19,8 @@ class RegistrarController
 
     public function registrarUsuario()
     {
-        $id= 2;
         $rol= "usuario";
-        $this->usuarioModel->agregarUsuario($id,$_POST["dni"],$_POST["nombreUser"],$rol,$_POST["nombreYapellido"],$_POST["telefono"],$_POST["mail"],$_POST["clave"]);
+        $this->usuarioModel->agregarUsuario($_POST["dni"],$_POST["nombreUser"],$rol,$_POST["nombreYapellido"],$_POST["telefono"],$_POST["mail"],$_POST["clave"]);
         header("Location: /truckelite");
     }
 

@@ -7,6 +7,7 @@ include_once("helper/UrlHelper.php");
 include_once("model/UsuarioModel.php");
 /*CONTROLLER*/
 include_once ("controller/LoginController.php");
+include_once ("controller/LogOutController.php");
 include_once ("controller/RegistrarController.php");
 include_once ("controller/InternoController.php");
 include_once ("controller/ConsultarVehiculoController.php");
@@ -54,6 +55,11 @@ class Configuration{
     public function getLoginController(){
         $usuarioModel = $this->getUsuarioModel();
         return new LoginController($this->getRender(),$usuarioModel);
+    }
+
+    public function getLogOutController(){
+        //$usuarioModel = $this->getUsuarioModel();
+        return new LogOutController($this->getRender());
     }
 
     public function getRegistrarController(){

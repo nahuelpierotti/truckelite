@@ -10,10 +10,10 @@ class InternoController
     }
 
     public function execute(){
-        //session_start();
-        if(!$_SESSION["usuario"]){
+        if($_SESSION["logueado"] !=1){
             header("Location: /truckelite");
         }
+        //session_start();
         echo $this->render->render("view/internoView.php",$_SESSION["usuario"]);
     }
 

@@ -14,7 +14,7 @@ class UsuarioModel
         return $this->database->query("SELECT * FROM usuario where user_name = '$usuario' && clave = '$clave'");
     }
 
-    public function agregarUsuario($id,$dni,$nombreUser,$rol,$nombreYapellido,$telefono,$mail,$clave){
+    public function agregarUsuario($dni,$nombreUser,$rol,$nombreYapellido,$telefono,$mail,$clave){
 
         $this->database->query("INSERT INTO usuario (dni,user_name,rol,nombre,telefono,mail,clave) 
                                 VALUES ('".$dni."','".$nombreUser."','".$rol."','".$nombreYapellido."','".$telefono."','".$mail."','".$clave."')");

@@ -18,13 +18,15 @@ class LoginController
     }
 
     public function procesarLogin(){
-        session_start();
         $data["usuario"] = $this->usuarioModel->consultarUsuario($_POST["nombre"],$_POST["clave"]);
-        $_SESSION["usuario"] = $data;
+
         if(!$data["usuario"]){
-            session_destroy();
+            //session_destroy();
             header("Location: /truckelite");
         }else{
+            session_start();
+            $_SESSION["logueado"]=1;
+            $_SESSION["usuario"] = $data;
             header("Location: /truckelite/interno");
         }
     }
