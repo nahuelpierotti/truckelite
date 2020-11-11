@@ -10,14 +10,13 @@ class UsuarioModel
         $this->database = $database;
     }
 
-    public function consultarUsuario($usuario,$clave){
-        return $this->database->query("SELECT * FROM usuario where user_name = '$usuario' && clave = '$clave'");
+    public function conectarUsuario($usuario,$clave){
+        return $this->database->query("SELECT * FROM Usuario where user_name = '$usuario' && clave = '$clave'");
     }
 
-    public function agregarUsuario($dni,$nombreUser,$rol,$nombreYapellido,$telefono,$mail,$clave){
-
-        $this->database->query("INSERT INTO usuario (dni,user_name,rol,nombre,telefono,mail,clave) 
-                                VALUES ('".$dni."','".$nombreUser."','".$rol."','".$nombreYapellido."','".$telefono."','".$mail."','".$clave."')");
+    public function agregarUsuario($dni, $nombreUser, $nombreYapellido, $telefono, $mail, $clave){
+        $this->database->execute("INSERT INTO Usuario (dni,user_name,nombre,telefono,mail,clave) 
+                                VALUES ( $dni, '$nombreUser', '$nombreYapellido', $telefono, '$mail', '$clave')");
     }
 
 }
