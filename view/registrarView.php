@@ -4,7 +4,7 @@
         <div class="w3-center w3-container w3-content">
             <img src="view/img/logo.png" style="width: 20em;">
         </div>
-        <form action="registrar/registrarUsuario" class="w3-container w3-content w3-padding w3-card w3-white  w3-border w3-round w3-mobile" style="width:40%; margin-top: 1em" method="POST">
+        <form action="registrar/registrarUsuario" class="w3-container w3-content w3-padding w3-card w3-white  w3-border w3-round w3-mobile" style="width:40%; margin-top: 1em; margin-bottom: 1em;" method="POST">
             <div class="w3-center w3-padding-16">
                 <img src="view/img/user3.png" style="width: 20%;">
             </div>
@@ -25,4 +25,3 @@
         </form>
     </article>
 </section>
-{{> footer}}
