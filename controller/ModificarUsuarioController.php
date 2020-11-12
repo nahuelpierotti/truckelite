@@ -10,11 +10,8 @@ class ModificarUsuarioController
     }
 
     public function execute(){
-        //session_start();
-        if(!$_SESSION["usuario"]){
-            header("Location: /truckelite");
-        }
-        echo $this->render->render("view/modificarUsuarioView.php");
+        if($_SESSION["usuario"]["rol"] != "administrador") header("Location: /truckelite/interno");
+        echo $this->render->render("view/modificarUsuarioView.php",$_SESSION["usuario"]);
     }
 
 }

@@ -8,6 +8,7 @@
             <div class="w3-center w3-padding-16">
                 <img src="view/img/user3.png" style="width: 20%;">
             </div>
+            <p>{{mensaje}}</p>
             <label for="" class="lbl-nombre">Nombre y apellido</label>
             <input type="text" class="w3-input form-input-login" name="nombreYapellido" required>
             <label for="" class="lbl-nombre">Nombre de usuario</label>

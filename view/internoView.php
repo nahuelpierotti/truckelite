@@ -3,12 +3,7 @@
 <!-- Header -->
 <header class="w3-display-container w3-center w3-grayscale-min header imgHome">
     <h1 class="w3-margin w3-jumbo w3-text-white">TRUCK ELITE</h1>
-    {{#usuario}}
-    <h1 class="w3-margin w3-jumbo w3-text-white">Bienvenido <strong>{{nombre}}</strong></h1>
-    {{/usuario}}
-    {{^usuario}}
-        Error usuario no encontrado
-    {{/usuario}}
+    <h1 class="w3-margin w3-jumbo w3-text-white">Bienvenido <strong>{{nomYape}}</strong></h1>
     <p class="w3-xlarge w3-text-white">Web de camiones</p>
     <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">About us</button>
 </header>

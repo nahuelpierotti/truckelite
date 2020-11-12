@@ -14,15 +14,22 @@ class RegistrarController
 
     public function execute()
     {
-        echo $this->render->render("view/registrarView.php");
+        $data["mensaje"] = $_SESSION["mensaje"];
+        session_destroy();
+        echo $this->render->render("view/registrarView.php", $data);
     }
 
     public function registrarUsuario()
     {
-        session_start();
-        $this->usuarioModel->agregarUsuario($_POST["dni"], $_POST["nombreUser"], $_POST["nombreYapellido"], $_POST["telefono"], $_POST["mail"], $_POST["clave"]);
-        $_SESSION["mensaje"] = "Registro exitoso. Espere que el administrador le de el alta";
-        header("Location: /truckelite");
+        $result = $this->usuarioModel->agregarUsuario($_POST["dni"], $_POST["nombreUser"], $_POST["nombreYapellido"], $_POST["telefono"], $_POST["mail"], $_POST["clave"]);
+        if ($result){
+            $_SESSION["mensaje"] = "Registro exitoso. Espere que el administrador le de el alta";
+            header("Location: /truckelite");
+        }else{
+            $_SESSION["mensaje"] = "Error al registrase algun dato ya se encuentra en uso";
+            header("Location: /truckelite/registrar");
+        }
+
     }
 
 }

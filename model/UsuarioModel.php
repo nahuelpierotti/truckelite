@@ -15,7 +15,7 @@ class UsuarioModel
     }
 
     public function agregarUsuario($dni, $nombreUser, $nombreYapellido, $telefono, $mail, $clave){
-        $this->database->execute("INSERT INTO Usuario (dni,user_name,nombre,telefono,mail,clave) 
+        return $this->database->execute("INSERT INTO Usuario (dni,user_name,nombre,telefono,mail,clave) 
                                 VALUES ( $dni, '$nombreUser', '$nombreYapellido', $telefono, '$mail', '$clave')");
     }
 

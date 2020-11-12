@@ -14,21 +14,18 @@ class LoginController
 
     public function execute()
     {
-        session_start();
         $data["mensaje"] = $_SESSION["mensaje"];
+        session_destroy();
         echo $this->render->render("view/login.php", $data);
     }
 
     public function procesarLogin(){
-        session_start();
-        $data["usuario"] = $this->usuarioModel->conectarUsuario($_POST["nombre"],$_POST["clave"]);
-        if(!$data["usuario"]){
+        $data = $this->usuarioModel->conectarUsuario($_POST["nombre"],$_POST["clave"]);
+        if(!$data){
             $_SESSION["mensaje"] = "Usuario y/o contraseña invalidos";
             header("Location: /truckelite");
         }else{
-
-            $_SESSION["logueado"]=1;
-            $_SESSION["usuario"] = $data;
+            $_SESSION["usuario"] = array("rol" => $data[0]["rol"], "user_name" => $data[0]["user_name"], "nomYape" => $data[0]["nombre"]);
             header("Location: /truckelite/interno");
         }
     }

@@ -10,11 +10,8 @@ class ConsultarVehiculoController
     }
 
     public function execute(){
-
-        if(!$_SESSION["usuario"]){
-            header("Location: /truckelite");
-        }
-        echo $this->render->render("view/consultarVehiculoView.php");
+        if(!$_SESSION["usuario"]["rol"]) header("Location: /truckelite");
+        echo $this->render->render("view/consultarVehiculoView.php", $_SESSION["usuario"]);
     }
 
 }
