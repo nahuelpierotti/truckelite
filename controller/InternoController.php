@@ -26,7 +26,11 @@ class InternoController
     private function cargarAcciones(&$data){
         $data["acciones"][0] = array("name" => "Modificar Usuario" , "habilitar" => true, "url" => "modificarUsuario");
         $data["acciones"][1] = array("name" => "Consultar Vehiculo" , "habilitar" => true, "url" => "consultarVehiculo");
+        $data["acciones"][2] = array("name" => "Listar Usuarios" , "habilitar" => true, "url" => "listarUsuarios");
 
-        if($data["rol"] != "administrador") $data["acciones"][0]["habilitar"] = false;
+        if($data["rol"] != "administrador") {
+            $data["acciones"][0]["habilitar"] = false;
+            $data["acciones"][2]["habilitar"] = false;
+        }
     }
 }
