@@ -28,7 +28,7 @@ class InternoController
         $data["acciones"][1] = array("name" => "Consultar Vehiculo" , "habilitar" => true, "url" => "consultarVehiculo");
         $data["acciones"][2] = array("name" => "Listar Usuarios" , "habilitar" => true, "url" => "listarUsuarios");
 
-        if($data["rol"] != "administrador") {
+        if($data["rol"] != "Administrador") {
             $data["acciones"][0]["habilitar"] = false;
             $data["acciones"][2]["habilitar"] = false;
         }

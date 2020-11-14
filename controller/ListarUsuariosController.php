@@ -13,7 +13,7 @@ class ListarUsuariosController
 
     public function execute()
     {
-        if ($_SESSION["usuario"]["rol"] != "administrador") header("Location: /truckelite/interno");
+        if ($_SESSION["usuario"]["rol"] != "Administrador") header("Location: /truckelite/interno");
         $data = $_SESSION["usuario"];
         $this->listarUsuarios($data);
 
@@ -22,7 +22,6 @@ class ListarUsuariosController
 
     public function listarUsuarios(&$data){
          $data["listar"] = $this->usuarioModel->listarUsuarios();
-         return $data;
     }
 
 

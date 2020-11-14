@@ -15,7 +15,7 @@ class RegistrarController
     public function execute()
     {
         $data["mensaje"] = $_SESSION["mensaje"];
-        session_destroy();
+        $_SESSION["mensaje"] = "";
         echo $this->render->render("view/registrarView.php", $data);
     }
 
