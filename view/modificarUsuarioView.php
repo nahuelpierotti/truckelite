@@ -5,8 +5,11 @@
     <div class="w3-blue">
         <h2 class="w3-padding">Actualizar Usuario</h2>
     </div>
+    {{#mensaje}}
+    <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">{{mensaje}}</p>
+    {{/mensaje}}
     <form class="" action="modificarUsuario/modificarUsuario" method="post">
-        <p class="w3-text-red">{{mensaje}}</p>
+
 
         <p>
             <label class="w3-text-brown"><b>ID Usuario</b></label>

@@ -84,4 +84,5 @@ class Configuration{
         $usuarioModel = $this->getUsuarioModel();
         return new ModificarUsuarioController($this->getRender(),$usuarioModel);
     }
+
 }

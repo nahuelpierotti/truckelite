@@ -4,6 +4,9 @@
 
 <div class="w3-container" style="margin-top: 4em; margin-bottom: 2em;">
     <h2>Lista de usuarios</h2>
+    {{#mensajeEliminar}}
+    <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">{{mensajeEliminar}}</p>
+    {{/mensajeEliminar}}
     <div class="w3-responsive">
         <table class="w3-table-all">
             <tr>
@@ -31,7 +34,7 @@
                         <i class='far fa-edit'></i></a>
 
                 <a class='w3-panel w3-button w3-red w3-round-xxlarge w3-hover-text-red'
-                       href="#eliminarUsuario">
+                       href="listarUsuarios/eliminarUsuario?url={{id_usuario}}">
                         <i class='fas fa-trash w3-hover-text-red'></i></a>
                 </td>
             </tr>
