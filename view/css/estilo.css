@@ -45,15 +45,16 @@ body, h1, h2, h3, h4, h5, h6 {
 .img-user-login {
     background-position: center;
     background-size: cover;
-    background-image: url("../view/img/user.svg");
+    background-image: url("../img/user.svg");
     min-height: 100%;
 }
-.imgLogin{
+.imgLogin {
     background-position: center;
     background-size: cover;
-    background-image: url("../view/img/fondo-loginsvg.svg");
-    height: 50em;
+    background-image: url("../img/fondoLogin.jpg");
+    min-height: 100%;
 }
+
 .form-input-login {
     outline: none !important;
     outline-width: 0 !important;
