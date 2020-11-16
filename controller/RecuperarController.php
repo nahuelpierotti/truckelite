@@ -30,11 +30,11 @@ class RecuperarController
             if($pudo_enviar=="ok") {
                 $dominio=substr($usuario[0]["mail"],(strpos($usuario[0]["mail"], "@")),strlen($usuario[0]["mail"]));
                 $email_visible = substr($usuario[0]["mail"], 0, 3)."***".$dominio;
-                $_SESSION["mensaje"] = "Se le envio un email al correo: " . $email_visible;
-                header("Location: /truckelite/");
+                $_SESSION["mensaje"] = "Se envio un email al correo: " . $email_visible;
+                header("Location: /truckelite/recuperar");
             }else{
-                $_SESSION["mensaje"] = "Hubo un error en el envio del correo.Intente nuevamente mas tarde ".$pudo_enviar;
-                header("Location: /truckelite/");
+                $_SESSION["mensaje"] = "Hubo un error en el envio del correo.Intenta nuevamente mas tarde ".$pudo_enviar;
+                header("Location: /truckelite/recuperar");
             }
         }else{
             $_SESSION["mensaje"] = "No se encontraron usuarios registrados ";
@@ -42,8 +42,6 @@ class RecuperarController
         }
 
     }
-    function recuperarClave(){
 
-    }
 
 }

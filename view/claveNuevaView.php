@@ -8,8 +8,10 @@
             <div class="w3-center w3-padding-16">
                 <img src="view/img/user.svg" style="width: 40%;">
             </div>
-
-            <!--label>Usuario: {{id_usuario}}</label><br-->
+            <div class="w3-panel w3-blue w3-center w3-responsive">
+                <h3>Cambio de Clave</h3>
+                <p>Ingresa por duplicado la clave nueva.</p>
+            </div>
             <input type="hidden" name="id_usuario" value="{{id_usuario}}">
 
             <label for="">Clave Nueva</label>

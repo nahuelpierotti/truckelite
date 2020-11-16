@@ -15,7 +15,6 @@ class ClaveNuevaController
     public function execute()
     {
         $data["id_usuario"] =$_GET["u"];
-
         echo $this->render->render("view/claveNuevaView.php",$data);
     }
     public function actualizar(){
@@ -25,7 +24,7 @@ class ClaveNuevaController
         if($clave==$clave2){
             $this->usuarioModel->actualizarClave($id_usuario,$clave);
             $_SESSION["mensaje"] = "La contraseña se actualizo correctamente!";
-            header("Location: /truckelite/");
+            header("Location: /truckelite/recuperar");
 
         }
     }
