@@ -14,7 +14,7 @@
             <label for="">Clave</label>
             <input type="password" class="w3-input form-input-login" name="clave">
         <button class="w3-btn w3-blue w3-block w3-round w3-margin-bottom" style="margin-top: 2em">Log In</button>
-        <p>¿Te olvidaste la clave? <a href="#cambiarClave" class="w3-text-blue link-estilo w3-hover-text-blue-grey">Cambiar clave</a><br>
+        <p>¿Te olvidaste la clave? <a href="recuperar" class="w3-text-blue link-estilo w3-hover-text-blue-grey">Cambiar clave</a><br>
         ¿No tenes cuenta?Registrate aca <a href="registrar" class="w3-text-blue link-estilo w3-hover-text-blue-grey">Registrarse</a></p>
     </form>
     </article>

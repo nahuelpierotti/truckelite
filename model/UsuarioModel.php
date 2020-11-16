@@ -35,4 +35,12 @@ class UsuarioModel
         return $this->database->execute("DELETE FROM Usuario WHERE id_usuario= $id");
     }
 
+    public function obtenerEmailUsuario($usuario){
+        $user= $this->database->query("SELECT id_usuario,dni,user_name,rol,nombre,telefono,mail,clave FROM Usuario where user_name = '$usuario'");
+        return $user;
+    }
+
+    public function actualizarClave($id,$clave){
+        return $this->database->execute("UPDATE Usuario SET clave= md5('$clave') WHERE id_usuario= $id");
+    }
 }
