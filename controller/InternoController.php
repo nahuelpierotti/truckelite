@@ -27,10 +27,15 @@ class InternoController
         $data["acciones"][0] = array("name" => "Modificar Usuario" , "habilitar" => true, "url" => "modificarUsuario");
         $data["acciones"][1] = array("name" => "Consultar Vehiculo" , "habilitar" => true, "url" => "consultarVehiculo");
         $data["acciones"][2] = array("name" => "Listar Usuarios" , "habilitar" => true, "url" => "listarUsuarios");
+        $data["acciones"][3] = array("name" => "Registrar Viaje" , "habilitar" => true, "url" => "registrarViaje");
+        $data["acciones"][4] = array("name" => "Listar Viajes" , "habilitar" => true, "url" => "listarViajes");
+
 
         if($data["rol"] != "Administrador") {
             $data["acciones"][0]["habilitar"] = false;
             $data["acciones"][2]["habilitar"] = false;
+            $data["acciones"][3]["habilitar"] = false;
+            $data["acciones"][4]["habilitar"] = false;
         }
     }
 }

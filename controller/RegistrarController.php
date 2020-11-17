@@ -1,5 +1,5 @@
 <?php
-
+include_once ("helper/EmailSender.php");
 
 class RegistrarController
 {
@@ -23,6 +23,8 @@ class RegistrarController
     {
         $result = $this->usuarioModel->agregarUsuario($_POST["dni"], $_POST["nombreUser"], $_POST["nombreYapellido"], $_POST["telefono"], $_POST["mail"], md5($_POST["clave"]));
         if ($result){
+            $envio=new EmailSender();
+            $pudo_enviar=$envio->enviar_email_registracion($_POST["mail"],$_POST["nombreYapellido"]);
             $_SESSION["mensaje"] = "Registro exitoso. Espere que el administrador le de el alta";
             header("Location: /truckelite");
         }else{

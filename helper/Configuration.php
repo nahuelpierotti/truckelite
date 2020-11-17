@@ -5,6 +5,7 @@ include_once("helper/Renderer.php");
 include_once("helper/UrlHelper.php");
 /*MODEL*/
 include_once("model/UsuarioModel.php");
+include_once("model/ViajeModel.php");
 /*CONTROLLER*/
 include_once ("controller/LoginController.php");
 include_once ("controller/LogOutController.php");
@@ -15,6 +16,9 @@ include_once ("controller/ModificarUsuarioController.php");
 include_once ("controller/ListarUsuariosController.php");
 include_once ("controller/RecuperarController.php");
 include_once ("controller/ClaveNuevaController.php");
+include_once("controller/RegistrarViajeController.php");
+include_once ("controller/ListarViajesController.php");
+include_once ("controller/ModificarViajeController.php");
 /*OTROS*/
 include_once("third-party/mustache/src/Mustache/Autoloader.php");
 include_once("Router.php");
@@ -52,6 +56,11 @@ class Configuration{
     public function getUsuarioModel(){
         $database = $this->getDatabase();
         return new UsuarioModel($database);
+    }
+
+    public function getViajeModel(){
+        $database = $this->getDatabase();
+        return new ViajeModel($database);
     }
 
     /*CONTROLLER*/
@@ -94,5 +103,18 @@ class Configuration{
     public function getClaveNuevaController(){
         $usuarioModel = $this->getUsuarioModel();
         return new ClaveNuevaController($this->getRender(),$usuarioModel);
+    }
+
+    public function getRegistrarViajeController(){
+        $viajeModel = $this->getViajeModel();
+        return new RegistrarViajeController($this->getRender(),$viajeModel);
+    }
+    public function getListarViajesController(){
+        $viajeModel = $this->getViajeModel();
+        return new ListarViajesController($this->getRender(),$viajeModel);
+    }
+    public function getModificarViajeController(){
+        $viajeModel = $this->getViajeModel();
+        return new ModificarViajeController($this->getRender(),$viajeModel);
     }
 }
