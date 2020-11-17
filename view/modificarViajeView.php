@@ -8,7 +8,7 @@
         {{#mensaje}}
         <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">{{mensaje}}</p>
         {{/mensaje}}
-        <form class="" action="modificarViaje" method="post">
+        <form class="" action="modificarViaje/modificarViaje" method="post">
             <p>
                 <label class="w3-text-brown"><b>ID Viaje</b></label>
                 <input class="w3-input w3-border w3-sand" name="id_viaje" type="number" value="{{viajeBuscado.0.id_viaje}}" required>
