@@ -5,6 +5,7 @@ include_once("helper/Renderer.php");
 include_once("helper/UrlHelper.php");
 /*MODEL*/
 include_once("model/UsuarioModel.php");
+include_once ("model/VehiculoModel.php");
 /*CONTROLLER*/
 include_once ("controller/LoginController.php");
 include_once ("controller/LogOutController.php");
@@ -15,6 +16,10 @@ include_once ("controller/ModificarUsuarioController.php");
 include_once ("controller/ListarUsuariosController.php");
 include_once ("controller/RecuperarController.php");
 include_once ("controller/ClaveNuevaController.php");
+include_once ("controller/VerAcopladosController.php");
+include_once ("controller/AcopladoController.php");
+include_once ("controller/VerTractoresController.php");
+include_once ("controller/TractorController.php");
 /*OTROS*/
 include_once("third-party/mustache/src/Mustache/Autoloader.php");
 include_once("Router.php");
@@ -52,6 +57,11 @@ class Configuration{
     public function getUsuarioModel(){
         $database = $this->getDatabase();
         return new UsuarioModel($database);
+    }
+
+    public function getVehiculoModel(){
+        $database = $this->getDatabase();
+        return new VehiculoModel($database);
     }
 
     /*CONTROLLER*/
@@ -94,5 +104,25 @@ class Configuration{
     public function getClaveNuevaController(){
         $usuarioModel = $this->getUsuarioModel();
         return new ClaveNuevaController($this->getRender(),$usuarioModel);
+    }
+
+    public function getVerAcopladosController(){
+        $vehiculoModel = $this->getVehiculoModel();
+        return new VerAcopladosController($this->getRender(),$vehiculoModel);
+    }
+
+    public function getAcopladoController(){
+        $vehiculoModel = $this->getVehiculoModel();
+        return new AcopladoController($this->getRender(),$vehiculoModel);
+    }
+
+    public function getVerTractoresController(){
+        $vehiculoModel = $this->getVehiculoModel();
+        return new VerTractoresController($this->getRender(),$vehiculoModel);
+    }
+
+    public function getTractorController(){
+        $vehiculoModel = $this->getVehiculoModel();
+        return new TractorController($this->getRender(),$vehiculoModel);
     }
 }

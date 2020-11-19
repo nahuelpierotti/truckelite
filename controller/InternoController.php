@@ -15,9 +15,7 @@ class InternoController
             header("Location: /truckelite");
         }
         $data = $_SESSION["usuario"];
-
         $this->cargarAcciones($data);
-
         $_SESSION["usuario"]["acciones"] = $data["acciones"];
 
         echo $this->render->render("view/internoView.php",$data);
@@ -27,10 +25,17 @@ class InternoController
         $data["acciones"][0] = array("name" => "Modificar Usuario" , "habilitar" => true, "url" => "modificarUsuario");
         $data["acciones"][1] = array("name" => "Consultar Vehiculo" , "habilitar" => true, "url" => "consultarVehiculo");
         $data["acciones"][2] = array("name" => "Listar Usuarios" , "habilitar" => true, "url" => "listarUsuarios");
+        $data["acciones"][3] = array("name" => "Ver Tractores" , "habilitar" => true, "url" => "verTractores");
+        $data["acciones"][4] = array("name" => "Ver Acoplados" , "habilitar" => true, "url" => "verAcoplados");
 
         if($data["rol"] != "Administrador") {
             $data["acciones"][0]["habilitar"] = false;
             $data["acciones"][2]["habilitar"] = false;
+        }
+
+        if ($data["rol"] != "Administrador" && $data["rol"] != "Supervisor"){
+            $data["acciones"][3]["habilitar"] = false;
+            $data["acciones"][4]["habilitar"] = false;
         }
     }
 }
