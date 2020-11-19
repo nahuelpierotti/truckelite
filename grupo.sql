@@ -69,7 +69,7 @@ FOREIGN KEY(fk_tractor) REFERENCES Tractor(patente)
 );
 
 CREATE TABLE Mantenimiento(
-fecha_sevice DATE,
+fecha_service DATE,
 km_unidad DOUBLE,
 costo DOUBLE,
 interno_externo VARCHAR(50),
