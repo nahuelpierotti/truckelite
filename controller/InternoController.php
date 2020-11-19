@@ -35,8 +35,6 @@ class InternoController
         if($data["rol"] != "Administrador") {
             $data["acciones"][0]["habilitar"] = false;
             $data["acciones"][2]["habilitar"] = false;
-            $data["acciones"][3]["habilitar"] = false;
-            $data["acciones"][4]["habilitar"] = false;
         }
 
         if ($data["rol"] != "Administrador" && $data["rol"] != "Supervisor"){

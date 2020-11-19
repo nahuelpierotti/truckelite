@@ -15,9 +15,10 @@ class ListarViajesController
     public function execute()
     {
 
-        if ($_SESSION["usuario"]["rol"] != "Administrador") header("Location: /truckelite/interno");
+        if ($_SESSION["usuario"]["rol"] != "Administrador" && $_SESSION["usuario"]["rol"] != "Supervisor") header("Location: /truckelite/interno");
         $data = $_SESSION["usuario"];
         $data["mensajeEliminar"] = $_SESSION["mensajeEliminar"];
+        unset($_SESSION["mensajeEliminar"]);
         if(isset($_POST["criterio"]) || !isset($_POST["limpiar"])){
             $this->listarViajesCriterio($data,$_POST["criterio"]);
         }else {

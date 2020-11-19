@@ -14,10 +14,13 @@ class RegistrarViajeController
 
     public function execute()
     {
+        if ($_SESSION["usuario"]["rol"] != "Administrador" && $_SESSION["usuario"]["rol"] != "Supervisor") header("Location: /truckelite/interno");
         $data["mensaje"] = $_SESSION["mensaje"];
-        $_SESSION["mensaje"] = "";
+        $data = $_SESSION["usuario"];
+        unset($_SESSION["mensaje"]);
         echo $this->render->render("view/registrarViajeView.php", $data);
     }
+
     public function agregarViaje()
     {
         $result = $this->viajeModel->agregarViaje(
@@ -45,6 +48,5 @@ class RegistrarViajeController
             header("Location: /truckelite/registrarViaje");
         }
     }
-
 
 }
