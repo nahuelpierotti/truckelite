@@ -25,9 +25,9 @@ class InternoController
         $data["acciones"][0] = array("name" => "Modificar Usuario" , "habilitar" => true, "url" => "modificarUsuario");
         $data["acciones"][1] = array("name" => "Consultar Vehiculo" , "habilitar" => true, "url" => "consultarVehiculo");
         $data["acciones"][2] = array("name" => "Listar Usuarios" , "habilitar" => true, "url" => "listarUsuarios");
-        $data["acciones"][3] = array("name" => "Ver Tractores" , "habilitar" => true, "url" => "verTractores");
-        $data["acciones"][4] = array("name" => "Ver Acoplados" , "habilitar" => true, "url" => "verAcoplados");
-        $data["acciones"][5] = array("name" => "Ver Vehiculos" , "habilitar" => true, "url" => "verVehiculos");
+        $data["acciones"][5] = array("name" => "Ver Tractores" , "habilitar" => true, "url" => "verTractores");
+        $data["acciones"][6] = array("name" => "Ver Acoplados" , "habilitar" => true, "url" => "verAcoplados");
+        $data["acciones"][7] = array("name" => "Ver Vehiculos" , "habilitar" => true, "url" => "verVehiculos");
 
         if($data["rol"] != "Administrador") {
             $data["acciones"][0]["habilitar"] = false;
@@ -38,6 +38,8 @@ class InternoController
             $data["acciones"][3]["habilitar"] = false;
             $data["acciones"][4]["habilitar"] = false;
             $data["acciones"][5]["habilitar"] = false;
+            $data["acciones"][6]["habilitar"] = false;
+            $data["acciones"][7]["habilitar"] = false;
         }
     }
 }
