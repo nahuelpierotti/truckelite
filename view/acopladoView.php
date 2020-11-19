@@ -16,14 +16,28 @@
 
             </p>
 
-            <p>
-                <label class="w3-text-brown"><b>Tipo</b></label>
-                <input class="w3-input w3-border w3-sand" name="tipo" type="text" value="{{acoplado.0.tipo}}" required>
-            </p>
+            <select class="w3-select w3-border w3-sand" name="tipo">
+                <option value="{{acoplado.0.tipo}}"
+                        {{^acoplado.0.tipo}}
+                        disabled selected
+                        {{/acoplado.0.tipo}} >
+                {{#acoplado.0.tipo}}
+                {{acoplado.0.tipo}}
+                {{/acoplado.0.tipo}}
+                {{^acoplado.0.tipo}}
+                Tipo de Acoplado
+                {{/acoplado.0.tipo}}
+                </option>
+                <option value="Araña">Araña</option>
+                <option value="Jaula">Jaula</option>
+                <option value="Tanque">Tanque</option>
+                <option value="Granel">Granel</option>
+                <option value="CarCarrier">CarCarrier</option>
+            </select>
 
             <p>
                 <label class="w3-text-brown"><b>Chasis</b></label>
-                <input class="w3-input w3-border w3-sand" name="chasis" type="text" value="{{acoplado.0.chasis_acoplado}}" required>
+                <input class="w3-input w3-border w3-sand" name="chasis" type="number" value="{{acoplado.0.chasis_acoplado}}" required>
             </p>
 
             <p>

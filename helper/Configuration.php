@@ -20,6 +20,8 @@ include_once ("controller/VerAcopladosController.php");
 include_once ("controller/AcopladoController.php");
 include_once ("controller/VerTractoresController.php");
 include_once ("controller/TractorController.php");
+include_once ("controller/VerVehiculosController.php");
+include_once ("controller/VehiculoController.php");
 /*OTROS*/
 include_once("third-party/mustache/src/Mustache/Autoloader.php");
 include_once("Router.php");
@@ -87,6 +89,7 @@ class Configuration{
     public function getConsultarVehiculoController(){
         return new ConsultarVehiculoController($this->getRender());
     }
+
     public function getListarUsuariosController(){
         $usuarioModel = $this->getUsuarioModel();
         return new ListarUsuariosController($this->getRender(),$usuarioModel);
@@ -96,6 +99,7 @@ class Configuration{
         $usuarioModel = $this->getUsuarioModel();
         return new ModificarUsuarioController($this->getRender(),$usuarioModel);
     }
+
     public function getRecuperarController(){
         $usuarioModel = $this->getUsuarioModel();
         return new RecuperarController($this->getRender(),$usuarioModel);
@@ -124,5 +128,15 @@ class Configuration{
     public function getTractorController(){
         $vehiculoModel = $this->getVehiculoModel();
         return new TractorController($this->getRender(),$vehiculoModel);
+    }
+
+    public function getVerVehiculosController(){
+        $vehiculoModel = $this->getVehiculoModel();
+        return new VerVehiculosController($this->getRender(), $vehiculoModel);
+    }
+
+    public function getVehiculoController(){
+        $vehiculoModel = $this->getVehiculoModel();
+        return new VehiculoController($this->getRender(),$vehiculoModel);
     }
 }

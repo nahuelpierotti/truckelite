@@ -36,7 +36,7 @@
             </tr>
             {{/listar}}
         </table>
-        <a class="w3-input" href="tractor/agregar">Agregar Tractor</a>
+        <a class="w3-button w3-margin" href="tractor/agregar">Agregar Tractor</a>
     </div>
 </div>
 {{> footer}}

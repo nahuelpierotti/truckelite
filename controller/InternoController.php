@@ -27,6 +27,7 @@ class InternoController
         $data["acciones"][2] = array("name" => "Listar Usuarios" , "habilitar" => true, "url" => "listarUsuarios");
         $data["acciones"][3] = array("name" => "Ver Tractores" , "habilitar" => true, "url" => "verTractores");
         $data["acciones"][4] = array("name" => "Ver Acoplados" , "habilitar" => true, "url" => "verAcoplados");
+        $data["acciones"][5] = array("name" => "Ver Vehiculos" , "habilitar" => true, "url" => "verVehiculos");
 
         if($data["rol"] != "Administrador") {
             $data["acciones"][0]["habilitar"] = false;
@@ -36,6 +37,7 @@ class InternoController
         if ($data["rol"] != "Administrador" && $data["rol"] != "Supervisor"){
             $data["acciones"][3]["habilitar"] = false;
             $data["acciones"][4]["habilitar"] = false;
+            $data["acciones"][5]["habilitar"] = false;
         }
     }
 }

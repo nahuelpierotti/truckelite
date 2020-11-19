@@ -41,14 +41,14 @@ FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 CREATE TABLE Acoplado(
 patente_acoplado VARCHAR(8) NOT NULL,
 tipo VARCHAR(20),
-chasis_acoplado VARCHAR(7),
+chasis_acoplado VARCHAR(7) UNIQUE,
 PRIMARY KEY (patente_acoplado)
 );
 
 CREATE TABLE Tractor(
 patente VARCHAR(8) NOT NULL,
-motor VARCHAR(9) NOT NULL,
-chasis VARCHAR(10) NOT NULL,
+motor VARCHAR(9) NOT NULL UNIQUE,
+chasis VARCHAR(10) NOT NULL UNIQUE,
 modelo VARCHAR(20) NOT NULL,
 marca VARCHAR (20) NOT NULL,
 fk_acoplado VARCHAR(8) UNIQUE,
@@ -58,7 +58,7 @@ FOREIGN KEY(fk_acoplado) REFERENCES Acoplado(patente_acoplado)
 
 CREATE TABLE Vehiculo(
 id_vehiculo INT NOT NULL AUTO_INCREMENT,
-fk_tractor VARCHAR(8) NOT NULL,
+fk_tractor VARCHAR(8) NOT NULL UNIQUE,
 calendario_service DATE,
 posicion_actual VARCHAR(100),
 reportes VARCHAR(70),

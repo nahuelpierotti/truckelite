@@ -18,7 +18,7 @@
 
             <p>
                 <label class="w3-text-brown"><b>Motor</b></label>
-                <input class="w3-input w3-border w3-sand" name="motor" type="text" value="{{tractor.0.motor}}" required>
+                <input class="w3-input w3-border w3-sand" name="motor" type="number" value="{{tractor.0.motor}}" required>
             </p>
 
             <p>
@@ -31,10 +31,22 @@
                 <input class="w3-input w3-border w3-sand" name="modelo" type="text" value="{{tractor.0.modelo}}" required>
             </p>
 
-            <p>
-                <label class="w3-text-brown"><b>Marca</b></label>
-                <input class="w3-input w3-border w3-sand" name="marca" type="text" value="{{tractor.0.marca}}" required>
-            </p>
+            <select class="w3-select w3-border w3-sand" name="marca">
+                <option value="{{tractor.0.marca}}"
+                    {{^tractor.0.marca}}
+                        disabled selected
+                    {{/tractor.0.marca}} >
+                    {{#tractor.0.marca}}
+                        {{tractor.0.marca}}
+                    {{/tractor.0.marca}}
+                    {{^tractor.0.marca}}
+                        Marca de Tractor
+                    {{/tractor.0.marca}}
+                </option>
+                <option value="IVECO">IVECO</option>
+                <option value="SCANIA">SCANIA</option>
+                <option value="M.BENZ">M.BENZ</option>
+            </select>
 
             <p>
                 <label class="w3-text-brown"><b>Acoplado</b></label>

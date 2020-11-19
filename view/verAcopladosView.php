@@ -30,7 +30,7 @@
             </tr>
             {{/listar}}
         </table>
-        <a class="w3-input" href="acoplado/agregar">Agregar Acoplado</a>
+        <a class="w3-button w3-margin" href="acoplado/agregar">Agregar Acoplado</a>
     </div>
 </div>
 {{> footer}}

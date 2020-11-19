@@ -18,12 +18,20 @@ class VehiculoModel
         return $this->database->query("SELECT * FROM Acoplado");
     }
 
+    public function listarVehiculos(){
+        return $this->database->query("SELECT * FROM Vehiculo");
+    }
+
     public function buscarAcoplado($patente){
         return $this->database->query("SELECT * FROM Acoplado WHERE patente_acoplado = '$patente'");
     }
 
     public function buscarTractor($patente){
         return $this->database->query("SELECT * FROM Tractor WHERE patente = '$patente'");
+    }
+
+    public function buscarVehiculo($patente){
+        return $this->database->query("SELECT * FROM Vehiculo WHERE fk_tractor = '$patente'");
     }
 
     public function agregarAcoplado($patente, $tipo, $chasis){
@@ -40,6 +48,11 @@ class VehiculoModel
                                         VALUES('$patente', '$motor', '$chasis', '$modelo', '$marca')");
         }
         return $result;
+    }
+
+    public function agregarVehiculo($patente, $posicion, $estado){
+        return $this->database->execute("INSERT INTO Vehiculo(fk_tractor, posicion_actual, estado)
+                                        VALUES('$patente', '$posicion', '$estado')");
     }
 
     public function modificarAcoplado($patente , $tipo, $chasis, $patenteDestino){
@@ -71,13 +84,25 @@ class VehiculoModel
         return $result;
     }
 
+    public function modificarVehiculo($patente , $posicion, $estado, $patenteDestino){
+        return $this->database->execute("UPDATE Vehiculo SET fk_tractor = '$patente',
+                                  posicion_actual = '$posicion',
+                                  estado = '$estado'
+                                  WHERE fk_tractor = '$patenteDestino'");
+    }
+
     public function eliminarAcoplado($patente){
         $this->desacoplar($patente);
         return $this->database->execute("DELETE FROM Acoplado WHERE patente_acoplado = '$patente'");
     }
 
     public function eliminarTractor($patente){
+        $this->eliminarVehiculo($patente);
         return $this->database->execute("DELETE FROM Tractor WHERE patente = '$patente'");
+    }
+
+    public function eliminarVehiculo($patente){
+        return $this->database->execute("DELETE FROM Vehiculo WHERE fk_tractor = '$patente'");
     }
 
     private function desacoplar($patenteAcoplado){
