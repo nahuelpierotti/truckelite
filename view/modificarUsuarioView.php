@@ -1,7 +1,7 @@
 {{> header}}
 {{> navBar}}
 <div class="w3-display-container">
-<div id="formularioUsuario" class="w3-container w3-content w3-card-4 w3-padding" style="margin-bottom: 4em;">
+<div id="formularioUsuario" name="formularioUsuario" class="w3-container w3-content w3-card-4 w3-padding" style="margin-bottom: 4em;">
     <div class="w3-blue">
         <h2 class="w3-padding">Actualizar Usuario</h2>
     </div>
@@ -62,7 +62,6 @@
             <option value="Mecanico">Mecanico</option>
             <option value="Administrador">Administrador</option>
         </select>
-
         <p>
             <button class="w3-btn w3-blue">Actualizar</button>
         </p>

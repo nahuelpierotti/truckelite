@@ -5,7 +5,12 @@ include_once("helper/Renderer.php");
 include_once("helper/UrlHelper.php");
 /*MODEL*/
 include_once("model/UsuarioModel.php");
+include_once("model/MecanicoModel.php");
+include_once("model/SupervisorModel.php");
+include_once("model/ChoferModel.php");
+include_once("model/AdministradorModel.php");
 include_once("model/ViajeModel.php");
+include_once("model/MantenimientoModel.php");
 /*CONTROLLER*/
 include_once ("controller/LoginController.php");
 include_once ("controller/LogOutController.php");
@@ -19,6 +24,9 @@ include_once ("controller/ClaveNuevaController.php");
 include_once("controller/RegistrarViajeController.php");
 include_once ("controller/ListarViajesController.php");
 include_once ("controller/ModificarViajeController.php");
+include_once ("controller/MantenimientoController.php");
+include_once ("controller/ListarMantenimientoController.php");
+include_once ("controller/ModificarMantenimientoController.php");
 /*OTROS*/
 include_once("third-party/mustache/src/Mustache/Autoloader.php");
 include_once("Router.php");
@@ -55,12 +63,41 @@ class Configuration{
     /*MODEL*/
     public function getUsuarioModel(){
         $database = $this->getDatabase();
-        return new UsuarioModel($database);
+        $mecanicoModel = $this->getMecanicoModel();
+        $choferModel = $this->getchoferModel();
+        $supervisorModel = $this->getSupervisorModel();
+        $administradorModel = $this->getAdministradorModel();
+        return new UsuarioModel($database,$mecanicoModel,$choferModel,$supervisorModel,$administradorModel);
+    }
+
+    public function getMecanicoModel(){
+        $database = $this->getDatabase();
+        return new MecanicoModel($database);
+    }
+
+    public function getChoferModel(){
+        $database = $this->getDatabase();
+        return new ChoferModel($database);
+    }
+
+    public function getSupervisorModel(){
+        $database = $this->getDatabase();
+        return new SupervisorModel($database);
+    }
+
+    public function getAdministradorModel(){
+        $database = $this->getDatabase();
+        return new AdministradorModel($database);
     }
 
     public function getViajeModel(){
         $database = $this->getDatabase();
         return new ViajeModel($database);
+    }
+
+    public function getMantenimientoModel(){
+        $database = $this->getDatabase();
+        return new MantenimientoModel($database);
     }
 
     /*CONTROLLER*/
@@ -93,6 +130,7 @@ class Configuration{
 
     public function getModificarUsuarioController(){
         $usuarioModel = $this->getUsuarioModel();
+
         return new ModificarUsuarioController($this->getRender(),$usuarioModel);
     }
     public function getRecuperarController(){
@@ -116,5 +154,22 @@ class Configuration{
     public function getModificarViajeController(){
         $viajeModel = $this->getViajeModel();
         return new ModificarViajeController($this->getRender(),$viajeModel);
+    }
+
+    public function getMantenimientoController(){
+        $mantenimientoModel = $this->getMantenimientoModel();
+        $mecanicoModel = $this->getMecanicoModel();
+        return new MantenimientoController($this->getRender(),$mantenimientoModel,$mecanicoModel);
+    }
+
+    public function getListarMantenimientoController(){
+        $mantenimientoModel = $this->getMantenimientoModel();
+        return new ListarMantenimientoController($this->getRender(),$mantenimientoModel);
+    }
+
+    public function getModificarMantenimientoController(){
+        $mantenimientoModel = $this->getMantenimientoModel();
+        $mecanicoModel = $this->getMecanicoModel();
+        return new ModificarMantenimientoController($this->getRender(),$mantenimientoModel,$mecanicoModel);
     }
 }

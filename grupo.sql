@@ -73,7 +73,7 @@ PRIMARY KEY (patente_acoplado),
 FOREIGN KEY(patente_t) REFERENCES Tractor(patente));
 
 CREATE TABLE Mantenimiento(
-fecha_sevice DATE,
+fecha_service DATE,
 km_unidad DOUBLE,
 costo DOUBLE,
 interno_externo VARCHAR(50),

@@ -6,9 +6,11 @@ class ModificarUsuarioController
     private $render;
     private $usuarioModel;
 
+
     public function __construct($render,$usuarioModel){
         $this->render = $render;
         $this->usuarioModel = $usuarioModel;
+
     }
 
     public function execute(){

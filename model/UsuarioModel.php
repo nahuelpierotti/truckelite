@@ -4,10 +4,18 @@
 class UsuarioModel
 {
     private $database;
+    private $mecanicoModel;
+    private $supervisorModel;
+    private $choferModel;
+    private $administradorModel;
 
-    public function __construct($database)
+    public function __construct($database,$mecanicoModel,$choferModel,$supervisorModel,$administradorModel)
     {
         $this->database = $database;
+        $this->mecanicoModel=$mecanicoModel;
+        $this->choferModel=$choferModel;
+        $this->supervisorModel=$supervisorModel;
+        $this->administradorModel=$administradorModel;
     }
 
     public function conectarUsuario($usuario,$clave){
@@ -20,7 +28,22 @@ class UsuarioModel
     }
 
     public function modificarUsuario($id,$dni,$nombreYapellido,$telefono,$mail,$clave, $rol){
-        return $this->database->execute("UPDATE Usuario SET dni= '$dni',rol = '$rol', nombre='$nombreYapellido', telefono= '$telefono', mail= '$mail', clave= '$clave' WHERE id_usuario= $id");
+        $resultadoPorModificar = $this->database->execute("UPDATE Usuario SET dni= '$dni',rol = '$rol', nombre='$nombreYapellido', telefono= '$telefono', mail= '$mail', clave= '$clave' WHERE id_usuario= $id");
+        switch ($rol){
+            case "Mecanico":
+                $this->mecanicoModel->agregarMecanico($id);
+                break;
+            case "Chofer":
+                $this->choferModel->agregarChofer($id);
+                break;
+            case "Supervisor":
+                $this->supervisorModel->agregarSupervisor($id);
+                break;
+            case "Administrador":
+                $this->administradorModel->agregarAdministrador($id);
+                break;
+        }
+        return $resultadoPorModificar;
     }
 
     public function listarUsuarios(){
@@ -42,5 +65,9 @@ class UsuarioModel
 
     public function actualizarClave($id,$clave){
         return $this->database->execute("UPDATE Usuario SET clave= md5('$clave') WHERE id_usuario= $id");
+    }
+
+    public function obtenerIdDeMecanicoPorSuNombre($nombre){
+        return $this->database->query("SELECT id_usuario FROM Usuario WHERE nombre='$nombre' ");
     }
 }
