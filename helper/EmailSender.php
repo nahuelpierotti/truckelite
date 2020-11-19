@@ -41,4 +41,33 @@ class EmailSender
         return $retu;
     }
 
+    function enviar_email_registracion($to,$nombre)
+    {
+        $retu="ok";
+        try {
+            $cuerpo="<h3>Bienvenido a Truckelite <strong>'$nombre'</strong></h3><br>
+            En breve se te confirmara el acceso a nuestro sistema.";
+
+
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';  // Host de conexión SMTP
+            $mail->SMTPAuth = true;
+            $mail->Username = 'truckelite20@gmail.com';                 // Usuario SMTP
+            $mail->Password = 'Truckelite2020';                           // Password SMTP
+            $mail->SMTPSecure = 'tls';                            // Activar seguridad TLS
+            $mail->Port = 587;
+            $mail->setFrom('truckelite20@gmail.com');
+            $mail->isHTML(true);
+            $mail->addAddress($to);
+            $mail->Subject = 'Registro TRUCKELITE';
+            $mail->Body = $cuerpo;
+            $mail->AltBody = 'Este es el contenido del mensaje en texto plano';    // Contenido del mensaje alternativo (texto plano)
+            $mail->send();
+
+        }catch (Exception $e) {
+            $retu= 'El mensaje no se ha podido enviar, error: '.$mail->ErrorInfo;
+        }
+        return $retu;
+    }
 }
