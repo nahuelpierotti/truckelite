@@ -21,7 +21,7 @@ class MantenimientoModel
         return $this->database->query("SELECT * FROM Mantenimiento");
     }
 
-    public function modificarMantenimiento($fecha_service, $km_unidad, $costo, $interno_externo, $repuestos_cambiados, $id_mecanico, $id_vehiculo)
+    public function modificarMantenimiento($fecha_service, $km_unidad, $costo, $interno_externo, $repuestos_cambiados,$id_mantenimiento, $id_mecanico, $id_vehiculo)
     {
         return $this->database->execute("UPDATE Mantenimiento SET fecha_service='$fecha_service',km_unidad=$km_unidad,
                                         costo=$costo,interno_externo='$interno_externo',repuestos_cambiados='$repuestos_cambiados',

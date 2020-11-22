@@ -27,7 +27,7 @@ class ModificarMantenimientoController
 
     public function modificarMantenimiento(){
         $id_mecanico= $this->mecanicoModel->obtenerIdDeMecanicoPorSuNombre($_POST["nombreMecanico"]);
-        $data = $this->mantenimientoModel->modificarMantenimiento($_POST["fecha"],$_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"],$id_mecanico[0]["id_usuario"],$_POST["id_vehiculo"]);
+        $data = $this->mantenimientoModel->modificarMantenimiento($_POST["fecha"],$_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"], $_POST["id_mantenimiento"],$id_mecanico[0]["id_usuario"],$_POST["id_vehiculo"]);
         if (!$data) {
 
             header("Location: /truckelite/listarMantenimiento?msj=No se pudo modificar el mantenimiento");

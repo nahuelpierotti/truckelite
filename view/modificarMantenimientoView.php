@@ -73,8 +73,7 @@
             </select>
 
             <p>
-                <label class="w3-text-brown"><b>ID mantenimiento</b></label>
-                <input class="w3-input w3-border w3-sand" name="id_mantenimiento" type="number" value="{{mantenimientoBuscado.0.id_mantenimiento}}">
+                <input class="w3-input w3-border w3-sand w3-hide" name="id_mantenimiento" type="number" value="{{mantenimientoBuscado.0.id_mantenimiento}}">
 
             </p>
 
