@@ -4,9 +4,9 @@
 
 <div class="w3-container" style="margin-top: 4em; margin-bottom: 2em;">
     <h2>Lista de mantenimientos</h2>
-    {{#mensajeEliminar}}
-    <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">{{mensajeEliminar}}</p>
-    {{/mensajeEliminar}}
+    {{#mensaje}}
+    <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">{{mensaje}}</p>
+    {{/mensaje}}
     <div class="w3-responsive">
         <table class="w3-table-all">
             <tr>

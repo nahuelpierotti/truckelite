@@ -16,16 +16,20 @@ class MantenimientoController
 
     public function execute()
     {
-        if($_SESSION["usuario"]["rol"] != "Mecanico" ) header("Location: /truckelite/interno");
+        if($_SESSION["usuario"]["rol"] != "Mecanico" && $_SESSION["usuario"]["rol"] != "Administrador") header("Location: /truckelite/interno");
         $data= $_SESSION["usuario"];
-        //$_SESSION["mensaje"] = "";
+        $data["mensaje"] = $_GET["msj"];
         echo $this->render->render("view/mantenimientoView.php",$data);
     }
 
     public function agregarMantenimiento(){
         $id_mecanico= $this->mecanicoModel->obtenerIdDeMecanicoPorSuNombre($_POST["nombreMecanico"]);
         //En agregarMantenimiento le paso un id a mano, falta un metodo para buscar el id del vehiculo.
-        $this->mantenimientoModel->agregarMantenimiento($_POST["fecha"],$_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"], $_POST["id_mantenimiento"],$id_mecanico[0]["id_usuario"],$_POST["id_vehiculo"]);
-        header("Location: /truckelite/mantenimiento ");
+        $result =$this->mantenimientoModel->agregarMantenimiento($_POST["fecha"],$_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"],$id_mecanico[0]["id_usuario"],$_POST["id_vehiculo"]);
+        if(!$result) {
+            header("Location: /truckelite/mantenimiento?msj=No se pudo agregar el mantenimiento ");
+        }else{
+            header("Location: /truckelite/mantenimiento?msj=Se agrego el mantenimiento de forma correcta ");
+        }
     }
 }

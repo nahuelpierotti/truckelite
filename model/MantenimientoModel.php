@@ -10,10 +10,10 @@ class MantenimientoModel
         $this->database = $database;
     }
 
-    public function agregarMantenimiento($fecha, $kmUnidad, $costo, $interno_externo, $repuestos_cambiados, $id_mantenimiento, $id_mecanico, $id_vehiculo)
+    public function agregarMantenimiento($fecha, $kmUnidad, $costo, $interno_externo, $repuestos_cambiados, $id_mecanico, $id_vehiculo)
     {
-        return $this->database->execute("INSERT INTO Mantenimiento (fecha_service,km_unidad,costo,interno_externo,repuestos_cambiados,id_mantenimiento,id_mecanico,id_vehiculo) 
-                                VALUES ( '$fecha', $kmUnidad, $costo, '$interno_externo', '$repuestos_cambiados', $id_mantenimiento,$id_mecanico,$id_vehiculo)");
+        return $this->database->execute("INSERT INTO Mantenimiento (fecha_service,km_unidad,costo,interno_externo,repuestos_cambiados,id_mecanico,id_vehiculo) 
+                                VALUES ( '$fecha', $kmUnidad, $costo, '$interno_externo', '$repuestos_cambiados',$id_mecanico,$id_vehiculo)");
     }
 
     public function listarMantenimiento()
@@ -21,11 +21,11 @@ class MantenimientoModel
         return $this->database->query("SELECT * FROM Mantenimiento");
     }
 
-    public function modificarMantenimiento($fecha_service, $km_unidad, $costo, $interno_externo, $repuestos_cambiados, $id_mantenimiento, $id_mecanico, $id_vehiculo)
+    public function modificarMantenimiento($fecha_service, $km_unidad, $costo, $interno_externo, $repuestos_cambiados, $id_mecanico, $id_vehiculo)
     {
         return $this->database->execute("UPDATE Mantenimiento SET fecha_service='$fecha_service',km_unidad=$km_unidad,
                                         costo=$costo,interno_externo='$interno_externo',repuestos_cambiados='$repuestos_cambiados',
-                                        id_mantenimiento=$id_mantenimiento,id_mecanico=$id_mecanico,id_vehiculo=$id_vehiculo
+                                        id_mecanico=$id_mecanico,id_vehiculo=$id_vehiculo
                                         WHERE id_mantenimiento='$id_mantenimiento'");
     }
 

@@ -16,24 +16,24 @@ class ModificarMantenimientoController
     }
 
     public function execute(){
-        if($_SESSION["usuario"]["rol"] != "Mecanico") header("Location: /truckelite/interno");
-        $data["mensaje"] = $_SESSION["mensaje"];
+        if($_SESSION["usuario"]["rol"] != "Mecanico" && $_SESSION["usuario"]["rol"] != "Administrador") header("Location: /truckelite/interno");
+        //$data["mensaje"] = $_GET["msj"];
         $data["acciones"] = $_SESSION["usuario"]["acciones"];
         $data["user_name"] = $_SESSION["usuario"]["user_name"];
         $this->mantenimientoBuscado($data);
-        $_SESSION["mensaje"] = "";
+
         echo $this->render->render("view/ModificarMantenimientoView.php",$data);
     }
 
     public function modificarMantenimiento(){
         $id_mecanico= $this->mecanicoModel->obtenerIdDeMecanicoPorSuNombre($_POST["nombreMecanico"]);
-        $data = $this->mantenimientoModel->modificarMantenimiento($_POST["fecha"],$_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"], $_POST["id_mantenimiento"],$id_mecanico[0]["id_usuario"],$_POST["id_vehiculo"]);
+        $data = $this->mantenimientoModel->modificarMantenimiento($_POST["fecha"],$_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"],$id_mecanico[0]["id_usuario"],$_POST["id_vehiculo"]);
         if (!$data) {
-            $_SESSION["mensaje"] = "No se pudo modificar el usuario";
-            header("Location: /truckelite/listarMantenimiento");
+
+            header("Location: /truckelite/listarMantenimiento?msj=No se pudo modificar el mantenimiento");
         } else {
-            $_SESSION["mensaje"] = "El usuario se modifico correctamente";
-            header("Location: /truckelite/listarMantenimiento");
+
+            header("Location: /truckelite/listarMantenimiento?msj=El mantenimiento se modifico correctamente");
         }
 
     }

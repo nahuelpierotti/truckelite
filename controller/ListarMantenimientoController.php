@@ -13,10 +13,10 @@ class ListarMantenimientoController
 
     public function execute()
     {
-        if ($_SESSION["usuario"]["rol"] != "Mecanico") header("Location: /truckelite/interno");
+        if ($_SESSION["usuario"]["rol"] != "Mecanico" && $_SESSION["usuario"]["rol"] != "Administrador") header("Location: /truckelite/interno");
         $data = $_SESSION["usuario"];
+        $data["mensaje"] = $_GET["msj"];
         $this->listarMantenimiento($data);
-
         echo $this->render->render("view/listarMantenimientoView.php",$data);
     }
 
@@ -24,13 +24,12 @@ class ListarMantenimientoController
         if (isset($_GET["url"])) {
             $data = $this->mantenimientoModel->eliminarMantenimiento($_GET["url"]);
             if (!$data) {
-                $_SESSION["mensajeEliminar"] = "No se pudo eliminar el mantenimiento";
-
+                header("Location: /truckelite/listarMantenimiento?msj=No se pudo eliminar el mantenimiento ");
             } else {
-                $_SESSION["mensajeEliminar"] = "El mantenimiento se elimino correctamente";
+                header("Location: /truckelite/listarMantenimiento?msj=Se elimino el mantenimiento correctamente");
             }
         }
-        header("Location: /truckelite/listarMantenimiento");
+
     }
 
     public function listarMantenimiento(&$data){

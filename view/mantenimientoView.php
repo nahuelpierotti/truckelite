@@ -3,6 +3,9 @@
 
 <div class="w3-container w3-content">
     <div id="formularioMantenimiento" class="w3-container w3-content w3-card-4 w3-padding" style="margin-bottom: 4em;margin-top: 6em;">
+        {{#mensaje}}
+        <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">{{mensaje}}</p>
+        {{/mensaje}}
         <div class="w3-blue">
             <h2 class="w3-padding">Registrar Mantenimiento</h2>
         </div>
@@ -61,12 +64,6 @@
                 <option value="Calefaccion/ventilacioin">Calefaccion/ventilacion</option>
                 <option value="Aire acondicionado">Aire acondicionado</option>
             </select>
-
-            <p>
-                <label class="w3-text-brown"><b>ID mantenimiento</b></label>
-                <input class="w3-input w3-border w3-sand" name="id_mantenimiento" type="number" value="">
-
-            </p>
 
             <p>
                 <label class="w3-text-brown"><b>Nombre mecanico</b></label>
