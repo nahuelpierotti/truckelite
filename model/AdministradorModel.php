@@ -17,4 +17,8 @@ class AdministradorModel
             $this->database->query("INSERT INTO Administrador (id_usuario) VALUES($id)");
         }
     }
+
+    public function eliminarAdministrador($id){
+        $this->database->query("DELETE FROM Administrador WHERE id_usuario= $id");
+    }
 }

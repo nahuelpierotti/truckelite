@@ -17,4 +17,8 @@ class SupervisorModel
             $this->database->query("INSERT INTO Supervisor (id_usuario) VALUES($id)");
         }
     }
+
+    public function eliminarSupervisor($id){
+        $this->database->query("DELETE FROM Supervisor WHERE id_usuario= $id");
+    }
 }

@@ -29,6 +29,10 @@ class UsuarioModel
 
     public function modificarUsuario($id,$dni,$nombreYapellido,$telefono,$mail,$clave, $rol,$licencia){
         $resultadoPorModificar = $this->database->execute("UPDATE Usuario SET dni= '$dni',rol = '$rol', nombre='$nombreYapellido', telefono= '$telefono', mail= '$mail', clave= '$clave' WHERE id_usuario= $id");
+        $this->mecanicoModel->eliminarMecanico($id);
+        $this->choferModel->eliminarChofer($id);
+        $this->supervisorModel->eliminarSupervisor($id);
+        $this->administradorModel->eliminarAdministrador($id);
         switch ($rol){
             case "Mecanico":
                 $this->mecanicoModel->agregarMecanico($id);

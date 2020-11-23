@@ -27,4 +27,8 @@ class MecanicoModel
     {
         return $this->database->query("SELECT U.nombre FROM usuario U JOIN mecanico M WHERE U.id_usuario='$id'");
     }
+
+    public function eliminarMecanico($id){
+        $this->database->query("DELETE FROM Mecanico WHERE id_usuario= $id");
+    }
 }
