@@ -7,16 +7,16 @@ function myFunction() {
     }
 }
 
-function pagoOnChange(sel) {
-    if (sel.value == "Chofer") {
-        divC = document.getElementById("licencia");
-        divC.style.setProperty('display', 'block', 'important');
+function showLicencia(elemento) {
+    if (elemento.value == "Chofer") {
+        divLicencia = document.getElementById("licencia");
+        divLicencia.style.setProperty('display', 'block', 'important');
 
 
     } else {
 
-        divC = document.getElementById("licencia");
-        divC.style.setProperty('display', 'none', 'important');
+        divLicencia = document.getElementById("licencia");
+        divLicencia.style.setProperty('display', 'none', 'important');
     }
 }
 

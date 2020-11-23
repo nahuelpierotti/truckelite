@@ -50,7 +50,7 @@
                        value="{{usuarioBuscado.0.telefono}}">
             </p>
 
-            <select class="w3-select w3-border w3-sand" name="rol" id="rol" onChange="pagoOnChange(this)">
+            <select class="w3-select w3-border w3-sand" name="rol" id="rol" onChange="showLicencia(this)">
                 <option value="{{usuarioBuscado.0.rol}}"
                         {{^usuarioBuscado.0.rol}}
                         disabled selected
