@@ -30,7 +30,7 @@
     </div>
 </div>
 <!-- Second Grid -->
-<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container animado">
     <div class="w3-content">
         <div class="w3-third w3-center">
             <i class="fas fa-address-book w3-padding-64 w3-text-blue w3-margin-right"></i>

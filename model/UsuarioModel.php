@@ -27,14 +27,14 @@ class UsuarioModel
                                 VALUES ( $dni, '$nombreUser', '$nombreYapellido', $telefono, '$mail', '$clave')");
     }
 
-    public function modificarUsuario($id,$dni,$nombreYapellido,$telefono,$mail,$clave, $rol){
+    public function modificarUsuario($id,$dni,$nombreYapellido,$telefono,$mail,$clave, $rol,$licencia){
         $resultadoPorModificar = $this->database->execute("UPDATE Usuario SET dni= '$dni',rol = '$rol', nombre='$nombreYapellido', telefono= '$telefono', mail= '$mail', clave= '$clave' WHERE id_usuario= $id");
         switch ($rol){
             case "Mecanico":
                 $this->mecanicoModel->agregarMecanico($id);
                 break;
             case "Chofer":
-                $this->choferModel->agregarChofer($id);
+                $this->choferModel->agregarChofer($id,$licencia);
                 break;
             case "Supervisor":
                 $this->supervisorModel->agregarSupervisor($id);

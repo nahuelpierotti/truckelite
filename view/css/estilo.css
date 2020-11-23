@@ -28,7 +28,7 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 .animadoArriba {
-    animation: mostrarArriba 0.5s;
+    animation: mostrarArriba 0.20s;
 }
 
 @keyframes mostrarArriba {
@@ -40,6 +40,9 @@ body, h1, h2, h3, h4, h5, h6 {
     }
 }
 
+#licencia{
+    display: none !important;
+}
 
 /*LOGIN*/
 .img-user-login {
