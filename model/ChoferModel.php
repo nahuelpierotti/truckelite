@@ -19,6 +19,6 @@ class ChoferModel
     }
 
     public function eliminarChofer($id){
-            $this->database->query("DELETE FROM Chofer WHERE id_usuario= $id");
+        return $this->database->execute("DELETE FROM Chofer WHERE id_usuario= $id");
     }
 }

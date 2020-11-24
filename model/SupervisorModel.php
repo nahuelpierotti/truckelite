@@ -12,13 +12,10 @@ class SupervisorModel
 
     public function agregarSupervisor($id)
     {
-        $existe = $this->database->execute("SELECT id_usuario FROM Usuario WHERE id_usuario='$id'");
-        if ($existe) {
-            $this->database->query("INSERT INTO Supervisor (id_usuario) VALUES($id)");
-        }
+        return $this->database->execute("INSERT INTO Supervisor (id_usuario) VALUES($id)");
     }
 
     public function eliminarSupervisor($id){
-        $this->database->query("DELETE FROM Supervisor WHERE id_usuario= $id");
+        return $this->database->execute("DELETE FROM Supervisor WHERE id_usuario= $id");
     }
 }

@@ -12,10 +12,8 @@ class MecanicoModel
 
     public function agregarMecanico($id)
     {
-        $existe = $this->database->execute("SELECT id_usuario FROM Usuario WHERE id_usuario='$id'");
-        if ($existe) {
-            $this->database->query("INSERT INTO Mecanico (id_usuario) VALUES($id)");
-        }
+        return $this->database->execute("INSERT INTO Mecanico (id_usuario) VALUES($id)");
+
     }
 
     public function obtenerIdDeMecanicoPorSuNombre($nombre)
@@ -29,6 +27,6 @@ class MecanicoModel
     }
 
     public function eliminarMecanico($id){
-        $this->database->query("DELETE FROM Mecanico WHERE id_usuario= $id");
+        return $this->database->execute("DELETE FROM Mecanico WHERE id_usuario= $id");
     }
 }

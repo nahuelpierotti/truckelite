@@ -28,25 +28,9 @@ class UsuarioModel
     }
 
     public function modificarUsuario($id,$dni,$nombreYapellido,$telefono,$mail,$clave, $rol,$licencia){
+        $this->desvincularRol($id);
         $resultadoPorModificar = $this->database->execute("UPDATE Usuario SET dni= '$dni',rol = '$rol', nombre='$nombreYapellido', telefono= '$telefono', mail= '$mail', clave= '$clave' WHERE id_usuario= $id");
-        $this->mecanicoModel->eliminarMecanico($id);
-        $this->choferModel->eliminarChofer($id);
-        $this->supervisorModel->eliminarSupervisor($id);
-        $this->administradorModel->eliminarAdministrador($id);
-        switch ($rol){
-            case "Mecanico":
-                $this->mecanicoModel->agregarMecanico($id);
-                break;
-            case "Chofer":
-                $this->choferModel->agregarChofer($id,$licencia);
-                break;
-            case "Supervisor":
-                $this->supervisorModel->agregarSupervisor($id);
-                break;
-            case "Administrador":
-                $this->administradorModel->agregarAdministrador($id);
-                break;
-        }
+        $this->vincularRol($rol, $id, $licencia);
         return $resultadoPorModificar;
     }
 
@@ -59,6 +43,7 @@ class UsuarioModel
     }
 
     public function eliminarUsuario($id){
+        $this->desvincularRol($id);
         return $this->database->execute("DELETE FROM Usuario WHERE id_usuario= $id");
     }
 
@@ -73,5 +58,41 @@ class UsuarioModel
 
     public function obtenerIdDeMecanicoPorSuNombre($nombre){
         return $this->database->query("SELECT id_usuario FROM Usuario WHERE nombre='$nombre' ");
+    }
+
+    private function desvincularRol($id){
+        $usuario = $this->buscarUsuario($id);
+        switch ($usuario[0]["rol"]){
+            case "Mecanico":
+                $this->mecanicoModel->eliminarMecanico($id);
+                break;
+            case "Chofer":
+                $this->choferModel->eliminarChofer($id);
+                break;
+            case "Supervisor":
+                $this->supervisorModel->eliminarSupervisor($id);
+                break;
+            case "Administrador":
+                $this->administradorModel->eliminarAdministrador($id);
+                break;
+        }
+    }
+
+    private function vincularRol($rol, $id, $licencia)
+    {
+        switch ($rol) {
+            case "Mecanico":
+                $this->mecanicoModel->agregarMecanico($id);
+                break;
+            case "Chofer":
+                $this->choferModel->agregarChofer($id, $licencia);
+                break;
+            case "Supervisor":
+                $this->supervisorModel->agregarSupervisor($id);
+                break;
+            case "Administrador":
+                $this->administradorModel->agregarAdministrador($id);
+                break;
+        }
     }
 }
