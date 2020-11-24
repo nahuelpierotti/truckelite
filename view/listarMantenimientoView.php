@@ -17,6 +17,7 @@
                 <th>Repuestos cambiados</th>
                 <th>ID mantenimiento</th>
                 <th>ID mecanico</th>
+                <th>Nombre mecanico</th>
                 <th>ID vehiculo</th>
                 <th>Accion</th>
             </tr>
@@ -29,6 +30,7 @@
                 <td>{{repuestos_cambiados}}</td>
                 <td>{{id_mantenimiento}}</td>
                 <td>{{id_mecanico}}</td>
+                <td>{{nombre}}</td>
                 <td>{{id_vehiculo}}</td>
                 <td><a class='w3-panel w3-button w3-blue w3-round-xxlarge w3-hover-text-blue' href="modificarMantenimiento?url={{id_mantenimiento}}">
                         <i class='far fa-edit'></i></a>

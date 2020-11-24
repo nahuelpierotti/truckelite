@@ -23,7 +23,7 @@ class MantenimientoController
     }
 
     public function agregarMantenimiento(){
-        $id_mecanico= $this->mecanicoModel->obtenerIdDeMecanicoPorSuNombre($_POST["nombreMecanico"]);
+        $id_mecanico= $this->mecanicoModel->obtenerIdDeMecanicoPorSuNombreYsuDni($_POST["nombreMecanico"],$_POST["dniMecanico"]);
         //En agregarMantenimiento le paso un id a mano, falta un metodo para buscar el id del vehiculo.
         $result =$this->mantenimientoModel->agregarMantenimiento($_POST["fecha"],$_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"],$id_mecanico[0]["id_usuario"],$_POST["id_vehiculo"]);
         if(!$result) {

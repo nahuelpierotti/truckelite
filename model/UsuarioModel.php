@@ -58,10 +58,6 @@ class UsuarioModel
         return $this->database->execute("UPDATE Usuario SET clave= md5('$clave') WHERE id_usuario= $id");
     }
 
-    public function obtenerIdDeMecanicoPorSuNombre($nombre){
-        return $this->database->query("SELECT id_usuario FROM Usuario WHERE nombre='$nombre' ");
-    }
-
     private function desvincularRol($id){
         $usuario = $this->buscarUsuario($id);
         switch ($usuario[0]["rol"]){

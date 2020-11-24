@@ -26,7 +26,7 @@ class ModificarMantenimientoController
     }
 
     public function modificarMantenimiento(){
-        $id_mecanico= $this->mecanicoModel->obtenerIdDeMecanicoPorSuNombre($_POST["nombreMecanico"]);
+        $id_mecanico= $this->mecanicoModel->obtenerIdDeMecanicoPorSuNombreYsuDni($_POST["nombreMecanico"],$_POST["dniMecanico"]);
         $data = $this->mantenimientoModel->modificarMantenimiento($_POST["fecha"],$_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"], $_POST["id_mantenimiento"],$id_mecanico[0]["id_usuario"],$_POST["id_vehiculo"]);
         if (!$data) {
 
@@ -42,8 +42,9 @@ class ModificarMantenimientoController
         if(isset($_GET["url"])) {
             $data["mantenimientoBuscado"] = $this->mantenimientoModel->buscarMantenimiento($_GET["url"]);
             $id_mecanico = $data["mantenimientoBuscado"][0]["id_mecanico"];
-            $nombre= $this->mecanicoModel->obtenerNombreMecanicoPorSuId($id_mecanico);
-            $data["mantenimientoBuscado"][0]["id_mecanico"]= $nombre[0]["nombre"];
+            $nombreYdni= $this->mecanicoModel->obtenerNombreMecanicoYsuDniPorSuId($id_mecanico);
+            $data["mantenimientoBuscado"][0]["nombre"]= $nombreYdni[0]["nombre"];
+            $data["mantenimientoBuscado"][0]["dni"]= $nombreYdni[0]["dni"];
         }
     }
 

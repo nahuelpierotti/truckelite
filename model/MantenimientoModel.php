@@ -16,9 +16,10 @@ class MantenimientoModel
                                 VALUES ( '$fecha', $kmUnidad, $costo, '$interno_externo', '$repuestos_cambiados',$id_mecanico,$id_vehiculo)");
     }
 
-    public function listarMantenimiento()
-    {
-        return $this->database->query("SELECT * FROM Mantenimiento");
+    public function listarMantenimiento(){
+        return $this->database->query("SELECT fecha_service,km_unidad,costo,interno_externo,
+                                        repuestos_cambiados,id_mantenimiento,id_mecanico,id_vehiculo,U.nombre
+                                        FROM mantenimiento M JOIN usuario U WHERE U.id_usuario=id_mecanico");
     }
 
     public function modificarMantenimiento($fecha_service, $km_unidad, $costo, $interno_externo, $repuestos_cambiados,$id_mantenimiento, $id_mecanico, $id_vehiculo)
