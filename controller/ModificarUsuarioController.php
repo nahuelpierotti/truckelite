@@ -23,12 +23,17 @@ class ModificarUsuarioController
     }
 
     public function modificarUsuario(){
-        if(isset($_POST["licencia"])){
-            $licencia = $_POST["licencia"];
-        }else{
-            $licencia = NULL;
-        }
-        $data = $this->usuarioModel->modificarUsuario($_POST["idUsuario"], $_POST["dni"], $_POST["nombreYapellido"], $_POST["telefono"], $_POST["mail"], $_POST["clave"], $_POST["rol"],$licencia);
+        $licencia = isset($_POST["licencia"]) ? $_POST["licencia"] : NULL;
+        $usuarioAModificar = $this->usuarioModel->buscarUsuario($_POST["idUsuario"]);
+        $clave = $usuarioAModificar[0]["clave"] != $_POST["clave"] ? md5($_POST["clave"]) : $_POST["clave"];
+        $data = $this->usuarioModel->modificarUsuario($_POST["idUsuario"],
+                                                      $_POST["dni"],
+                                                      $_POST["nombreYapellido"],
+                                                      $_POST["telefono"],
+                                                      $_POST["mail"],
+                                                      $clave,
+                                                      $_POST["rol"],
+                                                      $licencia);
         if (!$data) {
             header("Location: /truckelite/modificarUsuario?msj=No se pudo modificar el usuario");
         } else {
