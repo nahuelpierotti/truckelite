@@ -12,6 +12,7 @@ include_once("model/AdministradorModel.php");
 include_once ("model/VehiculoModel.php");
 include_once("model/ViajeModel.php");
 include_once("model/MantenimientoModel.php");
+include_once("model/ClienteModel.php");
 /*CONTROLLER*/
 include_once ("controller/LoginController.php");
 include_once ("controller/LogOutController.php");
@@ -34,6 +35,7 @@ include_once ("controller/VerTractoresController.php");
 include_once ("controller/TractorController.php");
 include_once ("controller/VerVehiculosController.php");
 include_once ("controller/VehiculoController.php");
+include_once ("controller/CargaClienteController.php");
 /*OTROS*/
 include_once("third-party/mustache/src/Mustache/Autoloader.php");
 include_once("Router.php");
@@ -110,6 +112,11 @@ class Configuration{
     public function getVehiculoModel(){
         $database = $this->getDatabase();
         return new VehiculoModel($database);
+    }
+
+    public function getClienteModel(){
+        $database = $this->getDatabase();
+        return new ClienteModel($database);
     }
 
     /*CONTROLLER*/
@@ -215,5 +222,10 @@ class Configuration{
     public function getVehiculoController(){
         $vehiculoModel = $this->getVehiculoModel();
         return new VehiculoController($this->getRender(),$vehiculoModel);
+    }
+
+    public function getCargaClienteController(){
+        $clienteModel = $this->getClienteModel();
+        return new CargaClienteController($this->getRender(),$clienteModel);
     }
 }
