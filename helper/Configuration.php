@@ -36,6 +36,8 @@ include_once ("controller/TractorController.php");
 include_once ("controller/VerVehiculosController.php");
 include_once ("controller/VehiculoController.php");
 include_once ("controller/CargaClienteController.php");
+include_once ("controller/ListarClientesController.php");
+include_once ("controller/ModificarClienteController.php");
 /*OTROS*/
 include_once("third-party/mustache/src/Mustache/Autoloader.php");
 include_once("Router.php");
@@ -227,5 +229,15 @@ class Configuration{
     public function getCargaClienteController(){
         $clienteModel = $this->getClienteModel();
         return new CargaClienteController($this->getRender(),$clienteModel);
+    }
+
+    public function getListarClientesController(){
+        $clienteModel = $this->getClienteModel();
+        return new ListarClientesController($this->getRender(),$clienteModel);
+    }
+
+    public function getModificarClienteController(){
+        $clienteModel = $this->getClienteModel();
+        return new ModificarClienteController($this->getRender(),$clienteModel);
     }
 }

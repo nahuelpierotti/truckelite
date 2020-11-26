@@ -136,7 +136,7 @@ FOREIGN KEY (imo_subclass) REFERENCES Imo_subclass(id)
 CREATE TABLE Cliente(
 id INT AUTO_INCREMENT,
 denominacion VARCHAR(250) NOT NULL,
-cuit INT(11) NOT NULL,
+cuit BIGINT(12) NOT NULL,
 direccion VARCHAR(250) NOT NULL,
 telefono VARCHAR(100) NOT NULL,
 email VARCHAR(250),
