@@ -82,26 +82,6 @@ FOREIGN KEY (id_mecanico) REFERENCES Mecanico(id_usuario),
 FOREIGN KEY(id_vehiculo) REFERENCES Vehiculo(id_vehiculo)
 );
 
-CREATE TABLE Viaje(
-id_viaje INT NOT NULL,
-combustible_consumido INT,
-combustible_consumido_previsto INT,
-tipo_de_carga VARCHAR(100),
-fecha DATE,
-destino VARCHAR(50),
-origen VARCHAR(50),
-desviacion VARCHAR(50),
-tiempo TIME,
-tiempo_previsto TIME,
-km_recorrido DOUBLE,
-km_recorrido_previsto DOUBLE,
-cliente VARCHAR(50),
-id_chofer INT NOT NULL,
-id_vehiculo INT NOT NULL,
-PRIMARY KEY(id_viaje),
-FOREIGN KEY(id_chofer)REFERENCES Chofer(id_usuario),
-FOREIGN KEY(id_vehiculo) REFERENCES Vehiculo(id_vehiculo));
-
 CREATE TABLE Imo_class(
 id INT AUTO_INCREMENT KEY,
 tipo VARCHAR(200) NOT NULL,
@@ -111,13 +91,31 @@ CREATE TABLE Imo_subclass(
 id INT AUTO_INCREMENT KEY,
 id_class INT NOT NULL,
 tipo VARCHAR(250) NOT NULL,
-descripcion VARCHAR(250) NOT NULL,
+descripcion VARCHAR(518) NOT NULL,
 FOREIGN KEY (id_class) REFERENCES Imo_class(id)
 );
 
 CREATE TABLE Tipo_carga(
 id INT AUTO_INCREMENT KEY,
 descripcion VARCHAR(200) NOT NULL);
+
+CREATE TABLE Viaje(
+id_viaje INT NOT NULL AUTO_INCREMENT,
+combustible_consumido INT,
+combustible_consumido_previsto INT,
+fecha DATE,
+destino VARCHAR(50),
+origen VARCHAR(50),
+desviacion VARCHAR(50),
+tiempo TIME,
+tiempo_previsto TIME,
+km_recorrido DOUBLE,
+km_recorrido_previsto DOUBLE,
+id_chofer INT NOT NULL,
+id_vehiculo INT NOT NULL,
+PRIMARY KEY(id_viaje),
+FOREIGN KEY(id_chofer) REFERENCES Chofer(id_usuario),
+FOREIGN KEY(id_vehiculo) REFERENCES Vehiculo(id_vehiculo));
 
 CREATE TABLE Carga(
 id INT AUTO_INCREMENT KEY,
@@ -128,21 +126,25 @@ imo_class INT,
 imo_subclass INT,
 reefer boolean NOT NULL,
 temperatura VARCHAR(10),
+id_viaje INT NOT NULL,
 FOREIGN KEY (tipo_carga) REFERENCES Tipo_carga(id),
 FOREIGN KEY (imo_class) REFERENCES Imo_class(id),
-FOREIGN KEY (imo_subclass) REFERENCES Imo_subclass(id)
+FOREIGN KEY (imo_subclass) REFERENCES Imo_subclass(id),
+FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje)
  );
-
+ 
 CREATE TABLE Cliente(
 id INT AUTO_INCREMENT,
 denominacion VARCHAR(250) NOT NULL,
-cuit INT(11) NOT NULL,
+cuit VARCHAR(12) NOT NULL,
 direccion VARCHAR(250) NOT NULL,
 telefono VARCHAR(100) NOT NULL,
 email VARCHAR(250),
 contacto1 VARCHAR(200),
 contacto2 VARCHAR(200),
-PRIMARY KEY (id)
+id_viaje INT NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje)
 );
 
 CREATE TABLE Proforma(
@@ -192,11 +194,13 @@ INSERT INTO Imo_subclass
 (7,'Category III.','Packages with a maximum surface radiation level of 200 mrem/hr, or containers whose transport index is less than or equal to 1.0 and which are transporting visible Category III packages.'),
 (7,'Category IV.','Fissionable materials. This label is white and must contain the word “FISSIONABLE” in black at the top. At the bottom is a box that says “Critical Care Index” and the number “7”.');
 
+INSERT INTO Tipo_carga(descripcion)
+            VALUES("Granel"),
+                  ("Liquida"),
+                  ("20 pies"),
+                  ("40 pies"),
+                  ("Jaula"),
+                  ("CarCarrier");
+                  
 INSERT INTO Usuario(user_name, nombre, dni, rol, telefono, mail, clave)
-			VALUES("admin", 
-				   "Pepe Garcia" , 
-					34561789, 
-				    "Administrador", 
-                    44321833,
-                    "pepe@hotmail.com",
-                    "21232f297a57a5a743894a0e4a801fc3");
+			VALUES("admin", "Pepe Garcia", 34561789, "Administrador", 44321833,"pepe@hotmail.com", "21232f297a57a5a743894a0e4a801fc3");

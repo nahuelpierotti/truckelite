@@ -14,54 +14,34 @@ class ViajeModel
         return $this->database->query("SELECT * FROM viaje where id_viaje = '$id_viaje'");
     }
 
-    public function agregarViaje($id_viaje,
-                                 $combustible_consumido,
-                                 $combustible_consumido_previsto,
-                                 $tipo_de_carga,
+    public function agregarViaje($combustible_consumido_previsto,
                                  $fecha,
                                  $destino,
                                  $origen,
-                                 $desviacion,
-                                 $tiempo,
                                  $tiempo_previsto,
-                                 $km_recorrido,
                                  $km_recorrido_previsto,
-                                 $cliente,
                                  $id_chofer,
                                  $id_vehiculo){
         return $this->database->execute("
-                            INSERT INTO viaje (id_viaje,
-                            combustible_consumido,
-                            combustible_consumido_previsto,
-                            tipo_de_carga,
+                            INSERT INTO Viaje (combustible_consumido_previsto,
                             fecha,
                             destino,
                             origen,
-                            desviacion,
-                            tiempo,
                             tiempo_previsto,
-                            km_recorrido,
                             km_recorrido_previsto,
-                            cliente,
                             id_chofer,
                             id_vehiculo) 
                             VALUES ( 
-                            '$id_viaje',
-                            '$combustible_consumido',
                             '$combustible_consumido_previsto',
-                            '$tipo_de_carga',
                             '$fecha',
                             '$destino',
                             '$origen',
-                            '$desviacion',
-                            '$tiempo',
                             '$tiempo_previsto',
-                            '$km_recorrido',
                             '$km_recorrido_previsto',
-                            '$cliente',
                             '$id_chofer',
                             '$id_vehiculo')");
     }
+
     public function modificarViaje(
         $id_viaje,
         $combustible_consumido,
@@ -99,13 +79,22 @@ class ViajeModel
     }
 
     public function listarViajes(){
-        return $this->database->query("SELECT * FROM viaje");
+        return $this->database->query("SELECT * FROM Viaje");
     }
+
     public function listarViajesCriterio($criterio){
         return $this->database->query("SELECT * FROM viaje where id_viaje like  '%$criterio%' or cliente like '%$criterio%'");
     }
 
     public function eliminarViaje($id_viaje){
         return $this->database->execute("DELETE FROM viaje WHERE id_viaje= '$id_viaje'");
+    }
+
+    public function recuperarIdViaje($id_chofer,$fecha){
+        $result = $this->database->query("SELECT id_viaje
+                                       FROM Viaje
+                                       WHERE fecha = '$fecha' && id_chofer = $id_chofer");
+
+        return $result[0]["id_viaje"];
     }
 }

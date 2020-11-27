@@ -13,6 +13,7 @@ include_once ("model/VehiculoModel.php");
 include_once("model/ViajeModel.php");
 include_once("model/MantenimientoModel.php");
 include_once("model/ClienteModel.php");
+include_once ("model/CargaModel.php");
 /*CONTROLLER*/
 include_once ("controller/LoginController.php");
 include_once ("controller/LogOutController.php");
@@ -36,6 +37,7 @@ include_once ("controller/TractorController.php");
 include_once ("controller/VerVehiculosController.php");
 include_once ("controller/VehiculoController.php");
 include_once ("controller/CargaClienteController.php");
+include_once ("controller/CargaController.php");
 /*OTROS*/
 include_once("third-party/mustache/src/Mustache/Autoloader.php");
 include_once("Router.php");
@@ -119,6 +121,11 @@ class Configuration{
         return new ClienteModel($database);
     }
 
+    public function getCargaModel(){
+        $database = $this->getDatabase();
+        return new CargaModel($database);
+    }
+
     /*CONTROLLER*/
     public function getLoginController(){
         $usuarioModel = $this->getUsuarioModel();
@@ -168,10 +175,12 @@ class Configuration{
         $viajeModel = $this->getViajeModel();
         return new RegistrarViajeController($this->getRender(),$viajeModel);
     }
+
     public function getListarViajesController(){
         $viajeModel = $this->getViajeModel();
         return new ListarViajesController($this->getRender(),$viajeModel);
     }
+
     public function getModificarViajeController(){
         $viajeModel = $this->getViajeModel();
         return new ModificarViajeController($this->getRender(),$viajeModel);
@@ -227,5 +236,10 @@ class Configuration{
     public function getCargaClienteController(){
         $clienteModel = $this->getClienteModel();
         return new CargaClienteController($this->getRender(),$clienteModel);
+    }
+
+    public function getCargaController(){
+        $cargaModel = $this->getCargaModel();
+        return new CargaController($this->getRender(),$cargaModel);
     }
 }
