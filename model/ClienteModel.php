@@ -14,27 +14,4 @@ class ClienteModel
         return $this->database->execute("INSERT INTO Cliente (denominacion,cuit,direccion,telefono,email,contacto1,contacto2) 
                                 VALUES ('$denominacion', $cuit, '$direccion', $telefono, '$mail', '$contacto1' , '$contacto2')");
     }
-
-    public function listarClientes(){
-        return $this->database->query("SELECT * FROM Cliente");
-    }
-
-    public function eliminarCliente($id){
-        return $this->database->execute("DELETE FROM Cliente WHERE id=$id");
-    }
-
-    public function modificarCliente($id,$denominacion,$cuit,$direccion,$telefono,$email,$contacto1,$contacto2){
-        return $this->database->execute("UPDATE Cliente SET denominacion='$denominacion',
-                                                            cuit='$cuit',
-                                                            direccion='$direccion',
-                                                            telefono='$telefono',
-                                                            email='$email',
-                                                            contacto1='$contacto1',
-                                                            contacto2='$contacto2' WHERE id=$id");
-    }
-
-    public function buscarCliente($id){
-        return $this->database->query("SELECT id,denominacion,cuit,direccion,telefono,email,contacto1,contacto2
-                                       FROM Cliente WHERE id=$id");
-    }
 }
