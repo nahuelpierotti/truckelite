@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS grupo09;
+
 CREATE DATABASE grupo09;
 
 USE grupo09;
@@ -101,18 +103,22 @@ descripcion VARCHAR(200) NOT NULL);
 
 CREATE TABLE Viaje(
 id_viaje INT NOT NULL AUTO_INCREMENT,
-combustible_consumido INT,
-combustible_consumido_previsto INT,
-fecha DATE,
-destino VARCHAR(50),
-origen VARCHAR(50),
-desviacion VARCHAR(50),
-tiempo TIME,
-tiempo_previsto TIME,
-km_recorrido DOUBLE,
-km_recorrido_previsto DOUBLE,
 id_chofer INT NOT NULL,
 id_vehiculo INT NOT NULL,
+fecha DATE NOT NULL,
+destino VARCHAR(50) NOT NULL,
+origen VARCHAR(50) NOT NULL,
+combustible_consumido_previsto INT NOT NULL,
+tiempo_previsto TIME NOT NULL,
+km_recorrido_previsto DOUBLE NOT NULL,
+eta DATE NOT NULL,
+etd DATE NOT NULL,
+combustible_consumido INT,
+km_recorrido DOUBLE,
+tiempo TIME,
+desviacion DOUBLE,
+eta_real DATE,
+etd_real DATE,
 PRIMARY KEY(id_viaje),
 FOREIGN KEY(id_chofer) REFERENCES Chofer(id_usuario),
 FOREIGN KEY(id_vehiculo) REFERENCES Vehiculo(id_vehiculo));
@@ -149,14 +155,19 @@ FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje)
 
 CREATE TABLE Proforma(
 id INT AUTO_INCREMENT,
-fecha DATE NOT NULL,
-id_cliente INT,
-id_viaje INT,
-id_carga INT,
+id_viaje INT NOT NULL,
+viaticos DOUBLE NOT NULL,
+peajes DOUBLE NOT NULL,
+extras DOUBLE NOT NULL,
+fee DOUBLE NOT NULL,
+total DOUBLE NOT NULL,
+viaticos_real DOUBLE,
+peajes_real DOUBLE,
+extras_real DOUBLE,
+fee_real DOUBLE,
+total_real DOUBLE,
 PRIMARY KEY (id),
-FOREIGN KEY (id_cliente) REFERENCES Cliente(id),
-FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje),
-FOREIGN KEY (id_carga) REFERENCES Carga(id)
+FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje)
 );
 
 INSERT INTO Imo_class

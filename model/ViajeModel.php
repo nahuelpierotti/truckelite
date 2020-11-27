@@ -21,8 +21,10 @@ class ViajeModel
                                  $tiempo_previsto,
                                  $km_recorrido_previsto,
                                  $id_chofer,
-                                 $id_vehiculo){
-        return $this->database->execute("
+                                 $id_vehiculo,
+                                 $eta,
+                                 $etd){
+        return $this->database->regresaId("
                             INSERT INTO Viaje (combustible_consumido_previsto,
                             fecha,
                             destino,
@@ -30,7 +32,9 @@ class ViajeModel
                             tiempo_previsto,
                             km_recorrido_previsto,
                             id_chofer,
-                            id_vehiculo) 
+                            id_vehiculo,
+                            eta,
+                            etd) 
                             VALUES ( 
                             '$combustible_consumido_previsto',
                             '$fecha',
@@ -39,7 +43,10 @@ class ViajeModel
                             '$tiempo_previsto',
                             '$km_recorrido_previsto',
                             '$id_chofer',
-                            '$id_vehiculo')");
+                            '$id_vehiculo',
+                            '$eta',
+                            '$etd')");
+
     }
 
     public function modificarViaje(
@@ -90,11 +97,4 @@ class ViajeModel
         return $this->database->execute("DELETE FROM viaje WHERE id_viaje= '$id_viaje'");
     }
 
-    public function recuperarIdViaje($id_chofer,$fecha){
-        $result = $this->database->query("SELECT id_viaje
-                                       FROM Viaje
-                                       WHERE fecha = '$fecha' && id_chofer = $id_chofer");
-
-        return $result[0]["id_viaje"];
-    }
 }

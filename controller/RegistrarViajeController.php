@@ -31,11 +31,13 @@ class RegistrarViajeController
             $_POST["tiempo_previsto"],
             $_POST["km_recorrido_previsto"],
             $_POST["id_chofer"],
-            $_POST["id_vehiculo"]
+            $_POST["id_vehiculo"],
+            $_POST["eta"],
+            $_POST["etd"]
         );
         if ($result){
-            $_SESSION["id_viaje"] = $this->viajeModel->recuperarIdViaje($_POST["id_chofer"] ,$_POST["fecha"]);
-            header("Location: /truckelite/cargaCliente?msj=El viaje se cargo satisfactoriamente. Procesada a ingresar el cliente");
+            $_SESSION["id_viaje"] = $result;
+            header("Location: /truckelite/cargaCliente?msj=El viaje se cargo satisfactoriamente. Proceda a ingresar el cliente");
         }else{
             $_SESSION["mensaje"] = "Error al registrar el viaje";
             header("Location: /truckelite/registrarViaje");

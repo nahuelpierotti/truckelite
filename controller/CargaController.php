@@ -15,6 +15,7 @@ class CargaController
     public function execute(){
         if ($_SESSION["usuario"]["rol"] != "Administrador" && $_SESSION["usuario"]["rol"] != "Supervisor") header("Location: /truckelite/interno");
         $data = $_SESSION["usuario"];
+        $data["mensaje"] = $_GET["msj"];
         echo $this->render->render("view/cargaView.php", $data);
     }
 
@@ -27,9 +28,9 @@ class CargaController
                                                    $_POST["temperatura"],
                                                    $_SESSION["id_viaje"]);
         if ($result){
-            die("se cargo exitosamente");
+            header("Location: /truckelite/costos?msj=La carga se registro correctamente. Proceda a ingresar los costos.");
         }else{
-            die("fallo");
+            header("Location: /truckelite/carga?msj= Fallo al ingresar la carga. Vuelva a ingresar los datos.");
         }
     }
 }

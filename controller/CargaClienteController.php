@@ -29,7 +29,7 @@ class CargaClienteController
                                                       $_POST["contacto2"],
                                                       $_SESSION["id_viaje"]);
         if($result){
-            header("Location: /truckelite/carga");
+            header("Location: /truckelite/carga?msj=El cliente se cargo satisfactoriamente. Proceda a ingresar la carga.");
         }else{
             header("Location: /truckelite/cargaCliente?msj=El cliente no se pudo cargar al sistema");
         }

@@ -51,6 +51,16 @@
             </p>
 
             <p>
+                <label class="w3-text-brown"><b>Tiempo estimado de arribo</b></label>
+                <input class="w3-input w3-border w3-sand" name="eta" type="date" value="{{viajeBuscado.0.eta}}">
+            </p>
+
+            <p>
+                <label class="w3-text-brown"><b>Tiempo estimado de partida</b></label>
+                <input class="w3-input w3-border w3-sand" name="etd" type="date" value="{{viajeBuscado.0.etd}}">
+            </p>
+
+            <p>
                 <button class="w3-btn w3-blue">Agregar Viaje</button>
             </p>
         </form>

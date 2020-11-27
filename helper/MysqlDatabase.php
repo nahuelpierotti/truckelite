@@ -26,4 +26,9 @@ class MysqlDatabase{
     public function execute($sql){
         return mysqli_query($this->connection, $sql);
     }
+
+    public function regresaId($sql){
+
+        return $this->execute($sql) ? mysqli_insert_id($this->connection) : false;
+    }
 }
