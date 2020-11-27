@@ -11,15 +11,114 @@ function showLicencia(elemento) {
     if (elemento.value == "Chofer") {
         divLicencia = document.getElementById("licencia");
         divLicencia.style.setProperty('display', 'block', 'important');
-
-
     } else {
-
         divLicencia = document.getElementById("licencia");
         divLicencia.style.setProperty('display', 'none', 'important');
     }
 }
 
+function showSubClass(elemento){
+    switch (elemento.value){
+        case "1":
+            selSubClass =  document.getElementById("subClass1");
+            selSubClass2 =  document.getElementById("subClass2");
+            selSubClass4 =  document.getElementById("subClass4");
+            selSubClass5 =  document.getElementById("subClass5");
+            selSubClass6 =  document.getElementById("subClass6");
+            selSubClass7 =  document.getElementById("subClass7");
+            selSubClass.style.setProperty('display', 'block', 'important');
+            selSubClass2.style.setProperty('display', 'none', 'important');
+            selSubClass4.style.setProperty('display', 'none', 'important');
+            selSubClass5.style.setProperty('display', 'none', 'important');
+            selSubClass6.style.setProperty('display', 'none', 'important');
+            selSubClass7.style.setProperty('display', 'none', 'important');
+            break;
+        case "2":
+            selSubClass =  document.getElementById("subClass2");
+            selSubClass1 =  document.getElementById("subClass1");
+            selSubClass4 =  document.getElementById("subClass4");
+            selSubClass5 =  document.getElementById("subClass5");
+            selSubClass6 =  document.getElementById("subClass6");
+            selSubClass7 =  document.getElementById("subClass7");
+            selSubClass.style.setProperty('display', 'block', 'important');
+            selSubClass1.style.setProperty('display', 'none', 'important');
+            selSubClass4.style.setProperty('display', 'none', 'important');
+            selSubClass5.style.setProperty('display', 'none', 'important');
+            selSubClass6.style.setProperty('display', 'none', 'important');
+            selSubClass7.style.setProperty('display', 'none', 'important');
+            break;
+        case "4":
+            selSubClass1 =  document.getElementById("subClass1");
+            selSubClass2 =  document.getElementById("subClass2");
+            selSubClass =  document.getElementById("subClass4");
+            selSubClass5 =  document.getElementById("subClass5");
+            selSubClass6 =  document.getElementById("subClass6");
+            selSubClass7 =  document.getElementById("subClass7");
+            selSubClass.style.setProperty('display', 'block', 'important');
+            selSubClass1.style.setProperty('display', 'none', 'important');
+            selSubClass2.style.setProperty('display', 'none', 'important');
+            selSubClass5.style.setProperty('display', 'none', 'important');
+            selSubClass6.style.setProperty('display', 'none', 'important');
+            selSubClass7.style.setProperty('display', 'none', 'important');
+            break;
+        case "5":
+            selSubClass1 =  document.getElementById("subClass1");
+            selSubClass2 =  document.getElementById("subClass2");
+            selSubClass4 =  document.getElementById("subClass4");
+            selSubClass =  document.getElementById("subClass5");
+            selSubClass6 =  document.getElementById("subClass6");
+            selSubClass7 =  document.getElementById("subClass7");
+            selSubClass.style.setProperty('display', 'block', 'important');
+            selSubClass1.style.setProperty('display', 'none', 'important');
+            selSubClass2.style.setProperty('display', 'none', 'important');
+            selSubClass4.style.setProperty('display', 'none', 'important');
+            selSubClass6.style.setProperty('display', 'none', 'important');
+            selSubClass7.style.setProperty('display', 'none', 'important');
+            break;
+        case "6":
+            selSubClass1 =  document.getElementById("subClass1");
+            selSubClass2 =  document.getElementById("subClass2");
+            selSubClass4 =  document.getElementById("subClass4");
+            selSubClass5 =  document.getElementById("subClass5");
+            selSubClass =  document.getElementById("subClass6");
+            selSubClass7 =  document.getElementById("subClass7");
+            selSubClass.style.setProperty('display', 'block', 'important');
+            selSubClass1.style.setProperty('display', 'none', 'important');
+            selSubClass2.style.setProperty('display', 'none', 'important');
+            selSubClass4.style.setProperty('display', 'none', 'important');
+            selSubClass5.style.setProperty('display', 'none', 'important');
+            selSubClass7.style.setProperty('display', 'none', 'important');
+            break;
+        case "7":
+            selSubClass1 =  document.getElementById("subClass1");
+            selSubClass2 =  document.getElementById("subClass2");
+            selSubClass4 =  document.getElementById("subClass4");
+            selSubClass5 =  document.getElementById("subClass5");
+            selSubClass6 =  document.getElementById("subClass6");
+            selSubClass =  document.getElementById("subClass7");
+            selSubClass.style.setProperty('display', 'block', 'important');
+            selSubClass1.style.setProperty('display', 'none', 'important');
+            selSubClass2.style.setProperty('display', 'none', 'important');
+            selSubClass4.style.setProperty('display', 'none', 'important');
+            selSubClass5.style.setProperty('display', 'none', 'important');
+            selSubClass6.style.setProperty('display', 'none', 'important');
+            break;
+        default:
+            selSubClass1 =  document.getElementById("subClass1");
+            selSubClass2 =  document.getElementById("subClass2");
+            selSubClass4 =  document.getElementById("subClass4");
+            selSubClass5 =  document.getElementById("subClass5");
+            selSubClass6 =  document.getElementById("subClass6");
+            selSubClass7 =  document.getElementById("subClass7");
+            selSubClass1.style.setProperty('display', 'none', 'important');
+            selSubClass2.style.setProperty('display', 'none', 'important');
+            selSubClass4.style.setProperty('display', 'none', 'important');
+            selSubClass5.style.setProperty('display', 'none', 'important');
+            selSubClass6.style.setProperty('display', 'none', 'important');
+            selSubClass7.style.setProperty('display', 'none', 'important');
+            break;
+    }
+}
 
 var animado = document.getElementsByClassName("animado")
 

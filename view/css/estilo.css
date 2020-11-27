@@ -78,6 +78,11 @@ body, h1, h2, h3, h4, h5, h6 {
     width: 300px;
     margin-top: 120px;
 }
+/*CARGA*/
+#subClass1, #subClass2, #subClass4, #subClass5, #subClass6, #subClass7{
+    display: none !important;
+}
+
 
 
 
