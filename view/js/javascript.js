@@ -119,6 +119,15 @@ function showSubClass(elemento){
             break;
     }
 }
+/*function showSubClass(elemento) {
+    if (elemento.value == "1") {
+        divLicencia = document.getElementById("subClass1");
+        divLicencia.style.setProperty('display', 'block', 'important');
+    } else {
+        divLicencia = document.getElementById("subClass1");
+        divLicencia.style.setProperty('display', 'none', 'important');
+    }
+}*/
 
 var animado = document.getElementsByClassName("animado")
 

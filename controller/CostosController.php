@@ -27,7 +27,7 @@ class CostosController
                                                      $_POST["total"],
                                                      $_SESSION["id_viaje"]);
         if ($result){
-            header("Location: /truckelite/costos?msj=Se ingreso correctamente el costo.Generar Proforma");
+            header("Location: /truckelite/proforma?viaje=".$_SESSION["id_viaje"]);
         }else{
             header("Location: /truckelite/costos?msj=Fallo");
         }
