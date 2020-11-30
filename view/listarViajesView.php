@@ -16,11 +16,11 @@
     </div>
     <div class="w3-row">
         <form class="example" method="post" action="listarViajes">
-            <input type="hidden"  name="limpiar" id="limpiar">
-            <button class="w3-btn w3-grey" type="submit"><i class="fa fa-broom "></i> Limpiar Filtros </button>
+            <input type="hidden"  name="all" id="all">
+            <button class="w3-btn w3-grey" type="submit"> Traer Todos </button>
         </form>
     </div>
-    <div class="w3-responsive">
+    <div class="w3-responsive w3-margin-top">
         <table class="w3-table w3-table-all">
             <tr>
                 <th>ID Viaje</th>
