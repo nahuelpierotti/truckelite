@@ -64,6 +64,7 @@
         <img class="" src="proforma/mostrarQr?viaje={{id_viaje}}" alt="">
         </div>
     </article>
+    <a href="proforma/volverAlInicio" class="w3-text-blue w3-button w3-large">Ir al inicio</a>
 </section>
 
 

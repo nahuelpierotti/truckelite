@@ -17,11 +17,11 @@ class ProformaModel
                                        C.denominacion,C.cuit,C.direccion,C.telefono,C.email,C.contacto1,
                                        C.contacto2,P.id,P.viaticos,P.peajes,P.extras,P.fee,P.total,
                                        U.nombre,Tc.descripcion,Car.peso,Car.hazard,Car.reefer
-                                       FROM usuario U JOIN viaje V ON U.id_usuario=V.id_chofer JOIN 
-	                                   cliente C ON V.id_viaje=C.id_viaje JOIN
-                                       proforma P ON C.id_viaje=P.id_viaje JOIN
-                                       carga Car ON P.id_viaje=Car.id_viaje JOIN
-                                       tipo_carga Tc ON Car.tipo_carga=Tc.id
+                                       FROM Usuario U JOIN Viaje V ON U.id_usuario=V.id_chofer JOIN 
+	                                   Cliente C ON V.id_viaje=C.id_viaje JOIN
+                                       Proforma P ON C.id_viaje=P.id_viaje JOIN
+                                       Carga Car ON P.id_viaje=Car.id_viaje JOIN
+                                       Tipo_carga Tc ON Car.tipo_carga=Tc.id
                                        WHERE V.id_viaje=$idViajeModel");
     }
 }
