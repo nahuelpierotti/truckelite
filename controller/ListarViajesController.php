@@ -35,7 +35,6 @@ class ListarViajesController
         $data["listar"] = $this->viajeModel->listarViajesCriterio($criterio);
     }
 
-
     public function eliminarViaje(){
         if (isset($_GET["url"])) {
             $data = $this->viajeModel->eliminarViaje($_GET["url"]);
@@ -47,6 +46,11 @@ class ListarViajesController
             }
         }
         header("Location: /truckelite/listarViajes");
+    }
+
+    public function verProforma(){
+        $_SESSION["id_viaje"] = $_GET["viajeSeleccionado"];
+        header("Location: /truckelite/proforma");
     }
 
 }

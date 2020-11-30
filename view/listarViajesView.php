@@ -24,16 +24,12 @@
         <table class="w3-table w3-table-all">
             <tr>
                 <th>ID Viaje</th>
-                <th>Comb.Cons.</th>
                 <th>Comb. Prev.</th>
                 <th>Tipo Carga</th>
                 <th>Fecha</th>
                 <th>Destino</th>
                 <th>Origen</th>
-                <th>Desvio</th>
-                <th>Tiempo</th>
                 <th>Tiempo Prev.</th>
-                <th>Km</th>
                 <th>Km Prev</th>
                 <th>Cliente</th>
                 <th>Chofer</th>
@@ -42,21 +38,17 @@
             </tr>
             {{#listar}}
             <tr>
-                <td>{{id_viaje}}</td>
-                <td>{{combustible_consumido}}</td>
+                <td><a href="listarViajes/verProforma?viajeSeleccionado={{id_viaje}}">{{id_viaje}}</a></td>
                 <td>{{combustible_consumido_previsto}}</td>
-                <td>{{tipo_de_carga}}</td>
+                <td>{{descripcion}}</td>
                 <td>{{fecha}}</td>
                 <td>{{destino}}</td>
                 <td>{{origen}}</td>
-                <td>{{desviacion}}</td>
-                <td>{{tiempo}}</td>
                 <td>{{tiempo_previsto}}</td>
-                <td>{{km_recorrido}}</td>
                 <td>{{km_recorrido_previsto}}</td>
-                <td>{{cliente}}</td>
-                <td>{{id_chofer}}</td>
-                <td>{{id_vehiculo}}</td>
+                <td>{{denominacion}}</td>
+                <td>{{nombre}}</td>
+                <td>{{fk_tractor}}</td>
                 <td><a class='w3-panel w3-button w3-blue w3-round-xxlarge w3-hover-text-blue' href="modificarViaje?url={{id_viaje}}">
                         <i class='far fa-edit'></i></a>
 
