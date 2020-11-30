@@ -144,9 +144,7 @@ class Configuration{
 
     public function getReporteModel(){
         $database = $this->getDatabase();
-        $cargaModel = $this->getCargaModel();
-        $vehiculoModel = $this->getVehiculoModel();
-        return new ReporteModel($database,$cargaModel,$vehiculoModel);
+        return new ReporteModel($database);
     }
 
     /*CONTROLLER*/
