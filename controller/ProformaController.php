@@ -29,8 +29,4 @@ class ProformaController
         $viaje= $_GET["viaje"];
         QRcode::png("localhost/truckelite/cargarDatosViaje?id_viaje=".$viaje);
     }
-
-    public function volverAlInicio(){
-        header("Location: /truckelite/interno");
-    }
 }
