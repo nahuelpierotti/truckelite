@@ -12,28 +12,28 @@
 
             <p>
                 <label class="w3-text-brown"><b>Viaticos</b></label>
-                <input class="w3-input w3-border w3-sand" name="viaticos" type="number" required>
+                <input class="w3-input w3-border w3-sand" name="viaticos" type="number" id="viaticos" required oninput="calcular()">
 
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Peajes</b></label>
-                <input class="w3-input w3-border w3-sand" name="peajes" type="number" required>
+                <input class="w3-input w3-border w3-sand" name="peajes" type="number" id="peajes" required oninput="calcular()">
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Extras</b></label>
-                <input class="w3-input w3-border w3-sand" name="extras" type="number" required>
+                <input class="w3-input w3-border w3-sand" name="extras" type="number" id="extras" required oninput="calcular()">
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Fee</b></label>
-                <input class="w3-input w3-border w3-sand" name="fee" type="number" required>
+                <input class="w3-input w3-border w3-sand" name="fee" type="number" id="fee" required oninput="calcular()">
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Total</b></label>
-                <input class="w3-input w3-border w3-sand" name="total" type="number" required>
+                <input class="w3-input w3-border w3-sand" name="total" type="number" id="total" required>
             </p>
 
             <p>

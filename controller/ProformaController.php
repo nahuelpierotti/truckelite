@@ -27,6 +27,6 @@ class ProformaController
 
     public function mostrarQr(){
         $viaje= $_GET["viaje"];
-        QRcode::png($viaje);
+        QRcode::png("localhost/truckelite/cargarDatosViaje?id_viaje=".$viaje);
     }
 }

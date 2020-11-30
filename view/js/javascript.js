@@ -119,15 +119,30 @@ function showSubClass(elemento){
             break;
     }
 }
-/*function showSubClass(elemento) {
-    if (elemento.value == "1") {
-        divLicencia = document.getElementById("subClass1");
-        divLicencia.style.setProperty('display', 'block', 'important');
+
+function calcular(){
+    var viaticos = parseFloat(document.getElementById("viaticos").value);
+    var peajes = parseFloat(document.getElementById("peajes").value);
+    var extras = parseFloat(document.getElementById("extras").value);
+    var fee = parseFloat(document.getElementById("fee").value);
+
+    document.getElementById("total").value= viaticos + peajes + extras + fee;
+}
+
+var x = document.getElementById("position");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        divLicencia = document.getElementById("subClass1");
-        divLicencia.style.setProperty('display', 'none', 'important');
+        document.getElementById("position").value = "Geolocation is not supported by this browser.";
     }
-}*/
+}
+
+function showPosition(position) {
+    document.getElementById("position").value = "Latitude: " + position.coords.latitude +
+        " Longitude: " + position.coords.longitude;
+}
 
 var animado = document.getElementsByClassName("animado")
 

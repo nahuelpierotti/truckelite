@@ -170,6 +170,18 @@ PRIMARY KEY (id),
 FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje)
 );
 
+CREATE TABLE Reporte(
+id_reporte INT AUTO_INCREMENT,
+id_viaje INT NOT NULL,
+lugar_carga_combustible VARCHAR (50),
+costo_carga_combustible DOUBLE,
+cantidad_carga_combustible DOUBLE,
+lugar_hospedaje VARCHAR (50),
+costo_hospedaje DOUBLE,
+PRIMARY KEY (id_reporte),
+FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje)
+);
+
 INSERT INTO Imo_class
 (tipo,descripcion)VALUES
 ('Class 1','Explosives'),

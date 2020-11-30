@@ -4,12 +4,10 @@
 class ProformaModel
 {
     private $database;
-    private $viajeModel;
 
-    public function __construct($database,$viajeModel)
+    public function __construct($database)
     {
         $this->database = $database;
-        $this->viajeModel = $viajeModel;
     }
 
     public function traerDatosProforma($idViajeModel){

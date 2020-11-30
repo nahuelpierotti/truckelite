@@ -7,7 +7,7 @@
         </div>
     </article>
     <article class="w3-panel w3-border w3-border-black">
-        <h1 class="w3-text-blue">Proforma numero {{datosProforma.0.id}}</h1>
+        <h1 class="w3-text-blue w3-center">Proforma numero {{datosProforma.0.id}}</h1>
         <hr>
         <h4>Fecha de creación del viaje: {{datosProforma.0.fecha}}</h4>
     </article>
@@ -21,6 +21,11 @@
         <h4>Email: {{datosProforma.0.email}}</h4>
         <h4>Contacto1: {{datosProforma.0.contacto1}}</h4>
         <h4>Contacto2: {{datosProforma.0.contacto2}}</h4>
+    </article>
+    <article class="w3-panel w3-border w3-border-black">
+        <h2 class="w3-text-blue">Chofer asignado</h2>
+        <hr>
+        <h4>Nombre y Apellido: {{datosProforma.0.nombre}}</h4>
     </article>
     <article class="w3-panel w3-border w3-border-black">
         <h2 class="w3-text-blue">Viaje</h2>

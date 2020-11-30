@@ -16,6 +16,7 @@ include_once("model/ClienteModel.php");
 include_once ("model/CargaModel.php");
 include_once ("model/CostosModel.php");
 include_once ("model/ProformaModel.php");
+include_once ("model/ReporteModel.php");
 /*CONTROLLER*/
 include_once ("controller/LoginController.php");
 include_once ("controller/LogOutController.php");
@@ -42,6 +43,7 @@ include_once ("controller/CargaClienteController.php");
 include_once ("controller/CargaController.php");
 include_once ("controller/CostosController.php");
 include_once ("controller/ProformaController.php");
+include_once ("controller/CargarDatosViajeController.php");
 /*OTROS*/
 include_once("third-party/mustache/src/Mustache/Autoloader.php");
 include_once("Router.php");
@@ -137,8 +139,14 @@ class Configuration{
 
     public function getProformaModel(){
         $database = $this->getDatabase();
-        $viajeModel = $this->getViajeModel();
-        return new ProformaModel($database,$viajeModel);
+        return new ProformaModel($database);
+    }
+
+    public function getReporteModel(){
+        $database = $this->getDatabase();
+        $cargaModel = $this->getCargaModel();
+        $vehiculoModel = $this->getVehiculoModel();
+        return new ReporteModel($database,$cargaModel,$vehiculoModel);
     }
 
     /*CONTROLLER*/
@@ -266,5 +274,10 @@ class Configuration{
     public function getProformaController(){
         $proformaModel = $this->getProformaModel();
         return new ProformaController($this->getRender(),$proformaModel);
+    }
+
+    public function getCargarDatosViajeController(){
+        $reporteModel = $this->getReporteModel();
+        return new CargarDatosViajeController($this->getRender(),$reporteModel);
     }
 }
