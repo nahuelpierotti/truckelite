@@ -114,4 +114,8 @@ class VehiculoModel
         }
     }
 
+    public function obtenerIdVehiculoPorSuPatente($patente){
+        return $this->database->query("SELECT id_vehiculo FROM Vehiculo WHERE fk_tractor='$patente'");
+    }
+
 }

@@ -18,12 +18,16 @@ class MecanicoModel
 
     public function obtenerIdDeMecanicoPorSuNombreYsuDni($nombre,$dni)
     {
-       return $this->database->query("SELECT U.id_usuario FROM usuario U JOIN mecanico M WHERE nombre='$nombre'AND dni=$dni");
+       return $this->database->query("SELECT M.id_usuario FROM usuario U JOIN mecanico M ON
+                                      U.id_usuario = M.id_usuario 
+                                      WHERE nombre='$nombre'AND dni=$dni");
     }
 
     public function obtenerNombreMecanicoYsuDniPorSuId($id)
     {
-        return $this->database->query("SELECT U.nombre,U.dni FROM usuario U JOIN mecanico M WHERE U.id_usuario='$id'");
+        return $this->database->query("SELECT U.nombre,U.dni FROM usuario U JOIN mecanico M 
+                                       ON U.id_usuario=M.id_usuario 
+                                       WHERE M.id_usuario='$id'");
     }
 
     public function eliminarMecanico($id){

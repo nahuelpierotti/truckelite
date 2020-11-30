@@ -79,7 +79,7 @@
 
             <p>
                 <label class="w3-text-brown"><b>Patente vehiculo</b></label>
-                <input class="w3-input w3-border w3-sand" name="id_vehiculo" type="text" value="">
+                <input class="w3-input w3-border w3-sand" name="patente_vehiculo" type="text" value="">
 
             </p>
 

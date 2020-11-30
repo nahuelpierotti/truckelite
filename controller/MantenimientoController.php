@@ -6,12 +6,14 @@ class MantenimientoController
     private $render;
     private $mantenimientoModel;
     private $mecanicoModel;
+    private $vehiculoModel;
 
-    public function __construct($render, $mantenimientoModel,$mecanicoModel)
+    public function __construct($render, $mantenimientoModel,$mecanicoModel,$vehiculoModel)
     {
         $this->mantenimientoModel = $mantenimientoModel;
         $this->render = $render;
         $this->mecanicoModel = $mecanicoModel;
+        $this->vehiculoModel = $vehiculoModel;
     }
 
     public function execute()
@@ -23,9 +25,9 @@ class MantenimientoController
     }
 
     public function agregarMantenimiento(){
-        $id_mecanico= $this->mecanicoModel->obtenerIdDeMecanicoPorSuNombreYsuDni($_POST["nombreMecanico"],$_POST["dniMecanico"]);
-        //En agregarMantenimiento le paso un id a mano, falta un metodo para buscar el id del vehiculo.
-        $result =$this->mantenimientoModel->agregarMantenimiento($_POST["fecha"],$_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"],$id_mecanico[0]["id_usuario"],$_POST["id_vehiculo"]);
+        $idMecanico= $this->mecanicoModel->obtenerIdDeMecanicoPorSuNombreYsuDni($_POST["nombreMecanico"],$_POST["dniMecanico"]);
+        $idVehivulo = $this->vehiculoModel->obtenerIdVehiculoPorSuPatente($_POST["patente_vehiculo"]);
+        $result =$this->mantenimientoModel->agregarMantenimiento($_POST["fecha"],$_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"],$idMecanico[0]["id_usuario"],$idVehivulo[0]["id_vehiculo"]);
         if(!$result) {
             header("Location: /truckelite/mantenimiento?msj=No se pudo agregar el mantenimiento ");
         }else{
