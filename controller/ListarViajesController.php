@@ -19,11 +19,8 @@ class ListarViajesController
         $data = $_SESSION["usuario"];
         $data["mensajeEliminar"] = $_SESSION["mensajeEliminar"];
         unset($_SESSION["mensajeEliminar"]);
-        if(isset($_POST["criterio"]) || !isset($_POST["limpiar"])){
-            $this->listarViajesCriterio($data,$_POST["criterio"]);
-        }else {
-            $this->listarViajes($data);
-        }
+        if(isset($_POST["criterio"])) $this->listarViajesCriterio($data,$_POST["criterio"]);
+        if(isset($_POST["all"])) $this->listarViajes($data);
         echo $this->render->render("view/listarViajesView.php",$data);
     }
 

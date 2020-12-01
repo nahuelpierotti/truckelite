@@ -168,7 +168,8 @@ class Configuration{
     }
 
     public function getConsultarVehiculoController(){
-        return new ConsultarVehiculoController($this->getRender());
+        $vehiculoModel = $this->getVehiculoModel();
+        return new ConsultarVehiculoController($this->getRender(),$vehiculoModel);
     }
 
     public function getListarUsuariosController(){
@@ -210,7 +211,8 @@ class Configuration{
     public function getMantenimientoController(){
         $mantenimientoModel = $this->getMantenimientoModel();
         $mecanicoModel = $this->getMecanicoModel();
-        return new MantenimientoController($this->getRender(),$mantenimientoModel,$mecanicoModel);
+        $vehiculoModel = $this->getVehiculoModel();
+        return new MantenimientoController($this->getRender(),$mantenimientoModel,$mecanicoModel,$vehiculoModel);
     }
 
     public function getListarMantenimientoController(){

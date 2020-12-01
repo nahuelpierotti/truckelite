@@ -114,4 +114,59 @@ class VehiculoModel
         }
     }
 
+    public function obtenerIdVehiculoPorSuPatente($patente){
+        return $this->database->query("SELECT id_vehiculo FROM Vehiculo WHERE fk_tractor='$patente'");
+    }
+
+    public function consultarVehiculo($consulta ,$patente){
+
+        switch ($consulta){
+            case "posicionActual":
+                $result = $this->database->query("SELECT posicion_actual FROM Vehiculo WHERE fk_tractor = '$patente'");
+                $result = $result ? "La posicion del vehiculo es: " . $result[0]["posicion_actual"] : "Patente Inexistente";
+                break;
+
+            case "kilometros":
+                $result = $this->database->query("SELECT km_recorrido
+                                                  FROM Viaje
+                                                  WHERE id_vehiculo = (SELECT id_vehiculo
+                                                                       FROM Vehiculo
+                                                                       WHERE fk_tractor = '$patente')");
+                if ($result){
+                    $result = "La cantidad de kilometros reales recorridos en el viaje es " . $result[0]["km_recorrido"] . " km";
+                }else{
+                    $result = "El vehiculo no se encuentra en ningun viaje.";
+                }
+                break;
+
+            case "combustible":
+                $result = $this->database->query("SELECT combustible_consumido
+                                                  FROM Viaje
+                                                  WHERE id_vehiculo = (SELECT id_vehiculo
+                                                                       FROM Vehiculo
+                                                                       WHERE fk_tractor = '$patente')");
+                if ($result){
+                    $result = "La cantidad de combustible consumido en el viaje es " . $result[0]["combustible_consumido"] . " lts";
+                }else{
+                    $result = "El vehiculo no se encuentra en ningun viaje.";
+                }
+                break;
+
+            case "tiempo":
+                $result = $this->database->query("SELECT tiempo
+                                                  FROM Viaje
+                                                  WHERE id_vehiculo = (SELECT id_vehiculo
+                                                                       FROM Vehiculo
+                                                                       WHERE fk_tractor = '$patente')");
+                if ($result){
+                    $result = "El vehiculo lleva en viaje " . $result[0]["tiempo"] . " hrs";
+                }else{
+                    $result = "El vehiculo no se encuentra en ningun viaje.";
+                }
+                break;
+        }
+
+        return $result;
+    }
+
 }
