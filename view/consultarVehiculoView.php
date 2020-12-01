@@ -5,14 +5,25 @@
         <div class=" w3-blue">
         <h2 class="w3-container">Consultar Vehiculo</h2>
     </div>
-
-
-
-    <form action="consultarVehiculo/procesarConsulta" method="post">
+    <div>
         {{#mensaje}}
-        <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">{{mensaje}}</p>
-        {{/mensaje}}
+        <div id="map"></div>
+        <script>
+            var map = L.map('map').setView({{mensaje}}, 13);
 
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker({{mensaje}}).addTo(map)
+                .bindPopup('Posicion del Vehiculo')
+                .openPopup();
+        </script>
+        <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">La posicion del vehiculo es: {{mensaje}}</p>
+        {{/mensaje}}
+    </div>
+    <br>
+    <form action="consultarVehiculo/procesarConsulta" method="post">
         <p>
             <label class="w3-text-brown"><b>Ingrese patente de vehiculo a consultar</b></label>
             <input class="w3-input w3-border w3-sand" name="patente" type="text" required>

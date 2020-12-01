@@ -122,8 +122,8 @@ class VehiculoModel
 
         switch ($consulta){
             case "posicionActual":
-                $result = $this->database->query("SELECT posicion_actual FROM Vehiculo WHERE fk_tractor = '$patente'");
-                $result = $result ? "La posicion del vehiculo es: " . $result[0]["posicion_actual"] : "Patente Inexistente";
+                $result = $this->database->query("SELECT concat('[',replace(posicion_actual,' ',''),']')as posicion_actual  FROM Vehiculo WHERE fk_tractor = '$patente'");
+                $result = $result ? $result[0]["posicion_actual"] : "Patente Inexistente";
                 break;
 
             case "kilometros":
