@@ -64,6 +64,9 @@
         <img class="" src="proforma/mostrarQr?viaje={{id_viaje}}" alt="">
         </div>
     </article>
+    <br>
+    <a href="proforma/exportarPdf?viaje={{id_viaje}}" class="w3-button w3-orange w3-large" target="_blank">Exportar a PDF</a>
+    <br>
     <a href="/truckelite/interno" class="w3-text-blue w3-button w3-large">Ir al inicio</a>
 </section>
 

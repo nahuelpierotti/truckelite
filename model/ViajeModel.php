@@ -96,8 +96,17 @@ class ViajeModel
                                             Tipo_carga Tc ON Car.tipo_carga = Tc.id");
     }
 
-    public function listarViajesCriterio($criterio){
-        return $this->database->query("SELECT * FROM viaje where id_viaje like  '%$criterio%' or cliente like '%$criterio%'");
+    public function listarViajesCriterio(&$criterio){
+        $sql_query="SELECT V.id_viaje, V.combustible_consumido_previsto, V.km_recorrido_previsto,
+                                              V.destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
+                                              V.tiempo_previsto, U.nombre, Ve.fk_tractor
+                                       FROM Viaje V JOIN Usuario U ON U.id_usuario = V.id_chofer JOIN
+                                            Cliente C ON C.id_viaje = V.id_viaje JOIN
+                                            Vehiculo Ve ON Ve.id_vehiculo = V.id_vehiculo JOIN
+                                            Carga Car ON Car.id_viaje = V.id_viaje JOIN
+                                            Tipo_carga Tc ON Car.tipo_carga = Tc.id
+                                            where V.id_viaje like  '%$criterio%' or C.denominacion like '%$criterio%'";
+        return $this->database->query($sql_query);
     }
 
     public function eliminarViaje($id_viaje){
