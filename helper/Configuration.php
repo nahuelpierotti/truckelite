@@ -35,8 +35,6 @@ include_once ("controller/ListarMantenimientoController.php");
 include_once ("controller/ModificarMantenimientoController.php");
 include_once ("controller/VerAcopladosController.php");
 include_once ("controller/AcopladoController.php");
-include_once ("controller/VerTractoresController.php");
-include_once ("controller/TractorController.php");
 include_once ("controller/VerVehiculosController.php");
 include_once ("controller/VehiculoController.php");
 include_once ("controller/CargaClienteController.php");
@@ -234,16 +232,6 @@ class Configuration{
     public function getAcopladoController(){
         $vehiculoModel = $this->getVehiculoModel();
         return new AcopladoController($this->getRender(),$vehiculoModel);
-    }
-
-    public function getVerTractoresController(){
-        $vehiculoModel = $this->getVehiculoModel();
-        return new VerTractoresController($this->getRender(),$vehiculoModel);
-    }
-
-    public function getTractorController(){
-        $vehiculoModel = $this->getVehiculoModel();
-        return new TractorController($this->getRender(),$vehiculoModel);
     }
 
     public function getVerVehiculosController(){
