@@ -52,6 +52,9 @@
 
             <label class="w3-text-brown"><b>Acoplado</b>
                 <select class="w3-select w3-border w3-sand" name="acoplado">
+                    {{#vehiculo.0.fk_acoplado}}
+                        <option value="{{vehiculo.0.fk_acoplado}}">{{vehiculo.0.fk_acoplado}}</option>
+                    {{/vehiculo.0.fk_acoplado}}
                     <option value="Sin Asignar">Sin Asignar</option>
                     {{#acoplados}}
                         <option value="{{patente_acoplado}}">{{patente_acoplado}}</option>
