@@ -140,8 +140,8 @@ function getLocation() {
 }
 
 function showPosition(position) {
-    document.getElementById("position").value = "Latitude: " + position.coords.latitude +
-        " Longitude: " + position.coords.longitude;
+    document.getElementById("position").value = position.coords.latitude + "," +
+        " " + position.coords.longitude;
 }
 
 var animado = document.getElementsByClassName("animado")
