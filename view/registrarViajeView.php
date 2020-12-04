@@ -40,15 +40,23 @@
                 <input class="w3-input w3-border w3-sand" name="km_recorrido_previsto" type="text" value="{{viajeBuscado.0.km_recorrido_previsto}}">
             </p>
 
-            <p>
-                <label class="w3-text-brown"><b>Id Chofer</b></label>
-                <input class="w3-input w3-border w3-sand" name="id_chofer" type="number" value="{{viajeBuscado.0.id_chofer}}">
-            </p>
+            <label class="w3-text-brown"><b>Choferes disponibles</b>
+                <select class="w3-select w3-border w3-sand" name="id_chofer">
+                    <option value="" disabled selected>Sin Asignar</option>
+                    {{#choferes}}
+                    <option value="{{id_usuario}}">{{nombre}}</option>
+                    {{/choferes}}
+                </select>
+            </label>
 
-            <p>
-                <label class="w3-text-brown"><b>Id Vehiculo</b></label>
-                <input class="w3-input w3-border w3-sand" name="id_vehiculo" type="number" value="{{viajeBuscado.0.id_vehiculo}}">
-            </p>
+            <label class="w3-text-brown"><b>Vehiculos Disponibles</b>
+                <select class="w3-select w3-border w3-sand" name="id_vehiculo">
+                    <option value="" disabled selected>Sin Asignar</option>
+                    {{#vehiculos}}
+                    <option value="{{id_vehiculo}}">{{fk_tractor}}</option>
+                    {{/vehiculos}}
+                </select>
+            </label>
 
             <p>
                 <label class="w3-text-brown"><b>Tiempo estimado de arribo</b></label>

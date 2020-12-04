@@ -105,6 +105,7 @@ CREATE TABLE Viaje(
 id_viaje INT NOT NULL AUTO_INCREMENT,
 id_chofer INT NOT NULL,
 id_vehiculo INT NOT NULL,
+estado BOOLEAN NOT NULL,
 fecha DATE NOT NULL,
 destino VARCHAR(50) NOT NULL,
 origen VARCHAR(50) NOT NULL,

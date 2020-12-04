@@ -18,6 +18,8 @@ class RegistrarViajeController
         $data["mensaje"] = $_SESSION["mensaje"];
         $data = $_SESSION["usuario"];
         unset($_SESSION["mensaje"]);
+        $this->viajeModel->cargarChoferesDisponibles($data);
+        $this->viajeModel->cargarVehiculosDisponibles($data);
         echo $this->render->render("view/registrarViajeView.php", $data);
     }
 
