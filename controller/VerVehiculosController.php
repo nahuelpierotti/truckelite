@@ -26,12 +26,8 @@ class VerVehiculosController
 
     public function eliminarVehiculo(){
         if (isset($_GET["url"])) {
-            $data = $this->vehiculoModel->eliminarVehiculo($_GET["url"]);
-            if (!$data){
-                header("Location: /truckelite/verVehiculos?msj=No se pudo eliminar el vehiculo");
-            } else{
-                header("Location: /truckelite/verVehiculos?msj=El vehiculo se elimino correctamente");
-            }
+            $mensaje = $this->vehiculoModel->eliminarVehiculo($_GET["url"]);
+            header("Location: /truckelite/verVehiculos?msj=$mensaje");
         }else{
             header("Location: /truckelite/verVehiculos");
         }

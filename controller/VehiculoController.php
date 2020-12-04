@@ -22,20 +22,9 @@ class VehiculoController
         unset($_SESSION["titulo"]);
         unset($_SESSION["action"]);
         unset($_SESSION["vehiculo"]);
-        if($data["titulo"] == "Modificar Vehiculo") $_SESSION["patenteDestino"] = $data["vehiculo"][0]["fk_tractor"];
+        if($data["titulo"] == "Modificar Vehiculo") $_SESSION["patenteDestino"] = $data["vehiculo"][0]["patente"];
+        $this->vehiculoModel->cargarAcopladosDisponibles($data);
         echo $this->render->render("view/vehiculoView.php",$data);
-    }
-
-    public function agregarVehiculo(){
-        $data = $this->vehiculoModel->agregarVehiculo($_POST["patente"], $_POST["posicion"], $_POST["estado"]);
-        $_SESSION["action"] = "agregarVehiculo";
-        $_SESSION["titulo"] = "Nuevo Vehiculo";
-        if (!$data){
-            header("Location: /truckelite/vehiculo?msj=No se pudo Agregar el Vehiculo");
-        } else{
-            header("Location: /truckelite/vehiculo?msj=Nuevo Vehiculo añadido");
-        }
-
     }
 
     public function agregar(){
@@ -53,12 +42,35 @@ class VehiculoController
     }
 
     public function modificarVehiculo(){
-        $data = $this->vehiculoModel->modificarVehiculo($_POST["patente"], $_POST["posicion"], $_POST["estado"], $_SESSION["patenteDestino"]);
+        $mensaje = $this->vehiculoModel->modificarVehiculo($_POST["patente"],
+                                                           $_POST["motor"],
+                                                           $_POST["chasis"],
+                                                           $_POST["modelo"],
+                                                           $_POST["marca"],
+                                                           $_POST["acoplado"],
+                                                           $_POST["posicion"],
+                                                           $_POST["estado"],
+                                                           $_SESSION["patenteDestino"]);
         unset($_SESSION["patenteDestino"]);
-        if (!$data) {
-            header("Location: /truckelite/verVehiculos?msj=No se pudo modificar el vehiculo");
-        }else{
-            header("Location: /truckelite/verVehiculos?msj=El vehiculo se modifico correctamente");
+        header("Location: /truckelite/verVehiculos?msj=$mensaje");
+    }
+
+    public function agregarVehiculo(){
+        $data = $this->vehiculoModel->agregarVehiculo($_POST["patente"],
+                                                      $_POST["motor"],
+                                                      $_POST["chasis"],
+                                                      $_POST["modelo"],
+                                                      $_POST["marca"],
+                                                      $_POST["acoplado"],
+                                                      $_POST["posicion"],
+                                                      $_POST["estado"]);
+        $_SESSION["action"] = "agregarVehiculo";
+        $_SESSION["titulo"] = "Nuevo Vehiculo";
+        if (!$data){
+            header("Location: /truckelite/vehiculo?msj=No se pudo Agregar el Vehiculo");
+        } else{
+            header("Location: /truckelite/vehiculo?msj=Nuevo Vehiculo añadido");
         }
+
     }
 }

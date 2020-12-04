@@ -27,11 +27,10 @@ class InternoController
         $data["acciones"][2] = array("name" => "Listar Usuarios" , "habilitar" => true, "url" => "listarUsuarios");
         $data["acciones"][3] = array("name" => "Registrar Viaje" , "habilitar" => true, "url" => "registrarViaje");
         $data["acciones"][4] = array("name" => "Listar Viajes" , "habilitar" => true, "url" => "listarViajes");
-        $data["acciones"][5] = array("name" => "Ver Tractores" , "habilitar" => true, "url" => "verTractores");
-        $data["acciones"][6] = array("name" => "Ver Acoplados" , "habilitar" => true, "url" => "verAcoplados");
-        $data["acciones"][7] = array("name" => "Ver Vehiculos" , "habilitar" => true, "url" => "verVehiculos");
-        $data["acciones"][8] = array("name" => "Mantenimineto" , "habilitar" => true, "url" => "mantenimiento");
-        $data["acciones"][9] = array("name" => "Listar Mantenimiento" , "habilitar" => true, "url" => "listarMantenimiento");
+        $data["acciones"][5] = array("name" => "Ver Acoplados" , "habilitar" => true, "url" => "verAcoplados");
+        $data["acciones"][6] = array("name" => "Ver Vehiculos" , "habilitar" => true, "url" => "verVehiculos");
+        $data["acciones"][7] = array("name" => "Mantenimineto" , "habilitar" => true, "url" => "mantenimiento");
+        $data["acciones"][8] = array("name" => "Listar Mantenimiento" , "habilitar" => true, "url" => "listarMantenimiento");
 
         if($data["rol"] != "Administrador") {
             $data["acciones"][0]["habilitar"] = false;
@@ -43,11 +42,10 @@ class InternoController
             $data["acciones"][4]["habilitar"] = false;
             $data["acciones"][5]["habilitar"] = false;
             $data["acciones"][6]["habilitar"] = false;
-            $data["acciones"][7]["habilitar"] = false;
         }
         if($data["rol"] != "Administrador" && $data["rol"] != "Mecanico"){
+            $data["acciones"][7]["habilitar"] = false;
             $data["acciones"][8]["habilitar"] = false;
-            $data["acciones"][9]["habilitar"] = false;
         }
     }
 }
