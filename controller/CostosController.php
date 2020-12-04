@@ -21,6 +21,8 @@ class CostosController
 
     public function agregarCostos(){
         $result = $this->costosModel->insertarCostos($_POST["viaticos"],
+                                                     $_POST["costo_combustible"],
+                                                     $_POST["peajes"],
                                                      $_POST["peajes"],
                                                      $_POST["extras"],
                                                      $_POST["fee"],

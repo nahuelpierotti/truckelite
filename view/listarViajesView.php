@@ -52,6 +52,10 @@
                 <td><a class='w3-panel w3-button w3-blue w3-round-xxlarge w3-hover-text-blue' href="modificarViaje?url={{id_viaje}}">
                         <i class='far fa-edit'></i></a>
 
+                    <a class='w3-panel w3-button w3-orange w3-round-xxlarge w3-hover-text-red'
+                       href="graficosComparativos?url={{id_viaje}}">
+                        <i class="far fa-eye"></i></a>
+
                     <a class='w3-panel w3-button w3-red w3-round-xxlarge w3-hover-text-red'
                        href="listarViajes/eliminarViaje?url={{id_viaje}}">
                         <i class='fas fa-trash w3-hover-text-red'></i></a>

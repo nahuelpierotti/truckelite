@@ -10,10 +10,12 @@ class ReporteModel
         $this->database = $database;
     }
 
-    public function agregarReporte($idViaje,$lugarCargaCombustible,$costoCargaCombustible,$cantidadCargaCombustible,$lugarHospedaje,$costoHospedaje){
-        return $this->database->execute("INSERT INTO Reporte (id_viaje,lugar_carga_combustible,
-                                         costo_carga_combustible,cantidad_carga_combustible,lugar_hospedaje,
-                                         costo_hospedaje) VALUES ($idViaje,'$lugarCargaCombustible',
+    public function agregarReporte($idViaje,$peajes,$pesajes,$lugarCargaCombustible,$costoCargaCombustible,$cantidadCargaCombustible,$lugarHospedaje,$costoHospedaje){
+        return $this->database->execute("INSERT INTO Reporte (id_viaje,peajes,pesajes,
+                                         lugar_carga_combustible,costo_carga_combustible,
+                                         cantidad_carga_combustible,lugar_hospedaje,
+                                         costo_hospedaje) VALUES ($idViaje,$peajes,$pesajes,
+                                         '$lugarCargaCombustible',
                                          $costoCargaCombustible,$cantidadCargaCombustible,'$lugarHospedaje',
                                          $costoHospedaje)");
     }
@@ -53,5 +55,15 @@ class ReporteModel
        return $this->database->query("SELECT combustible_consumido,
                                            km_recorrido FROM Viaje
                                            WHERE id_viaje=$idViaje");
+    }
+
+    public function obtenerCostosYcargasTotales($idViaje){
+        return $this->database->query("SELECT SUM(costo_carga_combustible)costo_carga_combustible,
+                                       SUM(costo_hospedaje)costo_hospedaje,
+                                       SUM(peajes)peajes,
+                                       SUM(pesajes)pesajes,
+                                       SUM(cantidad_carga_combustible)cantidad_carga_combustible 
+                                       FROM Reporte
+                                       WHERE id_viaje = $idViaje");
     }
 }

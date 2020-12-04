@@ -122,11 +122,13 @@ function showSubClass(elemento){
 
 function calcular(){
     var viaticos = parseFloat(document.getElementById("viaticos").value);
+    var costoCombustible = parseFloat(document.getElementById("costo_combustible").value);
     var peajes = parseFloat(document.getElementById("peajes").value);
+    var pesajes = parseFloat(document.getElementById("pesajes").value);
     var extras = parseFloat(document.getElementById("extras").value);
     var fee = parseFloat(document.getElementById("fee").value);
 
-    document.getElementById("total").value= viaticos + peajes + extras + fee;
+    document.getElementById("total").value= viaticos + costoCombustible + peajes + pesajes + extras + fee;
 }
 
 var x = document.getElementById("position");

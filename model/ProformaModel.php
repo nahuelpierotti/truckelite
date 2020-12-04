@@ -24,4 +24,11 @@ class ProformaModel
                                        Tipo_carga Tc ON Car.tipo_carga=Tc.id
                                        WHERE V.id_viaje=$idViajeModel");
     }
+
+    public function traerCostos($idViaje){
+        return $this->database->query("SELECT costo_combustible,viaticos,
+                                        peajes,pesajes,extras,fee,total
+                                        FROM Proforma
+                                        WHERE id_viaje= $idViaje");
+    }
 }

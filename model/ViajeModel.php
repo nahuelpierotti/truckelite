@@ -114,4 +114,16 @@ class ViajeModel
         return $this->database->execute("DELETE FROM viaje WHERE id_viaje= '$id_viaje'");
     }
 
+    public function traerDatosCombustible($idViaje){
+        return $this->database->query("SELECT combustible_consumido_previsto,
+                                      combustible_consumido FROM Viaje
+                                      WHERE id_viaje= $idViaje");
+    }
+
+    public function traerDatosKmRecorridos($idViaje){
+        return $this->database->query("SELECT km_recorrido_previsto,
+                                      km_recorrido FROM Viaje
+                                      WHERE id_viaje= $idViaje");
+    }
+
 }

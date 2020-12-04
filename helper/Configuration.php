@@ -44,6 +44,7 @@ include_once ("controller/CargaController.php");
 include_once ("controller/CostosController.php");
 include_once ("controller/ProformaController.php");
 include_once ("controller/CargarDatosViajeController.php");
+include_once ("controller/GraficosComparativosController.php");
 /*OTROS*/
 include_once("third-party/mustache/src/Mustache/Autoloader.php");
 include_once("Router.php");
@@ -279,5 +280,12 @@ class Configuration{
     public function getCargarDatosViajeController(){
         $reporteModel = $this->getReporteModel();
         return new CargarDatosViajeController($this->getRender(),$reporteModel);
+    }
+
+    public function getGraficosComparativosController(){
+        $reporteModel = $this->getReporteModel();
+        $viajeModel = $this->getViajeModel();
+        $proformaModel = $this->getProformaModel();
+        return new GraficosComparativosController($this->getRender(),$reporteModel,$viajeModel,$proformaModel);
     }
 }

@@ -17,8 +17,19 @@
             </p>
 
             <p>
+                <label class="w3-text-brown"><b>Costo combustible</b></label>
+                <input class="w3-input w3-border w3-sand" name="costo_combustible" type="number" id="costo_combustible" required oninput="calcular()">
+
+            </p>
+
+            <p>
                 <label class="w3-text-brown"><b>Peajes</b></label>
                 <input class="w3-input w3-border w3-sand" name="peajes" type="number" id="peajes" required oninput="calcular()">
+            </p>
+
+            <p>
+                <label class="w3-text-brown"><b>Pesajes</b></label>
+                <input class="w3-input w3-border w3-sand" name="pesajes" type="number" id="pesajes" required oninput="calcular()">
             </p>
 
             <p>

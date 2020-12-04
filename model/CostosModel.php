@@ -10,9 +10,9 @@ class CostosModel
         $this->database = $database;
     }
 
-    public function insertarCostos($viaticos, $peajes, $extras, $fee, $total, $idViaje){
+    public function insertarCostos($viaticos,$costoCombustible, $peajes,$pesajes, $extras, $fee, $total, $idViaje){
 
-        return $this->database->execute("INSERT INTO Proforma (viaticos, peajes, extras, fee, total, id_viaje)
-                                         VALUES($viaticos, $peajes, $extras, $fee, $total, $idViaje)");
+        return $this->database->execute("INSERT INTO Proforma (viaticos,costo_combustible, peajes, pesajes,extras, fee, total, id_viaje)
+                                         VALUES($viaticos,$costoCombustible,$peajes,$pesajes,$extras, $fee, $total, $idViaje)");
     }
 }

@@ -22,11 +22,13 @@ class CargarDatosViajeController
 
     public function cargarReporte(){
         $resultadoAgregarReporte= $this->reporteModel->agregarReporte($_POST["id_viaje"],
-                                                   $_POST["lugar_carga_combustible"],
-                                                   $_POST["costo_carga_combustible"],
-                                                   $_POST["cantidad_carga_combustible"],
-                                                   $_POST["lugar_hospedaje"],
-                                                   $_POST["costo_hospedaje"]);
+                                                                      $_POST["peajes"],
+                                                                      $_POST["pesajes"],
+                                                                      $_POST["lugar_carga_combustible"],
+                                                                      $_POST["costo_carga_combustible"],
+                                                                      $_POST["cantidad_carga_combustible"],
+                                                                      $_POST["lugar_hospedaje"],
+                                                                      $_POST["costo_hospedaje"]);
         $resultadoModificarUbicacionVehiculo = $this->reporteModel->modificarPosicionVehiculo($_POST["id_viaje"],
                                                                                               $_POST["posicion_actual"]);
         $resultadoModificarCombustibleYKmDeViaje = $this->reporteModel->modificarCombustibleYKmEnViaje($_POST["id_viaje"],
