@@ -12,9 +12,15 @@
     <div class="w3-content">
         <div class="w3-twothird">
             <A name="alarma"><h1>Alarmas</h1></A>
-            <div class="w3-card-4">
-                <p>PATENTE </p>
+            {{#alarmaVehiculo}}
+            <div class="w3-card-4 w3-light-gray">
+                <p>Patente:{{fk_tractor}} Kilometraje:{{kilometraje}}km Alarma:{{alarma}}km</p>
+                <a href="interno/EnvioAlTaller?id={{fk_tractor}}">Realizar Mantenimiento</a>
             </div>
+            {{/alarmaVehiculo}}
+            {{^alarmaVehiculo}}
+            <p>No hay alarmas activas.</p>
+            {{/alarmaVehiculo}}
         </div>
         <div class="w3-third w3-center">
             <i class="fas fa-map-marked-alt w3-padding-64 w3-text-blue"></i>

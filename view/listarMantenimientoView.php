@@ -43,5 +43,6 @@
             {{/listar}}
         </table>
     </div>
+    <a class="w3-button w3-margin" href="vehiculosEnTaller">Ver vehiculos</a>
 </div>
 {{> footer}}

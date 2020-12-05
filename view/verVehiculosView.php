@@ -21,7 +21,7 @@
                 <th>Kilometraje</th>
                 <th>Accion</th>
             </tr>
-            {{#listar}}
+            {{#vehiculos}}
             <tr>
                 <td>{{patente}}</td>
                 <td>{{motor}}</td>
@@ -41,8 +41,11 @@
                     </a>
                 </td>
             </tr>
-            {{/listar}}
+            {{/vehiculos}}
         </table>
+        {{^vehiculos}}
+        <p>No hay vehiculos cargados en el sistema.</p>
+        {{/vehiculos}}
         <a class="w3-button w3-margin" href="vehiculo/agregar">Agregar Vehiculo</a>
     </div>
 </div>
