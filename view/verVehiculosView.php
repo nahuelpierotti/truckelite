@@ -18,6 +18,7 @@
                 <th>Acoplado</th>
                 <th>Posicion Actual</th>
                 <th>Estado</th>
+                <th>Kilometraje</th>
                 <th>Accion</th>
             </tr>
             {{#listar}}
@@ -29,7 +30,8 @@
                 <td>{{marca}}</td>
                 <td>{{fk_acoplado}}{{^fk_acoplado}}Sin asignar{{/fk_acoplado}}</td>
                 <td>{{posicion_actual}}</td>
-                <td>{{estado}}</td>
+                <td>{{#estado}}En Condiciones{{/estado}}{{^estado}}En el taller{{/estado}}</td>
+                <td>{{kilometraje}}km</td>
                 <td>
                     <a class='w3-panel w3-button w3-blue w3-round-xxlarge w3-hover-text-blue' href="vehiculo/modificar?url={{patente}}">
                         <i class='far fa-edit'></i>

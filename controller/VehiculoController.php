@@ -49,7 +49,8 @@ class VehiculoController
                                                            $_POST["marca"],
                                                            $_POST["acoplado"],
                                                            $_POST["posicion"],
-                                                           $_POST["estado"],
+                                                           $_POST["kilometraje"],
+                                                           $_POST["alarma"],
                                                            $_SESSION["patenteDestino"]);
         unset($_SESSION["patenteDestino"]);
         header("Location: /truckelite/verVehiculos?msj=$mensaje");
@@ -63,7 +64,8 @@ class VehiculoController
                                                       $_POST["marca"],
                                                       $_POST["acoplado"],
                                                       $_POST["posicion"],
-                                                      $_POST["estado"]);
+                                                      $_POST["kilometraje"],
+                                                      $_POST["alarma"]);
         $_SESSION["action"] = "agregarVehiculo";
         $_SESSION["titulo"] = "Nuevo Vehiculo";
         if (!$data){

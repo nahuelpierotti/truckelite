@@ -61,11 +61,10 @@ FOREIGN KEY(fk_acoplado) REFERENCES Acoplado(patente_acoplado)
 CREATE TABLE Vehiculo(
 id_vehiculo INT NOT NULL AUTO_INCREMENT,
 fk_tractor VARCHAR(8) NOT NULL UNIQUE,
-calendario_service DATE, /*Esto se puede sacar de una relacion*/
 posicion_actual VARCHAR(100),
-reportes VARCHAR(70), /*Esto quedo desactualizado ahora existe una tabla reporte*/
-alarmas VARCHAR(50),/*Esto probablemente sea una tabla*/
-estado VARCHAR(30),
+kilometraje DOUBLE NOT NULL,
+alarma DOUBLE NOT NULL,
+estado BOOLEAN NOT NULL,
 PRIMARY KEY(id_vehiculo),
 FOREIGN KEY(fk_tractor) REFERENCES Tractor(patente)
 );

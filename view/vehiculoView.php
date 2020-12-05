@@ -69,9 +69,14 @@
             </p>
 
             <p>
-                <label class="w3-text-brown"><b>Estado</b>
-                <input class="w3-input w3-border w3-sand" name="estado" type="text" value="{{vehiculo.0.estado}}" required>
+                <label class="w3-text-brown"><b>Kilometraje</b>
+                <input class="w3-input w3-border w3-sand" name="kilometraje" type="number" value="{{vehiculo.0.kilometraje}}" required>
                 </label>
+            </p>
+
+            <p>
+                <label class="w3-text-brown"><b>Alarma</b>
+                <input class="w3-input w3-border w3-sand" name="alarma" type="number" value="{{vehiculo.0.alarma}}" required>
             </p>
 
             <p>

@@ -15,7 +15,7 @@ class VehiculoModel
     }
 
     public function listarVehiculos(){
-        return $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, T.fk_acoplado, V.posicion_actual, V.estado 
+        return $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, T.fk_acoplado, V.posicion_actual, V.estado, V.kilometraje 
                                        FROM Tractor T JOIN 
                                             Vehiculo V ON T.patente = V.fk_tractor ");
     }
@@ -32,7 +32,7 @@ class VehiculoModel
     }
 
     public function buscarVehiculo($patente){
-        return $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, T.fk_acoplado, V.posicion_actual, V.estado 
+        return $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, T.fk_acoplado, V.posicion_actual, V.estado, V.kilometraje, V.alarma 
                                        FROM Tractor T JOIN 
                                             Vehiculo V ON T.patente = V.fk_tractor  
                                        WHERE T.patente = '$patente'");
@@ -43,11 +43,11 @@ class VehiculoModel
                                          VALUES('$patente' , '$tipo', '$chasis')");
     }
 
-    public function agregarVehiculo($patente, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $estado){
+    public function agregarVehiculo($patente, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $kilometraje, $alarma){
         $result = $this->agregarTractor($patente, $motor, $chasis, $modelo,$marca, $acoplado);
         if ($result){
-            $result = $this->database->execute("INSERT INTO Vehiculo(fk_tractor, posicion_actual, estado)
-                                                VALUES('$patente', '$posicion', '$estado')");
+            $result = $this->database->execute("INSERT INTO Vehiculo(fk_tractor, posicion_actual, estado, kilometraje, alarma)
+                                                VALUES('$patente', '$posicion', TRUE, $kilometraje, $alarma)");
             if (!$result) $this->database->execute("DELETE FROM Tractor WHERE patente = '$patente'");
         }
         return $result;
@@ -61,11 +61,11 @@ class VehiculoModel
                                          WHERE patente_acoplado = '$patenteDestino'");
     }
 
-    public function modificarVehiculo($patente, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $estado, $patenteDestino){
+    public function modificarVehiculo($patente, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $kilometraje, $alarma, $patenteDestino){
         $mensaje = "Los campos: ";
         $result = $this->updateDatosTractor($acoplado, $motor, $chasis, $modelo, $marca, $patenteDestino,$mensaje);
-        if ($result) $result = $this->updateDatosVehiculo($posicion, $estado, $patenteDestino, $mensaje);
-        if($result && $patente != $patenteDestino) $this->updatePatente($patente, $patenteDestino, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $estado, $mensaje);
+        if ($result) $result = $this->updateDatosVehiculo($posicion, $kilometraje, $alarma, $patenteDestino, $mensaje);
+        if($result && $patente != $patenteDestino) $this->updatePatente($patente, $patenteDestino, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $kilometraje, $alarma, $mensaje);
 
         return $mensaje;
     }
@@ -161,18 +161,19 @@ class VehiculoModel
         return $result;
     }
 
-    private function updateDatosVehiculo($posicion, $estado, $patenteDestino, &$mensaje)
+    private function updateDatosVehiculo($posicion, $kilometraje, $alarma, $patenteDestino, &$mensaje)
     {
         $result = $this->database->execute("UPDATE Vehiculo
                                             SET posicion_actual = '$posicion',
-                                                estado = '$estado'
+                                                kilometraje = $kilometraje,
+                                                alarma = $alarma,
                                             WHERE fk_tractor = '$patenteDestino'");
-        $mensaje = ($result) ? $mensaje . " Posicion y estado se actualizaron." : $mensaje . " Posicion, estado y patente no se pudieron actualizar.";
+        $mensaje = ($result) ? $mensaje . " Posicion, kilometraje y alarma se actualizaron." : $mensaje . " Posicion, kilometraje, alarma y patente no se pudieron actualizar.";
 
         return $result;
     }
 
-    private function updatePatente($patente, $patenteDestino, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $estado, &$mensaje)
+    private function updatePatente($patente, $patenteDestino, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $kilometraje, $alarma, &$mensaje)
     {
         $vehiculo = $this->buscarVehiculo($patenteDestino);
         $result = $this->eliminarVehiculo($patenteDestino);
@@ -181,7 +182,7 @@ class VehiculoModel
                                                 SET patente = '$patente'
                                                 WHERE patente = '$patenteDestino'");
             if ($result) {
-                $this->agregarVehiculo($patente, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $estado);
+                $this->agregarVehiculo($patente, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $kilometraje, $alarma);
                 $mensaje = "Todos los campos fueron actualizados";
             } else {
                 $this->agregarVehiculo($vehiculo[0]["patente"],
@@ -191,7 +192,8 @@ class VehiculoModel
                                        $vehiculo[0]["marca"],
                                        $vehiculo[0]["fk_acoplado"],
                                        $vehiculo[0]["posicion_actual"],
-                                       $vehiculo[0]["estado"]);
+                                       $vehiculo[0]["kilometraje"],
+                                       $vehiculo[0]["alarma"]);
                 }
             }
 
