@@ -72,7 +72,9 @@ class InternoModel
         }else{
             $user = $data["user_name"];
             $idVehiculo = $this->obtenerIdVehiculo($user);
-            $this->vehiculoModel->mostrarVehiculo($idVehiculo[0]["id_vehiculo"],$data);
+            if($idVehiculo != NULL) {
+                $this->vehiculoModel->mostrarVehiculo($idVehiculo[0]["id_vehiculo"], $data);
+            }
         }
     }
 
