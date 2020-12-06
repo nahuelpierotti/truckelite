@@ -67,11 +67,17 @@
             </p>
 
             <p>
-            <select class="w3-select w3-border w3-sand" name="estadoViaje" id="estadoViaje">
-                <option value="" disabled selected> Estado del viaje</option>
-                <option value="En viaje">En viaje</option>
-                <option value="Viaje finalizado">Viaje finalizado</option>
-            </select>
+                <label class="w3-text-brown"><b>Indica el estado del viaje</b></label>
+                <select class="w3-select w3-border w3-sand" name="estadoViaje" id="estadoViaje">
+                    {{#estado.0.estado}}
+                        <option value="En viaje">En viaje</option>
+                        <option value="Viaje finalizado">Finalizar viaje</option>
+                    {{/estado.0.estado}}
+                    {{^estado.0.estado}}
+                            <option value="Viaje finalizado">Viaje finalizado</option>
+                    <option value="En viaje">En viaje</option>
+                    {{/estado.0.estado}}
+                </select>
             </p>
 
             <p>

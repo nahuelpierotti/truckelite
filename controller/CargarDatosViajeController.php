@@ -16,7 +16,10 @@ class CargarDatosViajeController
         if ($_SESSION["usuario"]["rol"] != "Administrador" && $_SESSION["usuario"]["rol"] != "Chofer") header("Location: /truckelite/interno");
         $data = $_SESSION["usuario"];
         $data["mensaje"] = $_GET["msj"];
-        $data["id_viaje"]= $_GET["id_viaje"];
+        if(isset($_GET["id_viaje"])){
+            $data["id_viaje"] = $_GET["id_viaje"];
+            $data["estado"] = $this->reporteModel->obtenerEstadoDeViaje($data["id_viaje"]);
+        }
         echo $this->render->render("view/cargarDatosViajeView.php",$data);
     }
 
