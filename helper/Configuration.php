@@ -151,7 +151,8 @@ class Configuration{
 
     public function getInternoModel(){
         $database = $this->getDatabase();
-        return new InternoModel($database);
+        $vehiculoModel = $this->getVehiculoModel();
+        return new InternoModel($database,$vehiculoModel);
     }
 
     /*CONTROLLER*/

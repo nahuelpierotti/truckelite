@@ -4,10 +4,12 @@
 class InternoModel
 {
     private $database;
+    private $vehiculoModel;
 
-    public function __construct($database)
+    public function __construct($database,$vehiculoModel)
     {
         $this->database = $database;
+        $this->vehiculoModel = $vehiculoModel;
     }
 
     public function cargarAcciones(&$data){
@@ -62,5 +64,23 @@ class InternoModel
         return $this->database->execute("UPDATE Vehiculo 
                                          SET estado = false
                                          WHERE fk_tractor = '$patente'");
+    }
+
+    public function listarVehiculosSegunElRol(&$data){
+        if ($data["rol"] != "Chofer") {
+            $this->vehiculoModel->listarVehiculos($data);
+        }else{
+            $user = $data["user_name"];
+            $idVehiculo = $this->obtenerIdVehiculo($user);
+            $this->vehiculoModel->mostrarVehiculo($idVehiculo[0]["id_vehiculo"],$data);
+        }
+    }
+
+    private function obtenerIdVehiculo($user){
+        return $this->database->query("SELECT id_vehiculo
+                                                  FROM Viaje
+                                                  WHERE estado = TRUE AND id_chofer = (SELECT id_usuario
+                                                                                       FROM Usuario
+                                                                                       WHERE user_name = '$user')");
     }
 }

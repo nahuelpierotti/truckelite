@@ -29,22 +29,34 @@
 </div>
 <!-- Second Grid -->
 <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container animado">
-    <div class="w3-content">
-        <div class="w3-third w3-center">
-            <i class="fas fa-address-book w3-padding-64 w3-text-blue w3-margin-right"></i>
-        </div>
-        <div class="w3-twothird ">
-            <A name="empleados"><h1>Plantel empleados</h1></A>
-            <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.</h5>
-            <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div class="w3-content w3-responsive">
+            <table class="w3-table-all">
+                <tr>
+                    <th>Patente</th>
+                    <th>Motor</th>
+                    <th>Chasis</th>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>Acoplado</th>
+                    <th>Posicion Actual</th>
+                    <th>Estado</th>
+                    <th>Kilometraje</th>
+                </tr>
+                {{#vehiculos}}
+                <tr>
+                    <td>{{patente}}</td>
+                    <td>{{motor}}</td>
+                    <td>{{chasis}}</td>
+                    <td>{{modelo}}</td>
+                    <td>{{marca}}</td>
+                    <td>{{fk_acoplado}}{{^fk_acoplado}}Sin asignar{{/fk_acoplado}}</td>
+                    <td>{{posicion_actual}}</td>
+                    <td>{{#estado}}En Condiciones{{/estado}}{{^estado}}En el taller{{/estado}}</td>
+                    <td>{{kilometraje}}km</td>
+                </tr>
+                {{/vehiculos}}
+            </table>
+
         </div>
     </div>
 </div>

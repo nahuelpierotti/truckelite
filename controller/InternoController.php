@@ -20,7 +20,7 @@ class InternoController
         $this->internoModel->cargarAcciones($data);
         $_SESSION["usuario"]["acciones"] = $data["acciones"];
         $this->internoModel->listarVehiculosConAlarmasActivadas($data);
-
+        $this->internoModel->listarVehiculosSegunElRol($data);
         echo $this->render->render("view/internoView.php",$data);
     }
 
