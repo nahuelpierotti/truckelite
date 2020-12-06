@@ -57,7 +57,7 @@
                 {{/vehiculos}}
             </table>
         {{^vehiculos}}
-        <p>No hay vehiculos en mantenimiento.</p>
+        <p>No hay vehiculos en el sistema que pueda ver.</p>
         {{/vehiculos}}
         </div>
     </div>
