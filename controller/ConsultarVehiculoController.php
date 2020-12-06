@@ -12,7 +12,7 @@ class ConsultarVehiculoController
     }
 
     public function execute(){
-        if($_SESSION["usuario"]["rol"] == "Chofer") header("Location: /truckelite");
+        if($_SESSION["usuario"]["rol"] == "Chofer") header("Location: /truckelite/interno");
         $data = $_SESSION["usuario"];
         $data["mensaje"] = $_GET["msj"];
         echo $this->render->render("view/consultarVehiculoView.php", $data);
