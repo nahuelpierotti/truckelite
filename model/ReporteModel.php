@@ -33,7 +33,7 @@ class ReporteModel
         $kmRecorridoExistente = $data[0]["km_recorrido"];
         if($combustibleConsumidoExistente!=NULL && $kmRecorridoExistente!=NULL){
             $resultado = $this->database->execute("UPDATE Viaje SET 
-                                                   combustible_consumido=($combustibleConsumido + $combustibleConsumidoExistente),
+                                                   combustible_consumido=(combustible_consumido + $combustibleConsumidoExistente),
                                                    km_recorrido=($kmRecorrido + $kmRecorridoExistente)
                                                    WHERE id_viaje=$idViaje");
         }else {
@@ -44,17 +44,12 @@ class ReporteModel
         return $resultado;
     }
 
-    public function obtenerIdVehiculoDelViaje($idViaje){
-        return $this->database->query("SELECT Ve.id_vehiculo
-                                       FROM Vehiculo Ve JOIN Viaje V ON
-                                       Ve.id_vehiculo=V.id_vehiculo
-                                       WHERE V.id_viaje=$idViaje");
-    }
-
-    public function obtenerValorDeCombustibleYKmSiNoSonNulos($idViaje){
-       return $this->database->query("SELECT combustible_consumido,
-                                           km_recorrido FROM Viaje
-                                           WHERE id_viaje=$idViaje");
+    public function modificarKmEnVehiculo($idViaje,$kmRecorrido){
+        $id = $this->obtenerIdVehiculoDelViaje($idViaje);
+        $idVehiculo = $id[0]["id_vehiculo"];
+        return $this->database->execute("UPDATE Vehiculo 
+                                       SET kilometraje =kilometraje + $kmRecorrido
+                                       WHERE id_vehiculo =$idVehiculo");
     }
 
     public function obtenerCostosYcargasTotales($idViaje){
@@ -66,4 +61,31 @@ class ReporteModel
                                        FROM Reporte
                                        WHERE id_viaje = $idViaje");
     }
+
+    public function modificarEstadoViaje($idViaje, $estadoViaje){
+        if($estadoViaje == "Viaje finalizado"){
+            $resultado = $this->database->execute("UPDATE Viaje 
+                                                 SET estado = FALSE
+                                                 WHERE id_viaje = $idViaje");
+        }else{
+            $resultado = $this->database->execute("UPDATE Viaje 
+                                                 SET estado = TRUE
+                                                 WHERE id_viaje = $idViaje");
+        }
+        return $resultado;
+    }
+
+    private function obtenerIdVehiculoDelViaje($idViaje){
+        return $this->database->query("SELECT Ve.id_vehiculo
+                                       FROM Vehiculo Ve JOIN Viaje V ON
+                                       Ve.id_vehiculo=V.id_vehiculo
+                                       WHERE V.id_viaje=$idViaje");
+    }
+
+    private function obtenerValorDeCombustibleYKmSiNoSonNulos($idViaje){
+       return $this->database->query("SELECT combustible_consumido,
+                                           km_recorrido FROM Viaje
+                                           WHERE id_viaje=$idViaje");
+    }
+
 }

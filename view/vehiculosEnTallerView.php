@@ -3,7 +3,7 @@
 
 
 <div class="w3-container" style="margin-top: 4em; margin-bottom: 2em;">
-    <h2>Lista de vehiculos en mantenimiento</h2>
+    <h2>Lista de vehiculos en el taller</h2>
     {{#mensaje}}
     <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">{{mensaje}}</p>
     {{/mensaje}}

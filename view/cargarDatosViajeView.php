@@ -67,6 +67,14 @@
             </p>
 
             <p>
+            <select class="w3-select w3-border w3-sand" name="estadoViaje" id="estadoViaje">
+                <option value="" disabled selected> Estado del viaje</option>
+                <option value="En viaje">En viaje</option>
+                <option value="Viaje finalizado">Viaje finalizado</option>
+            </select>
+            </p>
+
+            <p>
                 <button class="w3-btn w3-blue">Agregar reporte</button>
             </p>
         </form>

@@ -23,6 +23,6 @@ class VehiculosEnTallerController
 
     public function terminarMantenimiento(){
         $msj = $this->mantenimientoModel->finalizarMantenimiento($_POST["patente"],$_POST["alarma"]);
-        header("Location: /truckelite/vehiculosEnTaller?msj=$msj");
+        header("Location: /truckelite/mantenimiento?msj=$msj");
     }
 }

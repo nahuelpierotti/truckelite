@@ -34,7 +34,9 @@ class CargarDatosViajeController
         $resultadoModificarCombustibleYKmDeViaje = $this->reporteModel->modificarCombustibleYKmEnViaje($_POST["id_viaje"],
                                                                                                        $_POST["combustible_consumido"],
                                                                                                        $_POST["km_recorrido"]);
-        if(!$resultadoAgregarReporte && !$resultadoModificarUbicacionVehiculo && !$resultadoModificarCombustibleYKmDeViaje ){
+        $resultadoModificarKmEnVehiculo = $this->reporteModel->modificarKmEnVehiculo($_POST["id_viaje"],$_POST["km_recorrido"]);
+        $resultadoModificarEstadoViaje = $this->reporteModel->modificarEstadoViaje($_POST["id_viaje"],$_POST["estadoViaje"]);
+        if(!$resultadoAgregarReporte && !$resultadoModificarUbicacionVehiculo && !$resultadoModificarCombustibleYKmDeViaje && !$resultadoModificarKmEnVehiculo){
             header("Location: /truckelite/cargarDatosViaje?msj=ERROR");
         }else{
             header("Location: /truckelite/cargarDatosViaje?msj=AGREGADO");

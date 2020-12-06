@@ -8,7 +8,7 @@
             <div class="w3-center w3-padding-16">
                 <img src="view/img/user.svg" style="width: 40%;">
             </div>
-            <p class="w3-text-red">{{mensaje}}</p>
+            <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">{{mensaje}}</p>
             <label for="" class="lbl-nombre">Usuario</label>
             <input type="text" class="w3-input form-input-login" name="nombre">
             <label for="">Clave</label>

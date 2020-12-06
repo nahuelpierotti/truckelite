@@ -126,6 +126,12 @@ class VehiculoModel
         return $result;
     }
 
+    public function obtenerKmDeVehiculo($idVehiculo){
+        return $this->database->query("SELECT kilometraje 
+                                       FROM Vehiculo 
+                                       WHERE id_vehiculo= $idVehiculo");
+    }
+
     //METODOS PRIVADOS PARA EL FUNCIONAMIENTO DE VEHICULO
     private function agregarTractor($patente, $motor, $chasis, $modelo, $marca, $acoplado){
         if ($acoplado != "Sin Asignar"){
