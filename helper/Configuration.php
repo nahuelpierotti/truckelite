@@ -45,6 +45,7 @@ include_once ("controller/ProformaController.php");
 include_once ("controller/CargarDatosViajeController.php");
 include_once ("controller/GraficosComparativosController.php");
 include_once ("controller/VehiculosEnTallerController.php");
+include_once ("controller/CalendarioServiceController.php");
 
 /*OTROS*/
 include_once("third-party/mustache/src/Mustache/Autoloader.php");
@@ -290,5 +291,10 @@ class Configuration{
     public function getVehiculosEnTallerController(){
         $mantenimientoModel = $this->getMantenimientoModel();
         return new VehiculosEnTallerController($this->getRender(),$mantenimientoModel);
+    }
+
+    public function getCalendarioServiceController(){
+        $mantenimientoModel = $this->getMantenimientoModel();
+        return new CalendarioServiceController($this->getRender(),$mantenimientoModel);
     }
 }

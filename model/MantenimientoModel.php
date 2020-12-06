@@ -54,4 +54,12 @@ class MantenimientoModel
         return $result ? "Se ha finalizado el mantenimiento al vehiculo." : "No se pudo realizar la operacion";
     }
 
+    public function listarFechasServiceDelVehiculo($patente,&$data){
+        $data["listaFechas"] = $this->database->query("SELECT M.fecha_service, M.repuestos_cambiados,V.fk_tractor
+                                                       FROM Mantenimiento M JOIN Vehiculo V ON M.id_vehiculo = V.id_vehiculo
+                                                       WHERE M.id_vehiculo = (SELECT id_vehiculo
+                                                                              FROM Vehiculo 
+                                                                              WHERE fk_tractor='$patente')");
+    }
+
 }
