@@ -15,13 +15,9 @@ class VerVehiculosController
         if ($_SESSION["usuario"]["rol"] != "Administrador" && $_SESSION["usuario"]["rol"] != "Supervisor") header("Location: /truckelite/interno");
         $data = $_SESSION["usuario"];
         $data["mensaje"] = $_GET["msj"];
-        $this->listarVehiculos($data);
+        $this->vehiculoModel->listarVehiculos($data);
 
         echo $this->render->render("view/verVehiculosView.php",$data);
-    }
-
-    private function listarVehiculos(&$data){
-        $data["listar"] = $this->vehiculoModel->listarVehiculos();
     }
 
     public function eliminarVehiculo(){

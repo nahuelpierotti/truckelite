@@ -39,4 +39,27 @@ class MantenimientoModel
         return $this->database->query("SELECT fecha_service,km_unidad,costo,interno_externo,repuestos_cambiados,id_mantenimiento,id_mecanico,id_vehiculo FROM Mantenimiento WHERE id_mantenimiento=$id ");
     }
 
+    public function vehiculosEnMantenimiento(&$data){
+        $data["vehiculos"] = $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, V.kilometraje
+                                                     FROM Tractor T JOIN
+                                                          Vehiculo V ON T.patente = V.fk_tractor
+                                                     WHERE V.estado = FALSE");
+    }
+    public function finalizarMantenimiento($patente, $alarma){
+        $result = $this->database->execute("UPDATE Vehiculo 
+                                            SET alarma = $alarma,
+                                                estado = TRUE
+                                            WHERE fk_tractor = '$patente'");
+
+        return $result ? "Se ha finalizado el mantenimiento al vehiculo." : "No se pudo realizar la operacion";
+    }
+
+    public function listarFechasServiceDelVehiculo($patente,&$data){
+        $data["listaFechas"] = $this->database->query("SELECT M.fecha_service, M.repuestos_cambiados,V.fk_tractor
+                                                       FROM Mantenimiento M JOIN Vehiculo V ON M.id_vehiculo = V.id_vehiculo
+                                                       WHERE M.id_vehiculo = (SELECT id_vehiculo
+                                                                              FROM Vehiculo 
+                                                                              WHERE fk_tractor='$patente')");
+    }
+
 }

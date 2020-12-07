@@ -4,6 +4,7 @@ include_once("helper/MysqlDatabase.php");
 include_once("helper/Renderer.php");
 include_once("helper/UrlHelper.php");
 /*MODEL*/
+include_once ("model/InternoModel.php");
 include_once("model/UsuarioModel.php");
 include_once("model/MecanicoModel.php");
 include_once("model/SupervisorModel.php");
@@ -43,8 +44,9 @@ include_once ("controller/CostosController.php");
 include_once ("controller/ProformaController.php");
 include_once ("controller/CargarDatosViajeController.php");
 include_once ("controller/GraficosComparativosController.php");
-include_once ("controller/ListarClientesController.php");
-include_once ("controller/ModificarClienteController.php");
+include_once ("controller/VehiculosEnTallerController.php");
+include_once ("controller/CalendarioServiceController.php");
+
 /*OTROS*/
 include_once("third-party/mustache/src/Mustache/Autoloader.php");
 include_once("Router.php");
@@ -148,6 +150,12 @@ class Configuration{
         return new ReporteModel($database);
     }
 
+    public function getInternoModel(){
+        $database = $this->getDatabase();
+        $vehiculoModel = $this->getVehiculoModel();
+        return new InternoModel($database,$vehiculoModel);
+    }
+
     /*CONTROLLER*/
     public function getLoginController(){
         $usuarioModel = $this->getUsuarioModel();
@@ -165,7 +173,8 @@ class Configuration{
     }
 
     public function getInternoController(){
-        return new InternoController($this->getRender());
+        $internoModel = $this->getInternoModel();
+        return new InternoController($this->getRender(),$internoModel);
     }
 
     public function getConsultarVehiculoController(){
@@ -196,10 +205,7 @@ class Configuration{
 
     public function getRegistrarViajeController(){
         $viajeModel = $this->getViajeModel();
-        $cargaModel = $this->getCargaModel();
-        $costosModel = $this->getCostosModel();
-
-        return new RegistrarViajeController($this->getRender(),$viajeModel,$cargaModel,$costosModel);
+        return new RegistrarViajeController($this->getRender(),$viajeModel);
     }
 
     public function getListarViajesController(){
@@ -282,6 +288,16 @@ class Configuration{
         return new GraficosComparativosController($this->getRender(),$reporteModel,$viajeModel,$proformaModel);
     }
 
+    public function getVehiculosEnTallerController(){
+        $mantenimientoModel = $this->getMantenimientoModel();
+        return new VehiculosEnTallerController($this->getRender(),$mantenimientoModel);
+    }
+
+    public function getCalendarioServiceController(){
+        $mantenimientoModel = $this->getMantenimientoModel();
+        return new CalendarioServiceController($this->getRender(),$mantenimientoModel);
+    }
+
     public function getListarClientesController(){
         $clienteModel = $this->getClienteModel();
         return new ListarClientesController($this->getRender(),$clienteModel);
@@ -291,5 +307,4 @@ class Configuration{
         $clienteModel = $this->getClienteModel();
 
         return new ModificarClienteController($this->getRender(),$clienteModel);
-    }
-}
+    }}

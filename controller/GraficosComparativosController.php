@@ -84,12 +84,17 @@ class GraficosComparativosController
     public function calculoExtra(&$data){
         $viaticos = $data["costosProforma"][0]["viaticos"];
         $costoHospedaje = $data["costosYcargasReporte"][0]["costo_hospedaje"];
-        $data["extra"] = $viaticos - $costoHospedaje;
+        if($costoHospedaje) {
+            $resultado = $viaticos - $costoHospedaje;
+            if($resultado < 0){
+                $data["extra"]= $resultado * (-1);
+            }
+        }
     }
 
     public function calculoExtraDiferencia(&$data){
         $extrasPrevisto = $data["costosProforma"][0]["extras"];
-        $extras = $data["extra"];
+        $extras = ($data["extra"]) ? $data["extra"] : 0;
         $data["extraDiferencia"] = $extrasPrevisto - $extras;
     }
 
@@ -99,7 +104,8 @@ class GraficosComparativosController
         $costoCombustible = $data["costosYcargasReporte"][0]["costo_carga_combustible"];
         $peajes = $data["costosYcargasReporte"][0]["peajes"];
         $pesajes = $data["costosYcargasReporte"][0]["pesajes"];
-        $extras = $data["extra"];
+        $extras = ($data["extra"]) ? $data["extra"] : 0;
+
         $data["total"] = $fee + $extras + $costoHospedaje + $costoCombustible + $peajes + $pesajes;
     }
 

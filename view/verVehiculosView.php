@@ -21,7 +21,7 @@
                 <th>Kilometraje</th>
                 <th>Accion</th>
             </tr>
-            {{#listar}}
+            {{#vehiculos}}
             <tr>
                 <td>{{patente}}</td>
                 <td>{{motor}}</td>
@@ -36,13 +36,19 @@
                     <a class='w3-panel w3-button w3-blue w3-round-xxlarge w3-hover-text-blue' href="vehiculo/modificar?url={{patente}}">
                         <i class='far fa-edit'></i>
                     </a>
+                    <a class='w3-panel w3-button w3-orange w3-round-xxlarge w3-hover-text-orange' href="calendarioService?url={{patente}}">
+                        <i class="fas fa-calendar-alt"></i>
+                    </a>
                     <a class='w3-panel w3-button w3-red w3-round-xxlarge w3-hover-text-red' href="verVehiculos/eliminarVehiculo?url={{patente}}">
                         <i class='fas fa-trash w3-hover-text-red'></i>
                     </a>
                 </td>
             </tr>
-            {{/listar}}
+            {{/vehiculos}}
         </table>
+        {{^vehiculos}}
+        <p>No hay vehiculos cargados en el sistema.</p>
+        {{/vehiculos}}
         <a class="w3-button w3-margin" href="vehiculo/agregar">Agregar Vehiculo</a>
     </div>
 </div>

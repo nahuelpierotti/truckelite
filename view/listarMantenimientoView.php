@@ -42,6 +42,10 @@
             </tr>
             {{/listar}}
         </table>
+        {{^listar}}
+        <p>No se cargaron vehiculos en mantenimiento en el sistema.</p>
+        {{/listar}}
     </div>
+    <a class="w3-button w3-margin" href="vehiculosEnTaller">Lista taller</a>
 </div>
 {{> footer}}

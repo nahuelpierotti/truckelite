@@ -15,55 +15,74 @@
             </p>
 
             <p>
+                <label class="w3-text-brown"><b>Fecha</b></label>
+                <input class="w3-input w3-border w3-sand" name="fecha" type="date" required">
+            </p>
+
+            <p>
                 <label class="w3-text-brown"><b>Combustible Consumido</b></label>
-                <input class="w3-input w3-border w3-sand" name="combustible_consumido" type="number">
+                <input class="w3-input w3-border w3-sand" name="combustible_consumido" type="number" required>
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Cantidad cargado de combustible</b></label>
-                <input class="w3-input w3-border w3-sand" name="cantidad_carga_combustible" type="number">
+                <input class="w3-input w3-border w3-sand" name="cantidad_carga_combustible" type="number" required>
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Costo de combustible cargado</b></label>
-                <input class="w3-input w3-border w3-sand" name="costo_carga_combustible" type="number">
+                <input class="w3-input w3-border w3-sand" name="costo_carga_combustible" type="number" required>
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Lugar donde cargo combustible</b></label>
-                <input class="w3-input w3-border w3-sand" name="lugar_carga_combustible" type="text">
+                <input class="w3-input w3-border w3-sand" name="lugar_carga_combustible" type="text" required>
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Costo de peajes</b></label>
-                <input class="w3-input w3-border w3-sand" name="peajes" type="text">
+                <input class="w3-input w3-border w3-sand" name="peajes" type="text" required>
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Costo de pesajes</b></label>
-                <input class="w3-input w3-border w3-sand" name="pesajes" type="text">
+                <input class="w3-input w3-border w3-sand" name="pesajes" type="text" required>
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Ubicacion actual</b></label>
-                <input class="w3-input w3-border w3-sand" name="posicion_actual" id="position" type="text">
+                <input class="w3-input w3-border w3-sand" name="posicion_actual" id="position" type="text" required>
             </p>
 
             <a class="w3-button w3-blue w3-hover-text-blue" onclick="getLocation()">Mi ubicacion</a>
 
             <p>
                 <label class="w3-text-brown"><b>KM Recorridos</b></label>
-                <input class="w3-input w3-border w3-sand" name="km_recorrido" type="number" >
+                <input class="w3-input w3-border w3-sand" name="km_recorrido" type="number" required>
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Lugar de hospedaje</b></label>
-                <input class="w3-input w3-border w3-sand" name="lugar_hospedaje" type="text">
+                <input class="w3-input w3-border w3-sand" name="lugar_hospedaje" type="text" value="Ninguno" required>
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Costo hospedaje</b></label>
-                <input class="w3-input w3-border w3-sand" name="costo_hospedaje" type="number">
+                <input class="w3-input w3-border w3-sand" name="costo_hospedaje" type="number" required>
+            </p>
+
+            <p>
+                <label class="w3-text-brown"><b>Indica el estado del viaje</b></label>
+                <select class="w3-select w3-border w3-sand" name="estadoViaje" id="estadoViaje" >
+                    {{#estado}}
+                        <option value="En viaje">En viaje</option>
+                        <option value="Viaje finalizado">Finalizar viaje</option>
+                    {{/estado}}
+                    {{^estado}}
+                        <option value="Viaje finalizado">Viaje finalizado</option>
+                        <option value="En viaje">En viaje</option>
+                    {{/estado}}
+                </select>
             </p>
 
             <p>

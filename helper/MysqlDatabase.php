@@ -28,7 +28,27 @@ class MysqlDatabase{
     }
 
     public function regresaId($sql){
-
         return $this->execute($sql) ? mysqli_insert_id($this->connection) : false;
+    }
+
+    public function transaccion($sql){
+        $result = TRUE;
+        $this->connection->autocommit(false);
+        $this->connection->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+
+        if ($this->connection->multi_query($sql)){
+            do{
+                $this->connection->next_result();
+            }while($this->connection->more_results());
+        }
+
+        if ($this->connection->errno){
+            $this->connection->rollback();
+            $result = FALSE;
+        }
+
+        if ($result) $this->connection->commit();
+
+        return $result;
     }
 }

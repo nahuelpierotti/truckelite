@@ -15,8 +15,8 @@ class ViajeModel
     }
 
     public function agregarViaje($id_cliente,
-                                 $combustible_consumido_previsto,
-                                 $origen,
+                                 $combustible_consumido_previsto,                                 
+								$origen,
                                  $tiempo_previsto,
                                  $km_recorrido_previsto,
                                  $id_chofer,
@@ -27,16 +27,19 @@ class ViajeModel
                             INSERT INTO Viaje (
                             id_cliente,
                             combustible_consumido_previsto,
-                            fecha,
-                            destino,
-                            origen,
-                            tiempo_previsto,
-                            km_recorrido_previsto,
-                            id_chofer,
-                            id_vehiculo,
-                            eta,
-                            etd,
-                            estado) 
+                                               fecha,
+                                               destino,
+                                               origen,
+                                               tiempo_previsto,
+                                               km_recorrido_previsto,
+                                               id_chofer,
+                                               id_vehiculo,
+                                               eta,
+                                               etd,
+                                               estado,
+                                               combustible_consumido,
+                                               km_recorrido,
+                                               desviacion) 
                             VALUES ( 
                             '$id_cliente',
                             '$combustible_consumido_previsto',
@@ -49,7 +52,10 @@ class ViajeModel
                             '$id_vehiculo',
                             '$eta',
                             '$etd',
-                            TRUE)");
+                            TRUE,
+                            0,
+                            0,
+                            0)");
 
     }
 
@@ -91,9 +97,11 @@ class ViajeModel
 
     public function listarViajes(){
         return $this->database->query("SELECT V.id_viaje, V.combustible_consumido_previsto, V.km_recorrido_previsto,
+                                              V.destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
                                               C.direccion as destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
                                               V.tiempo_previsto, U.nombre, Ve.fk_tractor
                                        FROM Viaje V JOIN Usuario U ON U.id_usuario = V.id_chofer JOIN
+                                            Cliente C ON C.id_viaje = V.id_viaje JOIN
                                             Cliente C ON V.id_cliente = C.id JOIN
                                             Vehiculo Ve ON Ve.id_vehiculo = V.id_vehiculo JOIN
                                             Carga Car ON Car.id_viaje = V.id_viaje JOIN
@@ -104,9 +112,11 @@ class ViajeModel
         $criterio = is_numeric($criterio) ? "WHERE V.id_viaje =" . $criterio : "WHERE V.destino = '$criterio'";
 
         return $this->database->query("SELECT V.id_viaje, V.combustible_consumido_previsto, V.km_recorrido_previsto,
+                                              V.destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
                                               C.direccion as destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
                                               V.tiempo_previsto, U.nombre, Ve.fk_tractor
                                        FROM Viaje V JOIN Usuario U ON U.id_usuario = V.id_chofer JOIN
+                                            Cliente C ON C.id_viaje = V.id_viaje JOIN
                                             Cliente C ON V.id_cliente = C.id JOIN
                                             Vehiculo Ve ON Ve.id_vehiculo = V.id_vehiculo JOIN
                                             Carga Car ON Car.id_viaje = V.id_viaje JOIN

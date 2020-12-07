@@ -14,10 +14,17 @@ class VehiculoModel
         return $this->database->query("SELECT * FROM Acoplado");
     }
 
-    public function listarVehiculos(){
-        return $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, T.fk_acoplado, V.posicion_actual, V.estado, V.kilometraje 
-                                       FROM Tractor T JOIN 
-                                            Vehiculo V ON T.patente = V.fk_tractor ");
+    public function listarVehiculos(&$data){
+        $data["vehiculos"] = $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, T.fk_acoplado, V.posicion_actual, V.estado, V.kilometraje 
+                                                     FROM Tractor T JOIN 
+                                                          Vehiculo V ON T.patente = V.fk_tractor ");
+    }
+
+    public function mostrarVehiculo($idVehiculo, &$data){
+        $data["vehiculos"] = $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, T.fk_acoplado, V.posicion_actual, V.estado, V.kilometraje 
+                                                     FROM Tractor T JOIN 
+                                                          Vehiculo V ON T.patente = V.fk_tractor
+                                                     WHERE v.id_vehiculo = $idVehiculo");
     }
 
     public function buscarAcoplado($patente){
@@ -126,6 +133,12 @@ class VehiculoModel
         return $result;
     }
 
+    public function obtenerKmDeVehiculo($idVehiculo){
+        return $this->database->query("SELECT kilometraje 
+                                       FROM Vehiculo 
+                                       WHERE id_vehiculo= $idVehiculo");
+    }
+
     //METODOS PRIVADOS PARA EL FUNCIONAMIENTO DE VEHICULO
     private function agregarTractor($patente, $motor, $chasis, $modelo, $marca, $acoplado){
         if ($acoplado != "Sin Asignar"){
@@ -166,7 +179,7 @@ class VehiculoModel
         $result = $this->database->execute("UPDATE Vehiculo
                                             SET posicion_actual = '$posicion',
                                                 kilometraje = $kilometraje,
-                                                alarma = $alarma,
+                                                alarma = $alarma
                                             WHERE fk_tractor = '$patenteDestino'");
         $mensaje = ($result) ? $mensaje . " Posicion, kilometraje y alarma se actualizaron." : $mensaje . " Posicion, kilometraje, alarma y patente no se pudieron actualizar.";
 

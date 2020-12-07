@@ -179,6 +179,7 @@ FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje)
 CREATE TABLE Reporte(
 id_reporte INT AUTO_INCREMENT,
 id_viaje INT NOT NULL,
+fecha DATE NOT NULL,
 peajes DOUBLE,
 pesajes DOUBLE,
 lugar_carga_combustible VARCHAR (50),
