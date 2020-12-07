@@ -61,14 +61,14 @@ FOREIGN KEY(fk_acoplado) REFERENCES Acoplado(patente_acoplado)
 CREATE TABLE Vehiculo(
 id_vehiculo INT NOT NULL AUTO_INCREMENT,
 fk_tractor VARCHAR(8) NOT NULL UNIQUE,
-calendario_service DATE, /*Esto se puede sacar de una relacion*/
 posicion_actual VARCHAR(100),
-reportes VARCHAR(70), /*Esto quedo desactualizado ahora existe una tabla reporte*/
-alarmas VARCHAR(50),/*Esto probablemente sea una tabla*/
-estado VARCHAR(30),
+kilometraje DOUBLE NOT NULL,
+alarma DOUBLE NOT NULL,
+estado BOOLEAN NOT NULL,
 PRIMARY KEY(id_vehiculo),
 FOREIGN KEY(fk_tractor) REFERENCES Tractor(patente)
 );
+
 
 CREATE TABLE Mantenimiento(
 fecha_service DATE,
@@ -153,7 +153,7 @@ FOREIGN KEY (imo_class) REFERENCES Imo_class(id),
 FOREIGN KEY (imo_subclass) REFERENCES Imo_subclass(id),
 FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje)
  );
- 
+
 
 
 CREATE TABLE Proforma(
@@ -179,7 +179,6 @@ FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje)
 CREATE TABLE Reporte(
 id_reporte INT AUTO_INCREMENT,
 id_viaje INT NOT NULL,
-fecha DATE NOT NULL,
 peajes DOUBLE,
 pesajes DOUBLE,
 lugar_carga_combustible VARCHAR (50),
@@ -233,11 +232,11 @@ INSERT INTO Tipo_carga(descripcion)
                   ("40 pies"),
                   ("Jaula"),
                   ("CarCarrier");
-                  
+
 INSERT INTO Usuario(user_name, nombre, dni, rol, telefono, mail, clave)
 VALUES('npie','Nahuel',31832665,'Administrador',46353072,'npierotti@alumno.unlam.edu.ar','e10adc3949ba59abbe56e057f20f883e'),
 ("pepe", "Pepe Garcia", 40041115, "Chofer", 44321833,"pepe_argento@hotmail.com", "21232f297a57a5a743894a0e4a801fc3");
-            
+
 insert into chofer
 (id_usuario,licencia)
 values(2,'Profesional');
@@ -246,15 +245,9 @@ insert into acoplado
 (patente_acoplado,tipo,chasis_acoplado)
 values('hmz430','Jaula','13579');
 
-insert into tractor
-(patente,motor,chasis,modelo,marca,fk_acoplado)
-values('HIK452','4.0','RKSJK123','KSJN123A','VMW',null);
 
 insert into cliente
 (denominacion,cuit,direccion,telefono,email,contacto1,contacto2)
 values('Cliente Los Andes', '20333606853', 'Calle Falsa 123', '44444444', 'npie@hotmail.com', 'Contacto 1', 'Contacto 2'),
 ('La Pampa SA', '30465585408', 'Aruba 38', '3514665522', 'pampasa@gmail.com', 'Alberto Fernandez', 'Jorge Lanata');
-
-
-
 
