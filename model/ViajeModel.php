@@ -26,16 +26,19 @@ class ViajeModel
                                  $etd){
         return $this->database->regresaId("
                             INSERT INTO Viaje (combustible_consumido_previsto,
-                            fecha,
-                            destino,
-                            origen,
-                            tiempo_previsto,
-                            km_recorrido_previsto,
-                            id_chofer,
-                            id_vehiculo,
-                            eta,
-                            etd,
-                            estado) 
+                                               fecha,
+                                               destino,
+                                               origen,
+                                               tiempo_previsto,
+                                               km_recorrido_previsto,
+                                               id_chofer,
+                                               id_vehiculo,
+                                               eta,
+                                               etd,
+                                               estado,
+                                               combustible_consumido,
+                                               km_recorrido,
+                                               desviacion) 
                             VALUES ( 
                             '$combustible_consumido_previsto',
                             '$fecha',
@@ -47,7 +50,10 @@ class ViajeModel
                             '$id_vehiculo',
                             '$eta',
                             '$etd',
-                            TRUE)");
+                            TRUE,
+                            0,
+                            0,
+                            0)");
 
     }
 
