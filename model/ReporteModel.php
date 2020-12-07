@@ -18,7 +18,7 @@ class ReporteModel
     }
 
     private function modificarEstadoViaje($estadoViaje){
-        return ($estadoViaje == "Viaje Finalizado") ? "SET estado = FALSE" : "SET estado = TRUE";
+        return ($estadoViaje == "Viaje Finalizado") ? "estado = FALSE" : "estado = TRUE";
     }
 
     public function agregarReporte($idViaje,
@@ -58,11 +58,12 @@ class ReporteModel
             //INSERTA UN NUEVO REPORTE
             $sql .= "INSERT INTO Reporte(id_viaje, fecha, peajes, pesajes, lugar_carga_combustible, 
                                      costo_carga_combustible,cantidad_carga_combustible,lugar_hospedaje,costo_hospedaje) 
-                     VALUES ($idViaje, $fecha, $peajes, $pesajes, '$lugarCargaCombustible',
+                     VALUES ($idViaje, '$fecha', $peajes, $pesajes, '$lugarCargaCombustible',
                              $costoCargaCombustible, $cantidadCargaCombustible, '$lugarHospedaje',$costoHospedaje);";
 
+
             //EJECUTA TODAS LAS QUERYS ANIDADAS SI UNA QUERY NO SE PUDO REALIZAR REVIERTE LOS CAMBIOS REALIZADOS POR LAS QUERYS ANTERIORES
-            if ($this->database->transaccion($sql)) "Operacion exitosa.";
+            if ($this->database->transaccion($sql)) $mensaje = "Operacion exitosa.";
 
         }
 
