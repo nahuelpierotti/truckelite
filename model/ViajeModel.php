@@ -101,7 +101,6 @@ class ViajeModel
                                               C.direccion as destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
                                               V.tiempo_previsto, U.nombre, Ve.fk_tractor
                                        FROM Viaje V JOIN Usuario U ON U.id_usuario = V.id_chofer JOIN
-                                            Cliente C ON C.id_viaje = V.id_viaje JOIN
                                             Cliente C ON V.id_cliente = C.id JOIN
                                             Vehiculo Ve ON Ve.id_vehiculo = V.id_vehiculo JOIN
                                             Carga Car ON Car.id_viaje = V.id_viaje JOIN
@@ -116,7 +115,6 @@ class ViajeModel
                                               C.direccion as destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
                                               V.tiempo_previsto, U.nombre, Ve.fk_tractor
                                        FROM Viaje V JOIN Usuario U ON U.id_usuario = V.id_chofer JOIN
-                                            Cliente C ON C.id_viaje = V.id_viaje JOIN
                                             Cliente C ON V.id_cliente = C.id JOIN
                                             Vehiculo Ve ON Ve.id_vehiculo = V.id_vehiculo JOIN
                                             Carga Car ON Car.id_viaje = V.id_viaje JOIN
