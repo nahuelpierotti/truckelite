@@ -15,8 +15,8 @@ class ProformaController
     public function execute(){
         if ($_SESSION["usuario"]["rol"] != "Administrador" && $_SESSION["usuario"]["rol"] != "Supervisor") header("Location: /truckelite/interno");
         $data = $_SESSION["usuario"];
-        $data["id_viaje"]= $_SESSION["id_viaje"];
-        unset($_SESSION["id_viaje"]);
+        $data["id_viaje"]= $_GET["id_viaje"]!=null ? $_GET["id_viaje"]: $_SESSION["id_viaje"];
+        //unset($_SESSION["id_viaje"]);
         $this->mostrarProforma($data);
         echo $this->render->render("view/proformaView.php", $data);
     }

@@ -8,6 +8,9 @@
         {{#mensaje}}
         <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">{{mensaje}}</p>
         {{/mensaje}}
+        {{#viaje}}
+        <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">Cliente: {{viaje.0.id_cliente}}</p>
+        {{/viaje}}
         <form action="carga/agregarCarga" method="post">
 
             <select class="w3-select w3-border w3-sand" name="tipo">

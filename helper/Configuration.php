@@ -43,6 +43,8 @@ include_once ("controller/CostosController.php");
 include_once ("controller/ProformaController.php");
 include_once ("controller/CargarDatosViajeController.php");
 include_once ("controller/GraficosComparativosController.php");
+include_once ("controller/ListarClientesController.php");
+include_once ("controller/ModificarClienteController.php");
 /*OTROS*/
 include_once("third-party/mustache/src/Mustache/Autoloader.php");
 include_once("Router.php");
@@ -194,7 +196,10 @@ class Configuration{
 
     public function getRegistrarViajeController(){
         $viajeModel = $this->getViajeModel();
-        return new RegistrarViajeController($this->getRender(),$viajeModel);
+        $cargaModel = $this->getCargaModel();
+        $costosModel = $this->getCostosModel();
+
+        return new RegistrarViajeController($this->getRender(),$viajeModel,$cargaModel,$costosModel);
     }
 
     public function getListarViajesController(){
@@ -275,5 +280,16 @@ class Configuration{
         $viajeModel = $this->getViajeModel();
         $proformaModel = $this->getProformaModel();
         return new GraficosComparativosController($this->getRender(),$reporteModel,$viajeModel,$proformaModel);
+    }
+
+    public function getListarClientesController(){
+        $clienteModel = $this->getClienteModel();
+        return new ListarClientesController($this->getRender(),$clienteModel);
+    }
+
+    public function getModificarClienteController(){
+        $clienteModel = $this->getClienteModel();
+
+        return new ModificarClienteController($this->getRender(),$clienteModel);
     }
 }

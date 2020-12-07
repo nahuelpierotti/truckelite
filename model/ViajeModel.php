@@ -14,9 +14,8 @@ class ViajeModel
         return $this->database->query("SELECT * FROM viaje where id_viaje = '$id_viaje'");
     }
 
-    public function agregarViaje($combustible_consumido_previsto,
-                                 $fecha,
-                                 $destino,
+    public function agregarViaje($id_cliente,
+                                 $combustible_consumido_previsto,
                                  $origen,
                                  $tiempo_previsto,
                                  $km_recorrido_previsto,
@@ -25,7 +24,9 @@ class ViajeModel
                                  $eta,
                                  $etd){
         return $this->database->regresaId("
-                            INSERT INTO Viaje (combustible_consumido_previsto,
+                            INSERT INTO Viaje (
+                            id_cliente,
+                            combustible_consumido_previsto,
                             fecha,
                             destino,
                             origen,
@@ -37,9 +38,10 @@ class ViajeModel
                             etd,
                             estado) 
                             VALUES ( 
+                            '$id_cliente',
                             '$combustible_consumido_previsto',
-                            '$fecha',
-                            '$destino',
+                            CURRENT_DATE,
+                            '--',
                             '$origen',
                             '$tiempo_previsto',
                             '$km_recorrido_previsto',
@@ -89,10 +91,10 @@ class ViajeModel
 
     public function listarViajes(){
         return $this->database->query("SELECT V.id_viaje, V.combustible_consumido_previsto, V.km_recorrido_previsto,
-                                              V.destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
+                                              C.direccion as destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
                                               V.tiempo_previsto, U.nombre, Ve.fk_tractor
                                        FROM Viaje V JOIN Usuario U ON U.id_usuario = V.id_chofer JOIN
-                                            Cliente C ON C.id_viaje = V.id_viaje JOIN
+                                            Cliente C ON V.id_cliente = C.id JOIN
                                             Vehiculo Ve ON Ve.id_vehiculo = V.id_vehiculo JOIN
                                             Carga Car ON Car.id_viaje = V.id_viaje JOIN
                                             Tipo_carga Tc ON Car.tipo_carga = Tc.id");
@@ -102,10 +104,10 @@ class ViajeModel
         $criterio = is_numeric($criterio) ? "WHERE V.id_viaje =" . $criterio : "WHERE V.destino = '$criterio'";
 
         return $this->database->query("SELECT V.id_viaje, V.combustible_consumido_previsto, V.km_recorrido_previsto,
-                                              V.destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
+                                              C.direccion as destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
                                               V.tiempo_previsto, U.nombre, Ve.fk_tractor
                                        FROM Viaje V JOIN Usuario U ON U.id_usuario = V.id_chofer JOIN
-                                            Cliente C ON C.id_viaje = V.id_viaje JOIN
+                                            Cliente C ON V.id_cliente = C.id JOIN
                                             Vehiculo Ve ON Ve.id_vehiculo = V.id_vehiculo JOIN
                                             Carga Car ON Car.id_viaje = V.id_viaje JOIN
                                             Tipo_carga Tc ON Car.tipo_carga = Tc.id
@@ -143,6 +145,12 @@ class ViajeModel
                                                      WHERE id_vehiculo NOT IN (SELECT id_vehiculo
                                                                                FROM Viaje
                                                                                WHERE estado = TRUE)");
+    }
+
+    public function cargarClientesDisponibles(&$data){
+        $data["clientes"] = $this->database->query("SELECT id,denominacion
+                                                     FROM Cliente
+                                                     ");
     }
 
 }

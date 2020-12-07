@@ -61,10 +61,11 @@ FOREIGN KEY(fk_acoplado) REFERENCES Acoplado(patente_acoplado)
 CREATE TABLE Vehiculo(
 id_vehiculo INT NOT NULL AUTO_INCREMENT,
 fk_tractor VARCHAR(8) NOT NULL UNIQUE,
+calendario_service DATE, /*Esto se puede sacar de una relacion*/
 posicion_actual VARCHAR(100),
-kilometraje DOUBLE NOT NULL,
-alarma DOUBLE NOT NULL,
-estado BOOLEAN NOT NULL,
+reportes VARCHAR(70), /*Esto quedo desactualizado ahora existe una tabla reporte*/
+alarmas VARCHAR(50),/*Esto probablemente sea una tabla*/
+estado VARCHAR(30),
 PRIMARY KEY(id_vehiculo),
 FOREIGN KEY(fk_tractor) REFERENCES Tractor(patente)
 );
@@ -100,8 +101,21 @@ CREATE TABLE Tipo_carga(
 id INT AUTO_INCREMENT KEY,
 descripcion VARCHAR(200) NOT NULL);
 
+CREATE TABLE Cliente(
+id INT AUTO_INCREMENT,
+denominacion VARCHAR(250) NOT NULL,
+cuit VARCHAR(12) NOT NULL,
+direccion VARCHAR(250) NOT NULL,
+telefono VARCHAR(100) NOT NULL,
+email VARCHAR(250),
+contacto1 VARCHAR(200),
+contacto2 VARCHAR(200),
+PRIMARY KEY (id)
+);
+
 CREATE TABLE Viaje(
 id_viaje INT NOT NULL AUTO_INCREMENT,
+id_cliente INT NOT NULL,
 id_chofer INT NOT NULL,
 id_vehiculo INT NOT NULL,
 estado BOOLEAN NOT NULL,
@@ -121,7 +135,8 @@ eta_real DATE,
 etd_real DATE,
 PRIMARY KEY(id_viaje),
 FOREIGN KEY(id_chofer) REFERENCES Chofer(id_usuario),
-FOREIGN KEY(id_vehiculo) REFERENCES Vehiculo(id_vehiculo));
+FOREIGN KEY(id_vehiculo) REFERENCES Vehiculo(id_vehiculo),
+FOREIGN KEY(id_cliente) REFERENCES Cliente(id));
 
 CREATE TABLE Carga(
 id INT AUTO_INCREMENT KEY,
@@ -139,19 +154,7 @@ FOREIGN KEY (imo_subclass) REFERENCES Imo_subclass(id),
 FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje)
  );
  
-CREATE TABLE Cliente(
-id INT AUTO_INCREMENT,
-denominacion VARCHAR(250) NOT NULL,
-cuit VARCHAR(12) NOT NULL,
-direccion VARCHAR(250) NOT NULL,
-telefono VARCHAR(100) NOT NULL,
-email VARCHAR(250),
-contacto1 VARCHAR(200),
-contacto2 VARCHAR(200),
-id_viaje INT NOT NULL,
-PRIMARY KEY (id),
-FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje)
-);
+
 
 CREATE TABLE Proforma(
 id INT AUTO_INCREMENT,
@@ -231,4 +234,26 @@ INSERT INTO Tipo_carga(descripcion)
                   ("CarCarrier");
                   
 INSERT INTO Usuario(user_name, nombre, dni, rol, telefono, mail, clave)
-			VALUES("admin", "Pepe Garcia", 34561789, "Administrador", 44321833,"pepe@hotmail.com", "21232f297a57a5a743894a0e4a801fc3");
+VALUES('npie','Nahuel',31832665,'Administrador',46353072,'npierotti@alumno.unlam.edu.ar','e10adc3949ba59abbe56e057f20f883e'),
+("pepe", "Pepe Garcia", 40041115, "Chofer", 44321833,"pepe_argento@hotmail.com", "21232f297a57a5a743894a0e4a801fc3");
+            
+insert into chofer
+(id_usuario,licencia)
+values(2,'Profesional');
+
+insert into acoplado
+(patente_acoplado,tipo,chasis_acoplado)
+values('hmz430','Jaula','13579');
+
+insert into tractor
+(patente,motor,chasis,modelo,marca,fk_acoplado)
+values('HIK452','4.0','RKSJK123','KSJN123A','VMW',null);
+
+insert into cliente
+(denominacion,cuit,direccion,telefono,email,contacto1,contacto2)
+values('Cliente Los Andes', '20333606853', 'Calle Falsa 123', '44444444', 'npie@hotmail.com', 'Contacto 1', 'Contacto 2'),
+('La Pampa SA', '30465585408', 'Aruba 38', '3514665522', 'pampasa@gmail.com', 'Alberto Fernandez', 'Jorge Lanata');
+
+
+
+
