@@ -37,7 +37,7 @@ class ModificarUsuarioController
         if (!$data) {
             header("Location: /truckelite/modificarUsuario?msj=No se pudo modificar el usuario");
         } else {
-            header("Location: /truckelite/modificarUsuario?msj=El usuario se modifico correctamente");
+            header("Location: /truckelite/listarUsuarios?msj=El usuario se modifico correctamente");
         }
 
     }

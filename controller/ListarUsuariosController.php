@@ -15,7 +15,8 @@ class ListarUsuariosController
     {
         if ($_SESSION["usuario"]["rol"] != "Administrador") header("Location: /truckelite/interno");
         $data = $_SESSION["usuario"];
-        $data["mensajeEliminar"] = $_SESSION["mensajeEliminar"];
+
+        $data["mensaje"] = $_GET["msj"];
         $this->listarUsuarios($data);
 
         echo $this->render->render("view/listarUsuariosView.php",$data);
@@ -29,13 +30,12 @@ class ListarUsuariosController
         if (isset($_GET["url"])) {
             $data = $this->usuarioModel->eliminarUsuario($_GET["url"]);
             if (!$data) {
-                $_SESSION["mensajeEliminar"] = "No se pudo eliminar el usuario";
+                header("Location: /truckelite/listarUsuarios?msj=No se pudo eliminar el usuario");
 
             } else {
-                $_SESSION["mensajeEliminar"] = "El usuario se elimino correctamente";
+                header("Location: /truckelite/listarUsuarios?msj:El usuario se elimino correctamente");
             }
         }
-        header("Location: /truckelite/listarUsuarios");
     }
 
 
