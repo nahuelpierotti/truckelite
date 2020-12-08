@@ -15,7 +15,8 @@ class ViajeModel
     }
 
     public function agregarViaje($id_cliente,
-                                 $combustible_consumido_previsto,                                 
+                                 $combustible_consumido_previsto,
+								$destino,
 								$origen,
                                  $tiempo_previsto,
                                  $km_recorrido_previsto,
@@ -44,7 +45,7 @@ class ViajeModel
                             '$id_cliente',
                             '$combustible_consumido_previsto',
                             CURRENT_DATE,
-                            '--',
+                            '$destino',
                             '$origen',
                             '$tiempo_previsto',
                             '$km_recorrido_previsto',

@@ -27,6 +27,10 @@
                 <input class="w3-input w3-border w3-sand" name="origen" type="text" value="{{viajeBuscado.0.origen}}">
             </p>
             <p>
+                <label class="w3-text-brown"><b>Destino</b></label>
+                <input class="w3-input w3-border w3-sand" name="destino" type="text" value="{{viajeBuscado.0.destino}}">
+            </p>
+            <p>
                 <label class="w3-text-brown"><b>Tiempo Previsto</b></label>
                 <input class="w3-input w3-border w3-sand" name="tiempo_previsto" type="time" value="{{viajeBuscado.0.tiempo_previsto}}">
             </p>

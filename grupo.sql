@@ -69,7 +69,6 @@ PRIMARY KEY(id_vehiculo),
 FOREIGN KEY(fk_tractor) REFERENCES Tractor(patente)
 );
 
-
 CREATE TABLE Mantenimiento(
 fecha_service DATE,
 km_unidad DOUBLE,
@@ -154,8 +153,6 @@ FOREIGN KEY (imo_subclass) REFERENCES Imo_subclass(id),
 FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje)
  );
 
-
-
 CREATE TABLE Proforma(
 id INT AUTO_INCREMENT,
 id_viaje INT NOT NULL,
@@ -235,10 +232,9 @@ INSERT INTO Tipo_carga(descripcion)
 
 INSERT INTO Usuario(user_name, nombre, dni, rol, telefono, mail, clave)
 VALUES('npie','Nahuel',31832665,'Administrador',46353072,'npierotti@alumno.unlam.edu.ar','e10adc3949ba59abbe56e057f20f883e'),
-("pepe", "Pepe Garcia", 40041115, "Chofer", 44321833,"pepe_argento@hotmail.com", "21232f297a57a5a743894a0e4a801fc3");
+      ("pepe", "Pepe Garcia", 40041115, "Chofer", 44321833,"pepe_argento@hotmail.com", "21232f297a57a5a743894a0e4a801fc3");
 
-insert into chofer
-(id_usuario,licencia)
+insert into chofer(id_usuario,licencia)
 values(2,'Profesional');
 
 insert into acoplado
@@ -249,5 +245,5 @@ values('hmz430','Jaula','13579');
 insert into cliente
 (denominacion,cuit,direccion,telefono,email,contacto1,contacto2)
 values('Cliente Los Andes', '20333606853', 'Calle Falsa 123', '44444444', 'npie@hotmail.com', 'Contacto 1', 'Contacto 2'),
-('La Pampa SA', '30465585408', 'Aruba 38', '3514665522', 'pampasa@gmail.com', 'Alberto Fernandez', 'Jorge Lanata');
+      ('La Pampa SA', '30465585408', 'Aruba 38', '3514665522', 'pampasa@gmail.com', 'Alberto Fernandez', 'Jorge Lanata');
 
