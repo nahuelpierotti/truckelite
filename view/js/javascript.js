@@ -17,6 +17,30 @@ function showLicencia(elemento) {
     }
 }
 
+$(document).ready(function(){
+    $("#siguiente1").click(function(){
+        $("#seccion_viaje").hide();
+        $("#seccion_carga").show();
+        $("#seccion_costos").hide();
+    });
+    $("#siguiente2").click(function(){
+        $("#seccion_viaje").hide();
+        $("#seccion_carga").hide();
+        $("#seccion_costos").show();
+    });
+    $("#atras1").click(function(){
+        $("#seccion_viaje").show();
+        $("#seccion_carga").hide();
+        $("#seccion_costos").hide();
+    });
+    $("#atras2").click(function(){
+        $("#seccion_viaje").hide();
+        $("#seccion_carga").show();
+        $("#seccion_costos").hide();
+    });
+
+});
+
 function showSubClass(elemento){
     switch (elemento.value){
         case "1":
