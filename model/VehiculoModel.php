@@ -20,6 +20,12 @@ class VehiculoModel
                                             Vehiculo V ON T.patente = V.fk_tractor ");
     }
 
+    public function obtenerPatentePorIdVehiculo($idVehiculo){
+        return $this->database->query("SELECT fk_tractor
+                                       FROM Vehiculo
+                                       WHERE id_vehiculo = $idVehiculo");
+    }
+
     public function buscarAcoplado($patente){
         return $this->database->query("SELECT * FROM Acoplado WHERE patente_acoplado = '$patente'");
     }

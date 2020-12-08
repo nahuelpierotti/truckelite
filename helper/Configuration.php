@@ -238,7 +238,8 @@ class Configuration{
     public function getModificarMantenimientoController(){
         $mantenimientoModel = $this->getMantenimientoModel();
         $mecanicoModel = $this->getMecanicoModel();
-        return new ModificarMantenimientoController($this->getRender(),$mantenimientoModel,$mecanicoModel);
+        $vehiculoModel = $this->getVehiculoModel();
+        return new ModificarMantenimientoController($this->getRender(),$mantenimientoModel,$mecanicoModel,$vehiculoModel);
     }
 
     public function getVerAcopladosController(){
