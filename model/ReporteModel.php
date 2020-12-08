@@ -58,7 +58,7 @@ class ReporteModel
             //INSERTA UN NUEVO REPORTE
             $sql .= "INSERT INTO Reporte(id_viaje, fecha, peajes, pesajes, lugar_carga_combustible, 
                                      costo_carga_combustible,cantidad_carga_combustible,lugar_hospedaje,costo_hospedaje) 
-                     VALUES ($idViaje, '$fecha', $peajes, $pesajes, '$lugarCargaCombustible',
+                     VALUES ($idViaje, CURRENT_DATE, $peajes, $pesajes, '$lugarCargaCombustible',
                              $costoCargaCombustible, $cantidadCargaCombustible, '$lugarHospedaje',$costoHospedaje);";
 
 

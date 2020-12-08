@@ -12,11 +12,6 @@
         <form class="" action="mantenimiento/agregarMantenimiento" method="post">
 
             <p>
-                <label class="w3-text-brown"><b>Fecha service</b></label>
-                <input id="date" type="date" value="2017-06-01" name="fecha" class="">
-            </p>
-
-            <p>
                 <label class="w3-text-brown"><b>Km unidad</b></label>
                 <input class="w3-input w3-border w3-sand" name="kmUnidad" type="number" value="">
 

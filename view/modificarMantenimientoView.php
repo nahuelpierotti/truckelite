@@ -9,11 +9,6 @@
         <form class="" action="modificarMantenimiento/modificarMantenimiento" method="post">
 
             <p>
-                <label class="w3-text-brown"><b>Fecha service</b></label>
-                <input id="date" type="date" value="{{mantenimientoBuscado.0.fecha_service}}" name="fecha" class="">
-            </p>
-
-            <p>
                 <label class="w3-text-brown"><b>Km unidad</b></label>
                 <input class="w3-input w3-border w3-sand" name="kmUnidad" type="number" value="{{mantenimientoBuscado.0.km_unidad}}">
 

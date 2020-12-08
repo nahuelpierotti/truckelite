@@ -14,8 +14,8 @@ class VehiculoModel
         return $this->database->query("SELECT * FROM Acoplado");
     }
 
-    public function listarVehiculos(){
-        return $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, T.fk_acoplado, V.posicion_actual, V.estado, V.kilometraje 
+    public function listarVehiculos(&$data){
+        $data["vehiculos"] = $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, T.fk_acoplado, V.posicion_actual, V.estado, V.kilometraje 
                                        FROM Tractor T JOIN 
                                             Vehiculo V ON T.patente = V.fk_tractor ");
     }

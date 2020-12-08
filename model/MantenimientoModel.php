@@ -10,10 +10,10 @@ class MantenimientoModel
         $this->database = $database;
     }
 
-    public function agregarMantenimiento($fecha, $kmUnidad, $costo, $interno_externo, $repuestos_cambiados, $id_mecanico, $id_vehiculo)
+    public function agregarMantenimiento($kmUnidad, $costo, $interno_externo, $repuestos_cambiados, $id_mecanico, $id_vehiculo)
     {
         return $this->database->execute("INSERT INTO Mantenimiento (fecha_service,km_unidad,costo,interno_externo,repuestos_cambiados,id_mecanico,id_vehiculo) 
-                                VALUES ( '$fecha', $kmUnidad, $costo, '$interno_externo', '$repuestos_cambiados',$id_mecanico,$id_vehiculo)");
+                                VALUES ( CURRENT_DATE, $kmUnidad, $costo, '$interno_externo', '$repuestos_cambiados',$id_mecanico,$id_vehiculo)");
     }
 
     public function listarMantenimiento(){
@@ -22,9 +22,9 @@ class MantenimientoModel
                                         FROM mantenimiento M JOIN usuario U WHERE U.id_usuario=id_mecanico");
     }
 
-    public function modificarMantenimiento($fecha_service, $km_unidad, $costo, $interno_externo, $repuestos_cambiados,$id_mantenimiento, $id_mecanico, $id_vehiculo)
+    public function modificarMantenimiento($km_unidad, $costo, $interno_externo, $repuestos_cambiados,$id_mantenimiento, $id_mecanico, $id_vehiculo)
     {
-        return $this->database->execute("UPDATE Mantenimiento SET fecha_service='$fecha_service',km_unidad=$km_unidad,
+        return $this->database->execute("UPDATE Mantenimiento SET fecha_service= CURRENT_DATE,km_unidad=$km_unidad,
                                         costo=$costo,interno_externo='$interno_externo',repuestos_cambiados='$repuestos_cambiados',
                                         id_mecanico=$id_mecanico,id_vehiculo=$id_vehiculo
                                         WHERE id_mantenimiento='$id_mantenimiento'");

@@ -27,7 +27,7 @@ class MantenimientoController
     public function agregarMantenimiento(){
         $idMecanico= $this->mecanicoModel->obtenerIdDeMecanicoPorSuNombreYsuDni($_POST["nombreMecanico"],$_POST["dniMecanico"]);
         $idVehivulo = $this->vehiculoModel->obtenerIdVehiculoPorSuPatente($_POST["patente_vehiculo"]);
-        $result =$this->mantenimientoModel->agregarMantenimiento($_POST["fecha"],$_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"],$idMecanico[0]["id_usuario"],$idVehivulo[0]["id_vehiculo"]);
+        $result =$this->mantenimientoModel->agregarMantenimiento($_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"],$idMecanico[0]["id_usuario"],$idVehivulo[0]["id_vehiculo"]);
         if(!$result) {
             header("Location: /truckelite/mantenimiento?msj=No se pudo agregar el mantenimiento ");
         }else{

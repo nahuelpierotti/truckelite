@@ -17,7 +17,6 @@ class ModificarMantenimientoController
 
     public function execute(){
         if($_SESSION["usuario"]["rol"] != "Mecanico" && $_SESSION["usuario"]["rol"] != "Administrador") header("Location: /truckelite/interno");
-        //$data["mensaje"] = $_GET["msj"];
         $data["acciones"] = $_SESSION["usuario"]["acciones"];
         $data["user_name"] = $_SESSION["usuario"]["user_name"];
         $this->mantenimientoBuscado($data);
@@ -27,7 +26,7 @@ class ModificarMantenimientoController
 
     public function modificarMantenimiento(){
         $id_mecanico= $this->mecanicoModel->obtenerIdDeMecanicoPorSuNombreYsuDni($_POST["nombreMecanico"],$_POST["dniMecanico"]);
-        $data = $this->mantenimientoModel->modificarMantenimiento($_POST["fecha"],$_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"], $_POST["id_mantenimiento"],$id_mecanico[0]["id_usuario"],$_POST["id_vehiculo"]);
+        $data = $this->mantenimientoModel->modificarMantenimiento($_POST["kmUnidad"],$_POST["costo"],$_POST["interno_externo"], $_POST["repuestos_cambiados"], $_POST["id_mantenimiento"],$id_mecanico[0]["id_usuario"],$_POST["id_vehiculo"]);
         if (!$data) {
 
             header("Location: /truckelite/listarMantenimiento?msj=No se pudo modificar el mantenimiento");
