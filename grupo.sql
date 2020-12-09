@@ -239,8 +239,8 @@ INSERT INTO Chofer(id_usuario,licencia)
             VALUES(2,'Profesional');
 
 INSERT INTO Cliente(denominacion,cuit,direccion,telefono,email,contacto1,contacto2)
-	         VALUES('Cliente Los Andes', '20333606853', 'Calle Falsa 123', '44444444', 'npie@hotmail.com', 'Contacto 1', 'Contacto 2'),
-                   ('La Pampa SA', '30465585408', 'Aruba 38', '3514665522', 'pampasa@gmail.com', 'Alberto Fernandez', 'Jorge Lanata');
+	         VALUES('Cliente Los Andes', '20333606853', 'Villa Allende', '1199379211', 'losAndes@hotmail.com', 'Contacto 1', 'Contacto 2'),
+                   ('La Pampa SA', '30465585408', 'Aruba 38', '1122568804', 'pampasa@gmail.com', 'ppsa@hotmal.com', '1180802776');
 
 INSERT INTO Acoplado(patente_acoplado, tipo, chasis_acoplado)
 			VALUES('AA100AS', 'Araña', 585822),
