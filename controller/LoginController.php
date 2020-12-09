@@ -14,7 +14,7 @@ class LoginController
 
     public function execute()
     {
-        $data["mensaje"] = $_SESSION["mensaje"];
+        $data["mensaje"] = isset($_SESSION["mensaje"])?$_SESSION["mensaje"]:"";
         $_SESSION["mensaje"] = "";
         echo $this->render->render("view/login.php", $data);
     }

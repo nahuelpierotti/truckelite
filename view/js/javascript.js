@@ -19,8 +19,8 @@ function showLicencia(elemento) {
 
 $(document).ready(function(){
     $("#siguiente1").click(function(){
-        $("#seccion_viaje").hide();
-        $("#seccion_carga").show();
+        $("#seccion_viaje").show();
+        $("#seccion_carga").hide();
         $("#seccion_costos").hide();
     });
     $("#siguiente2").click(function(){
@@ -29,15 +29,55 @@ $(document).ready(function(){
         $("#seccion_costos").show();
     });
     $("#atras1").click(function(){
-        $("#seccion_viaje").show();
-        $("#seccion_carga").hide();
-        $("#seccion_costos").hide();
-    });
-    $("#atras2").click(function(){
         $("#seccion_viaje").hide();
         $("#seccion_carga").show();
         $("#seccion_costos").hide();
     });
+    $("#atras2").click(function(){
+        $("#seccion_viaje").show();
+        $("#seccion_carga").hide();
+        $("#seccion_costos").hide();
+    });
+
+});
+
+$('#tipo_carga').on('change', function() {
+    var tipo=$( "#tipo_carga option:selected" ).text();
+    if(tipo=='Liquida'){
+        $("#vehiculos_liquido").show();
+        $("#vehiculos_granel").hide();
+        $("#vehiculos_jaula").hide();
+        $("#vehiculos_jaulaArania").hide();
+        $("#vehiculos_carcarrier").hide();
+    }
+    if(tipo=='Granel'){
+        $("#vehiculos_liquido").hide();
+        $("#vehiculos_granel").show();
+        $("#vehiculos_jaula").hide();
+        $("#vehiculos_jaulaArania").hide();
+        $("#vehiculos_carcarrier").hide();
+    }
+    if($('#tipo_carga').val()==5){
+        $("#vehiculos_liquido").hide();
+        $("#vehiculos_granel").hide();
+        $("#vehiculos_jaula").show();
+        $("#vehiculos_jaulaArania").hide();
+        $("#vehiculos_carcarrier").hide();
+    }
+    if(tipo=='20 Pies' || tipo=='40 Pies'){
+        $("#vehiculos_liquido").hide();
+        $("#vehiculos_granel").hide();
+        $("#vehiculos_jaula").hide();
+        $("#vehiculos_jaulaArania").show();
+        $("#vehiculos_carcarrier").hide();
+    }
+    if(tipo=='CarCarrier'){
+        $("#vehiculos_liquido").hide();
+        $("#vehiculos_granel").hide();
+        $("#vehiculos_jaula").hide();
+        $("#vehiculos_jaulaArania").hide();
+        $("#vehiculos_carcarrier").show();
+    }
 
 });
 
