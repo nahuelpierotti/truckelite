@@ -29,8 +29,8 @@
                 <td>{{modelo}}</td>
                 <td>{{marca}}</td>
                 <td>{{fk_acoplado}}{{^fk_acoplado}}Sin asignar{{/fk_acoplado}}</td>
-                <td>{{posicion_actual}}</td>
-                <td>{{#estado}}En Condiciones{{/estado}}{{^estado}}En el taller{{/estado}}</td>
+                <td>{{#estado}}{{posicion_actual}}{{/estado}}{{^estado}}taller{{/estado}}</td>
+                <td>{{#estado}}En Condiciones{{/estado}}{{^estado}}En mantenimiento{{/estado}}</td>
                 <td>{{kilometraje}}km</td>
                 <td>
                     <a class='w3-panel w3-button w3-blue w3-round-xxlarge w3-hover-text-blue' href="vehiculo/modificar?url={{patente}}">
