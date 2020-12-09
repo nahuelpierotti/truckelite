@@ -235,16 +235,22 @@ INSERT INTO Usuario(user_name, nombre, dni, rol, telefono, mail, clave)
 VALUES('npie','Nahuel',31832665,'Administrador',46353072,'npierotti@alumno.unlam.edu.ar','e10adc3949ba59abbe56e057f20f883e'),
       ("pepe", "Pepe Garcia", 40041115, "Chofer", 44321833,"pepe_argento@hotmail.com", "21232f297a57a5a743894a0e4a801fc3");
 
-insert into chofer(id_usuario,licencia)
-values(2,'Profesional');
+INSERT INTO Chofer(id_usuario,licencia)
+            VALUES(2,'Profesional');
 
-insert into acoplado
-(patente_acoplado,tipo,chasis_acoplado)
-values('hmz430','Jaula','13579');
+INSERT INTO Cliente(denominacion,cuit,direccion,telefono,email,contacto1,contacto2)
+	         VALUES('Cliente Los Andes', '20333606853', 'Calle Falsa 123', '44444444', 'npie@hotmail.com', 'Contacto 1', 'Contacto 2'),
+                   ('La Pampa SA', '30465585408', 'Aruba 38', '3514665522', 'pampasa@gmail.com', 'Alberto Fernandez', 'Jorge Lanata');
 
-
-insert into cliente
-(denominacion,cuit,direccion,telefono,email,contacto1,contacto2)
-values('Cliente Los Andes', '20333606853', 'Calle Falsa 123', '44444444', 'npie@hotmail.com', 'Contacto 1', 'Contacto 2'),
-      ('La Pampa SA', '30465585408', 'Aruba 38', '3514665522', 'pampasa@gmail.com', 'Alberto Fernandez', 'Jorge Lanata');
+INSERT INTO Acoplado(patente_acoplado, tipo, chasis_acoplado)
+			VALUES(AA100AS, Araña, 585822),
+				  (AC125AD, Araña, 605737),
+				  (AC296AS, Jaula, 882174),
+				  (AB318AD, Jaula, 595287),
+				  (AB405AG, Tanque, 583419),
+				  (AD427AS, Tanque, 703673),
+				  (AB581AD, Granel, 761560),
+				  (AD602AG, Granel, 555608),
+				  (AD100AZ, CarCarrier, 730027),
+				  (AD100AQ, CarCarrier, 730502);      
 
