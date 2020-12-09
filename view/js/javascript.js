@@ -39,6 +39,66 @@ $(document).ready(function(){
         $("#seccion_costos").hide();
     });
 
+    $("#agregar_viaje").click(function(){
+        var msg="";
+        if($("#peso").val().length==0){
+            msg+="No ingreso el peso de la carga\n";
+        }
+        if($("#imoClass").val()== -1){
+            msg+="No selecciono IMO Class\n";
+        }
+        if($("#temperatura").val().length==0){
+            msg+="No ingreso temperatura de la carga\n";
+        }
+        if($("#combustible_consumido_previsto").val().length==0){
+            msg+="No ingreso combustible previsto del viaje\n";
+        }
+        if($("#origen").val().length==0){
+            msg+="No ingreso origen del viaje\n";
+        }
+        if($("#destino").val().length==0){
+            msg+="No ingreso destino del viaje\n";
+        }
+        if($("#tiempo_previsto").val().length==0){
+            msg+="No ingreso tiempo previsto del viaje\n";
+        }
+        if($("#km_recorrido_previsto").val().length==0){
+            msg+="No ingreso KM previstos del viaje\n";
+        }
+        if($("#id_chofer").val()==''){
+            msg+="No selecciono chofer\n";
+        }
+        if(jQuery("[name='id_vehiculo']") .val()==''){
+            msg+="No selecciono vehiculo\n";
+        }
+        if($("#etd").val().length==0){
+            msg+="No ingreso Tiempo Estimado Partida\n";
+        }
+        if($("#eta").val().length==0){
+            msg+="No ingreso Tiempo Estimado Arribo\n";
+        }
+        if($("#viaticos").val().length==0){
+            msg+="No ingreso Viaticos\n";
+        }
+        if($("#costo_combustible").val().length==0){
+            msg+="No ingreso Costo Combustible\n";
+        }
+        if($("#peajes").val().length==0){
+            msg+="No ingreso Peajes\n";
+        }
+        if($("#pesajes").val().length==0){
+            msg+="No ingreso Pesajes\n";
+        }
+        if($("#extras").val().length==0){
+            msg+="No ingreso Extras\n";
+        }
+        if($("#fee").val().length==0){
+            msg+="No ingreso Fee\n";
+        }
+        if(msg!="") {
+            alert(msg);
+        }
+    });
 });
 
 $('#tipo_carga').on('change', function() {

@@ -9,11 +9,11 @@
         {{#mensaje}}
         <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">{{mensaje}}</p>
         {{/mensaje}}
-        <form class="" action="registrarViaje/agregarViaje" method="post">
+        <form id="formViaje" class="" action="registrarViaje/agregarViaje" method="post">
             <div id="seccion_carga">
                 <!-- Carga -->
                 <div class="w3-blue">
-                    <h3 class="w3-padding">Detallar Carga</h3>
+                    <h4 class="w3-padding">Detallar Carga</h4>
                 </div>
                 <br>
                 <label class="w3-text-brown"><b>Tipo de Carga</b></label>
@@ -28,7 +28,7 @@
 
                 <p>
                     <label class="w3-text-brown"><b>Peso</b></label>
-                    <input class="w3-input w3-border w3-sand" name="peso" type="text" required>
+                    <input class="w3-input w3-border w3-sand" name="peso" id=peso type="text" required>
                 </p>
 
                 <div>
@@ -40,7 +40,7 @@
                 </div>
 
                 <select class="w3-select w3-border w3-sand w3-margin-top" name="imoClass" id="imoClass" onChange="showSubClass(this)">
-                    <option value="" disabled selected>Elije ImoClass</option>
+                    <option value="-1" selected>Elije ImoClass</option>
                     <option value="NULL">no posee</option>
                     <option value="1">Explosives</option>
                     <option value="2">Flammable Gas</option>
@@ -103,7 +103,7 @@
 
                 <p>
                     <label class="w3-text-brown"><b>Temperatura</b></label>
-                    <input type="text" class="w3-input w3-border w3-sand" name="temperatura" >
+                    <input type="text" class="w3-input w3-border w3-sand" name="temperatura" id="temperatura" required>
                 </p>
                 <br>
                 <button class="w3-btn w3-grey w3-right" id="siguiente1" >SIGUIENTE</button>
@@ -112,7 +112,7 @@
 
             <div id="seccion_viaje" style="display: none">
                 <div class="w3-blue">
-                    <h3 class="w3-padding">Detalles Viaje</h3>
+                    <h4 class="w3-padding">Detalles Viaje</h4>
                 </div>
             <label class="w3-text-brown"><b>Cliente</b>
                 <select class="w3-select w3-border w3-sand" name="id_cliente">
@@ -123,28 +123,28 @@
             </label>
             <p>
                 <label class="w3-text-brown"><b>Combustible Consumido Previsto</b></label>
-                <input class="w3-input w3-border w3-sand" name="combustible_consumido_previsto" type="text" value="{{viajeBuscado.0.combustible_consumido_previsto}}">
+                <input class="w3-input w3-border w3-sand" name="combustible_consumido_previsto" id="combustible_consumido_previsto" type="text" value="{{viajeBuscado.0.combustible_consumido_previsto}}">
             </p>
             <p>
                 <label class="w3-text-brown"><b>Origen</b></label>
-                <input class="w3-input w3-border w3-sand" name="origen" type="text" value="{{viajeBuscado.0.origen}}">
+                <input class="w3-input w3-border w3-sand" name="origen" id="origen" type="text" value="{{viajeBuscado.0.origen}}">
             </p>
             <p>
                 <label class="w3-text-brown"><b>Destino</b></label>
-                <input class="w3-input w3-border w3-sand" name="destino" type="text" value="{{viajeBuscado.0.destino}}">
+                <input class="w3-input w3-border w3-sand" name="destino" id="destino" type="text" value="{{viajeBuscado.0.destino}}">
             </p>
             <p>
                 <label class="w3-text-brown"><b>Tiempo Previsto</b></label>
-                <input class="w3-input w3-border w3-sand" name="tiempo_previsto" type="time" value="{{viajeBuscado.0.tiempo_previsto}}">
+                <input class="w3-input w3-border w3-sand" name="tiempo_previsto" id="tiempo_previsto" type="time" value="{{viajeBuscado.0.tiempo_previsto}}">
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>KM Recorridos Previsto</b></label>
-                <input class="w3-input w3-border w3-sand" name="km_recorrido_previsto" type="text" value="{{viajeBuscado.0.km_recorrido_previsto}}">
+                <input class="w3-input w3-border w3-sand" name="km_recorrido_previsto" id="km_recorrido_previsto" type="text" value="{{viajeBuscado.0.km_recorrido_previsto}}">
             </p>
 
             <label class="w3-text-brown"><b>Choferes disponibles</b>
-                <select class="w3-select w3-border w3-sand" name="id_chofer">
+                <select class="w3-select w3-border w3-sand" name="id_chofer" id="id_chofer">
                     <option value="" disabled selected>Sin Asignar</option>
                     {{#choferes}}
                     <option  value="{{id_usuario}}">{{nombre}}</option>
@@ -197,11 +197,11 @@
 
             <p>
                 <label class="w3-text-brown"><b>Tiempo estimado de partida</b></label>
-                <input class="w3-input w3-border w3-sand" name="etd" type="date" value="{{viajeBuscado.0.etd}}">
+                <input class="w3-input w3-border w3-sand" name="etd"  id="etd" type="date" value="{{viajeBuscado.0.etd}}">
             </p>
             <p>
                 <label class="w3-text-brown"><b>Tiempo estimado de arribo</b></label>
-                <input class="w3-input w3-border w3-sand" name="eta" type="date" value="{{viajeBuscado.0.eta}}">
+                <input class="w3-input w3-border w3-sand" name="eta" id="eta" type="date" value="{{viajeBuscado.0.eta}}">
             </p>
                 <button class="w3-btn w3-grey  w3-right" id="siguiente2" >SIGUIENTE</button>
                 <button class="w3-btn w3-grey w3-left" id="atras1" >ATRAS</button>
@@ -210,7 +210,7 @@
             <div id="seccion_costos" style="display: none">
             <!-- costos -->
             <div class="w3-blue">
-                <h2 class="w3-padding">Costos Estimados</h2>
+                <h4 class="w3-padding">Costos Estimados</h4>
             </div>
 
             <p>
@@ -250,7 +250,7 @@
                 <input class="w3-input w3-border w3-sand" name="total" type="number" id="total" required>
             </p>
             <p>
-                <button class="w3-btn w3-blue w3-right">Agregar Viaje</button>
+                <button class="w3-btn w3-blue w3-right" id="agregar_viaje">Agregar Viaje</button>
                 <button class="w3-btn w3-grey w3-left" id="atras2" >ATRAS</button>
             </p>
             </div>
