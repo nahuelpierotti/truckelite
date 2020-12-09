@@ -38,7 +38,7 @@ class VehiculoModel
     }
 
     public function buscarVehiculo($patente){
-        return $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, T.fk_acoplado, V.posicion_actual, V.estado, V.kilometraje, V.alarma 
+        return $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, T.fk_acoplado, V.posicion_actual, V.estado, V.kilometraje, V.alarma, V.id_vehiculo 
                                        FROM Tractor T JOIN 
                                             Vehiculo V ON T.patente = V.fk_tractor  
                                        WHERE T.patente = '$patente'");
@@ -76,7 +76,7 @@ class VehiculoModel
         $mensaje = "Los campos: ";
         $result = $this->updateDatosTractor($acoplado, $motor, $chasis, $modelo, $marca, $patenteDestino,$mensaje);
         if ($result) $result = $this->updateDatosVehiculo($posicion, $kilometraje, $alarma, $patenteDestino, $mensaje);
-        if($result && $patente != $patenteDestino) $this->updatePatente($patente, $patenteDestino, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $kilometraje, $alarma, $mensaje);
+        if($result && $patente != $patenteDestino) $this->updatePatente($patente, $patenteDestino, $mensaje);
 
         return $mensaje;
     }
@@ -86,10 +86,10 @@ class VehiculoModel
     }
 
     public function eliminarVehiculo($patente){
-        $result = $this->database->execute("DELETE FROM Vehiculo WHERE fk_tractor = '$patente'");
-        if ($result) $result = $this->database->execute("DELETE FROM Tractor WHERE patente = '$patente'");
+        $sql = "DELETE FROM Vehiculo WHERE fk_tractor = '$patente';";
+        $sql .= "DELETE FROM Tractor WHERE patente = '$patente';";
 
-        return $mensaje = ($result) ? "El vehiculo se borro de forma exitosa." : "No se pudo realizar la operacion ";
+        return $mensaje = $this->database->transaccion($sql) ? "El vehiculo se borro de forma exitosa." : "No se pudo realizar la operacion ";
     }
 
     public function consultarVehiculo($consulta ,$patente){
@@ -141,23 +141,16 @@ class VehiculoModel
 
     private function updateDatosTractor($acoplado, $motor, $chasis, $modelo, $marca, $patenteDestino, &$mensaje)
     {
-        if ($acoplado != "Sin Asignar") {
-            $result = $this->database->execute("UPDATE Tractor 
-                                                SET motor = '$motor', 
-                                                    chasis ='$chasis', 
-                                                    modelo = '$modelo',
-                                                    marca = '$marca',
-                                                    fk_acoplado = '$acoplado'
+        $acoplado = ($acoplado != "Sin Asignar") ? "fk_acoplado = '$acoplado'" : "fk_acoplado = NULL";
+
+        $result = $this->database->execute("UPDATE Tractor 
+                                            SET motor = '$motor', 
+                                                chasis ='$chasis', 
+                                                modelo = '$modelo',
+                                                marca = '$marca',
+                                                $acoplado
                                                 WHERE patente = '$patenteDestino'");
-        } else {
-            $result = $this->database->execute("UPDATE Tractor 
-                                                SET motor = '$motor', 
-                                                    chasis ='$chasis', 
-                                                    modelo = '$modelo',
-                                                    marca = '$marca',
-                                                    fk_acoplado = NULL
-                                                WHERE patente = '$patenteDestino'");
-        }
+
         $mensaje = ($result) ? $mensaje . "motor, chasis, modelo, marca, acoplado se actualizaron." : "No se pudo realizar ninguna actualizacion.";
         return $result;
     }
@@ -167,38 +160,31 @@ class VehiculoModel
         $result = $this->database->execute("UPDATE Vehiculo
                                             SET posicion_actual = '$posicion',
                                                 kilometraje = $kilometraje,
-                                                alarma = $alarma,
+                                                alarma = $alarma
                                             WHERE fk_tractor = '$patenteDestino'");
         $mensaje = ($result) ? $mensaje . " Posicion, kilometraje y alarma se actualizaron." : $mensaje . " Posicion, kilometraje, alarma y patente no se pudieron actualizar.";
 
         return $result;
     }
 
-    private function updatePatente($patente, $patenteDestino, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $kilometraje, $alarma, &$mensaje)
+    private function updatePatente($patente, $patenteDestino, &$mensaje)
     {
         $vehiculo = $this->buscarVehiculo($patenteDestino);
-        $result = $this->eliminarVehiculo($patenteDestino);
-        if ($result) {
-            $result = $this->database->execute("UPDATE Tractor
-                                                SET patente = '$patente'
-                                                WHERE patente = '$patenteDestino'");
-            if ($result) {
-                $this->agregarVehiculo($patente, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $kilometraje, $alarma);
-                $mensaje = "Todos los campos fueron actualizados";
-            } else {
-                $this->agregarVehiculo($vehiculo[0]["patente"],
-                    $vehiculo[0]["motor"],
-                    $vehiculo[0]["chasis"],
-                    $vehiculo[0]["modelo"],
-                    $vehiculo[0]["marca"],
-                    $vehiculo[0]["fk_acoplado"],
-                    $vehiculo[0]["posicion_actual"],
-                    $vehiculo[0]["kilometraje"],
-                    $vehiculo[0]["alarma"]);
-            }
-        }
 
-        return $result;
+        $id = $vehiculo[0]['id_vehiculo'];
+        $posicion = $vehiculo[0]['posicion_actual'];
+        $kilometraje = $vehiculo[0]["kilometraje"];
+        $alarma = $vehiculo[0]['alarma'];
+        $estado = $vehiculo[0]['estado'];
+
+        $sql = "DELETE FROM Vehiculo WHERE fk_tractor = '$patenteDestino';";
+
+        $sql .= "UPDATE Tractor SET patente = '$patente' WHERE patente = '$patenteDestino';";
+
+        $sql .= "INSERT INTO Vehiculo(id_vehiculo,fk_tractor,posicion_actual,kilometraje,alarma,estado) 
+                 VALUES($id,'$patente','$posicion',$kilometraje,$alarma,$estado);";
+
+        return $mensaje = $this->database->transaccion($sql) ? "Todos los campos fueron modificados" : $mensaje . "Patente no se pudo modificar.";
     }
 
     //METODOS POSIBLES A BORRAR
