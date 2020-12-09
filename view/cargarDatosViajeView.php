@@ -1,7 +1,7 @@
 {{> header}}
-
+{{> navBar}}
 <div class="w3-display-container">
-    <div id="formularioUsuario" class="w3-container w3-content w3-card-4 w3-padding" style="margin-bottom: 4em;">
+    <div id="formularioUsuario" class="w3-container w3-content w3-card-4 w3-padding w3-mobile" style="margin-bottom: 4em;">
         <div class="w3-blue">
             <h2 class="w3-padding">Registrar datos reales del Viaje</h2>
         </div>
