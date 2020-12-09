@@ -57,22 +57,18 @@ class VehiculoController
     }
 
     public function agregarVehiculo(){
-        $data = $this->vehiculoModel->agregarVehiculo($_POST["patente"],
-                                                      $_POST["motor"],
-                                                      $_POST["chasis"],
-                                                      $_POST["modelo"],
-                                                      $_POST["marca"],
-                                                      $_POST["acoplado"],
-                                                      $_POST["posicion"],
-                                                      $_POST["kilometraje"],
-                                                      $_POST["alarma"]);
+        $mensaje = $this->vehiculoModel->agregarVehiculo($_POST["patente"],
+                                                         $_POST["motor"],
+                                                         $_POST["chasis"],
+                                                         $_POST["modelo"],
+                                                         $_POST["marca"],
+                                                         $_POST["acoplado"],
+                                                         $_POST["posicion"],
+                                                         $_POST["kilometraje"],
+                                                         $_POST["alarma"]);
         $_SESSION["action"] = "agregarVehiculo";
         $_SESSION["titulo"] = "Nuevo Vehiculo";
-        if (!$data){
-            header("Location: /truckelite/vehiculo?msj=No se pudo Agregar el Vehiculo");
-        } else{
-            header("Location: /truckelite/vehiculo?msj=Nuevo Vehiculo añadido");
-        }
 
+        header("Location: /truckelite/vehiculo?msj=$mensaje");
     }
 }

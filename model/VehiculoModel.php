@@ -50,13 +50,18 @@ class VehiculoModel
     }
 
     public function agregarVehiculo($patente, $motor, $chasis, $modelo, $marca, $acoplado, $posicion, $kilometraje, $alarma){
-        $result = $this->agregarTractor($patente, $motor, $chasis, $modelo,$marca, $acoplado);
-        if ($result){
-            $result = $this->database->execute("INSERT INTO Vehiculo(fk_tractor, posicion_actual, estado, kilometraje, alarma)
-                                                VALUES('$patente', '$posicion', TRUE, $kilometraje, $alarma)");
-            if (!$result) $this->database->execute("DELETE FROM Tractor WHERE patente = '$patente'");
+        if ($acoplado != "Sin Asignar"){
+            $sql = "INSERT INTO Tractor(patente,motor,chasis,modelo,marca,fk_acoplado)
+                                 VALUES('$patente','$motor','$chasis','$modelo','$marca','$acoplado');";
+        }else{
+            $sql = "INSERT INTO Tractor(patente, motor, chasis, modelo, marca)
+                                 VALUES('$patente', '$motor', '$chasis', '$modelo', '$marca');";
         }
-        return $result;
+
+        $sql .= "INSERT INTO Vehiculo(fk_tractor, posicion_actual, estado, kilometraje, alarma)
+                             VALUES('$patente', '$posicion', TRUE, $kilometraje, $alarma);";
+
+        return $this->database->transaccion($sql) ? "Nuevo Vehiculo añadido" : "No se pudo Agregar el Vehiculo";
     }
 
     public function modificarAcoplado($patente , $tipo, $chasis, $patenteDestino){
@@ -133,16 +138,6 @@ class VehiculoModel
     }
 
     //METODOS PRIVADOS PARA EL FUNCIONAMIENTO DE VEHICULO
-    private function agregarTractor($patente, $motor, $chasis, $modelo, $marca, $acoplado){
-        if ($acoplado != "Sin Asignar"){
-            $result = $this->database->execute("INSERT INTO Tractor(patente, motor, chasis, modelo, marca, fk_acoplado)
-                                                VALUES('$patente', '$motor', '$chasis', '$modelo', '$marca', '$acoplado')");
-        }else{
-            $result = $this->database->execute("INSERT INTO Tractor(patente, motor, chasis, modelo, marca)
-                                                VALUES('$patente', '$motor', '$chasis', '$modelo', '$marca')");
-        }
-        return $result;
-    }
 
     private function updateDatosTractor($acoplado, $motor, $chasis, $modelo, $marca, $patenteDestino, &$mensaje)
     {
