@@ -16,8 +16,8 @@ class ProformaModel
            V.km_recorrido_previsto,V.combustible_consumido_previsto,
            V.km_recorrido,V.combustible_consumido,V.etd_real,V.eta_real,
            C.denominacion,C.cuit,C.direccion,C.telefono,C.email,C.contacto1,
-           C.contacto2,P.id,P.viaticos,P.peajes,P.extras,P.fee,P.total,
-           U.nombre,Tc.descripcion,Car.peso,Car.hazard,Car.reefer
+           C.contacto2,P.id,P.viaticos,P.peajes,P.pesajes,P.extras,P.fee,P.total,
+           P.costo_combustible,U.nombre,Tc.descripcion,Car.peso,Car.hazard,Car.reefer
            FROM Usuario U JOIN Viaje V ON U.id_usuario=V.id_chofer JOIN 
            Cliente C ON V.id_cliente=C.id
            JOIN   Proforma P ON V.id_viaje=P.id_viaje JOIN

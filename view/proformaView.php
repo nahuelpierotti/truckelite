@@ -51,7 +51,9 @@
         <h4>ETD estimado: {{datosProforma.0.etd}}</h4>
         <h4>ETA estimado: {{datosProforma.0.eta}}</h4>
         <h4>Viaticos: ${{datosProforma.0.viaticos}}</h4>
-        <h4>Peaje y pasajes: ${{datosProforma.0.peajes}}</h4>
+        <h4>Costo combustible: ${{datosProforma.0.costo_combustible}}</h4>
+        <h4>Peajes: ${{datosProforma.0.peajes}}</h4>
+        <h4>Pasajes: ${{datosProforma.0.pesajes}}</h4>
         <h4>Extras: ${{datosProforma.0.extras}}</h4>
         <h4>Hazard: {{datosProforma.0.hazard}}</h4>
         <h4>Reefer: {{datosProforma.0.reefer}}</h4>
