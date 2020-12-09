@@ -252,5 +252,17 @@ INSERT INTO Acoplado(patente_acoplado, tipo, chasis_acoplado)
 				  (AB581AD, Granel, 761560),
 				  (AD602AG, Granel, 555608),
 				  (AD100AZ, CarCarrier, 730027),
-				  (AD100AQ, CarCarrier, 730502);      
+				  (AD100AQ, CarCarrier, 730502);
+
+INSERT INTO Tractor(patente,motor,chasis,modelo,marca,fk_acoplado)
+            VALUES('AA123CD','53879558','L53879558','Cursor','IVECO','AA100AS'),
+                  ('AB198QZ','18389741','V18389741','G410','SCANIA','AC125AD'),
+                  ('AD200XS','57193968','R57193968','Cursor','IVECO','AC296AS'),
+                  ('AA211ZX','82836641','N82836641','Cursor','IVECO','AB318AD'),
+                  ('AD678QD','23849041','C23849041','Actros 1846','M.BENZ','AB405AG'),
+                  ('AA534QD','21357689','A21357689','G460','SCANIA','AD427AS'),
+                  ('AC438QW','54712451','W54712451','G310','SCANIA','AB581AD'),
+                  ('AC989QW','64092078','F64092078','Actros 1846','M.BENZ','AD602AG'),
+                  ('AB966QD','32632699','B32632699','Actros 1846','M.BENZ','AD100AZ'),
+                  ('AC822QD','60916748','J60916748','Actros 1846','M.BENZ','AD100AQ');
 
