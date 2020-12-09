@@ -243,16 +243,16 @@ INSERT INTO Cliente(denominacion,cuit,direccion,telefono,email,contacto1,contact
                    ('La Pampa SA', '30465585408', 'Aruba 38', '3514665522', 'pampasa@gmail.com', 'Alberto Fernandez', 'Jorge Lanata');
 
 INSERT INTO Acoplado(patente_acoplado, tipo, chasis_acoplado)
-			VALUES(AA100AS, Araña, 585822),
-				  (AC125AD, Araña, 605737),
-				  (AC296AS, Jaula, 882174),
-				  (AB318AD, Jaula, 595287),
-				  (AB405AG, Tanque, 583419),
-				  (AD427AS, Tanque, 703673),
-				  (AB581AD, Granel, 761560),
-				  (AD602AG, Granel, 555608),
-				  (AD100AZ, CarCarrier, 730027),
-				  (AD100AQ, CarCarrier, 730502);
+			VALUES('AA100AS', 'Araña', 585822),
+				  ('AC125AD', 'Araña', 605737),
+				  ('AC296AS', 'Jaula', 882174),
+				  ('AB318AD', 'Jaula', 595287),
+				  ('AB405AG', 'Tanque', 583419),
+				  ('AD427AS', 'Tanque', 703673),
+				  ('AB581AD', 'Granel', 761560),
+				  ('AD602AG', 'Granel', 555608),
+				  ('AD100AZ', 'CarCarrier', 730027),
+				  ('AD100AQ', 'CarCarrier', 730502);      
 
 INSERT INTO Tractor(patente,motor,chasis,modelo,marca,fk_acoplado)
             VALUES('AA123CD','53879558','L53879558','Cursor','IVECO','AA100AS'),
@@ -265,4 +265,16 @@ INSERT INTO Tractor(patente,motor,chasis,modelo,marca,fk_acoplado)
                   ('AC989QW','64092078','F64092078','Actros 1846','M.BENZ','AD602AG'),
                   ('AB966QD','32632699','B32632699','Actros 1846','M.BENZ','AD100AZ'),
                   ('AC822QD','60916748','J60916748','Actros 1846','M.BENZ','AD100AQ');
+
+INSERT INTO Vehiculo(fk_tractor,posicion_actual,kilometraje,alarma,estado)
+            VALUES('AA123CD','flota',3023,4670,TRUE),
+                  ('AB198QZ','flota',102.9,5000,TRUE),
+                  ('AD200XS','taller',1100,1000,FALSE),
+                  ('AA211ZX','flota',980.221,1530,TRUE),
+                  ('AD678QD','flota',4512,4900,TRUE),
+                  ('AA534QD','flota',629,700,TRUE),
+                  ('AC438QW','taller',456,400,FALSE),
+                  ('AC989QW','flota',3000,3210,TRUE),
+                  ('AB966QD','flota',531,610,TRUE),
+                  ('AC822QD','flota',18000,18020,TRUE);
 
