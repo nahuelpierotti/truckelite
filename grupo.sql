@@ -243,14 +243,14 @@ INSERT INTO Cliente(denominacion,cuit,direccion,telefono,email,contacto1,contact
                    ('La Pampa SA', '30465585408', 'Aruba 38', '3514665522', 'pampasa@gmail.com', 'Alberto Fernandez', 'Jorge Lanata');
 
 INSERT INTO Acoplado(patente_acoplado, tipo, chasis_acoplado)
-			VALUES(AA100AS, Araña, 585822),
-				  (AC125AD, Araña, 605737),
-				  (AC296AS, Jaula, 882174),
-				  (AB318AD, Jaula, 595287),
-				  (AB405AG, Tanque, 583419),
-				  (AD427AS, Tanque, 703673),
-				  (AB581AD, Granel, 761560),
-				  (AD602AG, Granel, 555608),
-				  (AD100AZ, CarCarrier, 730027),
-				  (AD100AQ, CarCarrier, 730502);      
+			VALUES('AA100AS', 'Araña', 585822),
+				  ('AC125AD', 'Araña', 605737),
+				  ('AC296AS', 'Jaula', 882174),
+				  ('AB318AD', 'Jaula', 595287),
+				  ('AB405AG', 'Tanque', 583419),
+				  ('AD427AS', 'Tanque', 703673),
+				  ('AB581AD', 'Granel', 761560),
+				  ('AD602AG', 'Granel', 555608),
+				  ('AD100AZ', 'CarCarrier', 730027),
+				  ('AD100AQ', 'CarCarrier', 730502);      
 
