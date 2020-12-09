@@ -17,5 +17,9 @@
     RewriteRule ^(.*)/(.*)/(.*)$ index.php?module=$1&action=$2&$3 [L,QSA]
     RewriteRule ^(.*)/(.*)$ index.php?module=$1&action=$2 [L,QSA]
     RewriteRule ^(.*)$ index.php?module=$1&action=execute [L,QSA]
+    php_value include_path ".:/usr/local/lib/php"
+    php_flag display_startup_errors off
+    php_flag display_errors off
+    php_flag html_errors off
 </IfModule>
 

@@ -59,7 +59,7 @@ class RegistrarViajeController
             $result = $this->costosModel->insertarCostos($_POST["viaticos"],
                 $_POST["costo_combustible"],
                 $_POST["peajes"],
-                $_POST["peajes"],
+                $_POST["pesajes"],
                 $_POST["extras"],
                 $_POST["fee"],
                 $_POST["total"],
