@@ -79,7 +79,7 @@ class ViajeModel
     public function listarViajes(){
         return $this->database->query("SELECT V.id_viaje, V.combustible_consumido_previsto, V.km_recorrido_previsto,
                                               V.destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
-                                              C.direccion as destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
+                                              C.direccion, V.origen, C.denominacion, Tc.descripcion, V.fecha,
                                               V.tiempo_previsto, U.nombre, Ve.fk_tractor
                                        FROM Viaje V JOIN Usuario U ON U.id_usuario = V.id_chofer JOIN
                                             Cliente C ON V.id_cliente = C.id JOIN
@@ -93,7 +93,7 @@ class ViajeModel
 
         return $this->database->query("SELECT V.id_viaje, V.combustible_consumido_previsto, V.km_recorrido_previsto,
                                               V.destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
-                                              C.direccion as destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
+                                              C.direccion, V.origen, C.denominacion, Tc.descripcion, V.fecha,
                                               V.tiempo_previsto, U.nombre, Ve.fk_tractor
                                        FROM Viaje V JOIN Usuario U ON U.id_usuario = V.id_chofer JOIN
                                             Cliente C ON V.id_cliente = C.id JOIN

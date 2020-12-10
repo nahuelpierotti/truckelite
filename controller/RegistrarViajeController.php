@@ -37,8 +37,8 @@ class RegistrarViajeController
         $id_viaje = $this->viajeModel->agregarViaje(
             $_POST["id_cliente"],
             $_POST["combustible_consumido_previsto"],
-            $_POST["origen"],
             $_POST["destino"],
+            $_POST["origen"],
             $_POST["tiempo_previsto"],
             $_POST["km_recorrido_previsto"],
             $_POST["id_chofer"],
