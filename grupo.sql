@@ -267,14 +267,14 @@ INSERT INTO Tractor(patente,motor,chasis,modelo,marca,fk_acoplado)
                   ('AC822QD','60916748','J60916748','Actros 1846','M.BENZ','AD100AQ');
 
 INSERT INTO Vehiculo(fk_tractor,posicion_actual,kilometraje,alarma,estado)
-            VALUES('AA123CD','flota',3023,4670,TRUE),
-                  ('AB198QZ','flota',102.9,5000,TRUE),
-                  ('AD200XS','taller',1100,1000,FALSE),
-                  ('AA211ZX','flota',980.221,1530,TRUE),
-                  ('AD678QD','flota',4512,4900,TRUE),
-                  ('AA534QD','flota',629,700,TRUE),
-                  ('AC438QW','taller',456,400,FALSE),
-                  ('AC989QW','flota',3000,3210,TRUE),
-                  ('AB966QD','flota',531,610,TRUE),
-                  ('AC822QD','flota',18000,18020,TRUE);
+            VALUES('AA123CD','-34.668339,-58.567455',3023,4670,TRUE),
+                  ('AB198QZ','-34.668339,-58.567455',102.9,5000,TRUE),
+                  ('AD200XS','-34.6728225,-58.5616453',1100,1000,FALSE),
+                  ('AA211ZX','-34.668339,-58.567455',980.221,1530,TRUE),
+                  ('AD678QD','-34.668339,-58.567455',4512,4900,TRUE),
+                  ('AA534QD','-34.668339,-58.567455',629,700,TRUE),
+                  ('AC438QW','-34.6728225,-58.5616453',456,400,FALSE),
+                  ('AC989QW','-34.668339,-58.567455',3000,3210,TRUE),
+                  ('AB966QD','-34.668339,-58.567455',531,610,TRUE),
+                  ('AC822QD','-34.668339,-58.567455',18000,18020,TRUE);
 
