@@ -33,7 +33,7 @@ class ProformaModel
                                         WHERE id_viaje= $idViaje");
     }
 
-    public function exportarProformaPDF($data){
+    public function exportarProformaPDF($data,$viaje){
         $pdf = new FPDF();
         $pdf->AddPage();
         // Logo
