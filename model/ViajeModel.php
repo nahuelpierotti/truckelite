@@ -64,7 +64,6 @@ class ViajeModel
         $id_viaje,
         $combustible_consumido,
         $combustible_consumido_previsto,
-        $tipo_de_carga,
         $fecha,
         $destino,
         $origen,
@@ -81,7 +80,6 @@ class ViajeModel
                                 id_viaje='$id_viaje',
                                 combustible_consumido='$combustible_consumido',
                                 combustible_consumido_previsto='$combustible_consumido_previsto',
-                                tipo_de_carga='$tipo_de_carga',
                                 fecha='$fecha',
                                 destino='$destino',
                                 origen='$origen',
@@ -90,7 +88,7 @@ class ViajeModel
                                 tiempo_previsto='$tiempo_previsto',
                                 km_recorrido='$km_recorrido',
                                 km_recorrido_previsto='$km_recorrido_previsto',
-                                cliente='$cliente',
+                                id_cliente='$cliente',
                                 id_chofer='$id_chofer',
                                 id_vehiculo='$id_vehiculo'
                                 WHERE id_viaje='$id_viaje'");
@@ -231,6 +229,18 @@ class ViajeModel
          return $this->database->query("UPDATE Viaje SET 
                                  desviacion='$desviacion'
                                  WHERE id_viaje='$idViaje'");
+    }
+
+    public function traerNombreDelClientePorSuId($idCliente){
+        return $this->database->query("SELECT denominacion 
+                                       FROM Cliente
+                                       WHERE id = '$idCliente'");
+    }
+
+    public function traerIdDelClientePorSuDenominacion($denominacion){
+        return $this->database->query("SELECT id 
+                                       FROM Cliente
+                                       WHERE denominacion = '$denominacion'");
     }
 
 }

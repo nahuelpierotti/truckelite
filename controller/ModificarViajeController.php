@@ -22,11 +22,12 @@ class ModificarViajeController
     }
 
     public function modificarViaje(){
+        $idCliente = $this->viajeModel->traerIdDelClientePorSuDenominacion($_POST["cliente"]);
+        //die(var_dump($idCliente[0]["id"]));
         $data = $this->viajeModel->modificarViaje(
             $_POST["id_viaje"],
             $_POST["combustible_consumido"],
             $_POST["combustible_consumido_previsto"],
-            $_POST["tipo_de_carga"],
             $_POST["fecha"],
             $_POST["destino"],
             $_POST["origen"],
@@ -35,7 +36,7 @@ class ModificarViajeController
             $_POST["tiempo_previsto"],
             $_POST["km_recorrido"],
             $_POST["km_recorrido_previsto"],
-            $_POST["cliente"],
+            $idCliente[0]["id"],
             $_POST["id_chofer"],
             $_POST["id_vehiculo"]
         );
@@ -52,6 +53,7 @@ class ModificarViajeController
     public function viajeBuscado(&$data){
         if(isset($_GET["url"])) {
             $data["viajeBuscado"] = $this->viajeModel->consultarViaje($_GET["url"]);
+            $data["denominacion"] = $this->viajeModel->traerNombreDelClientePorSuId($data["viajeBuscado"][0]["id_cliente"]);
         }
     }
 }

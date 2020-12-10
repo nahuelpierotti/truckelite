@@ -22,10 +22,6 @@
                 <input class="w3-input w3-border w3-sand" name="combustible_consumido_previsto" type="text" value="{{viajeBuscado.0.combustible_consumido_previsto}}">
             </p>
             <p>
-                <label class="w3-text-brown"><b>Tipo de Carga</b></label>
-                <input class="w3-input w3-border w3-sand" name="tipo_de_carga" type="text" value="{{viajeBuscado.0.tipo_de_carga}}">
-            </p>
-            <p>
                 <label class="w3-text-brown"><b>Fecha</b></label>
                 <input class="w3-input w3-border w3-sand" name="fecha" type="date" value="{{viajeBuscado.0.fecha}}">
             </p>
@@ -59,7 +55,7 @@
             </p>
             <p>
                 <label class="w3-text-brown"><b>Cliente</b></label>
-                <input class="w3-input w3-border w3-sand" name="cliente" type="text" value="{{viajeBuscado.0.cliente}}">
+                <input class="w3-input w3-border w3-sand" name="cliente" type="text" value="{{denominacion.0.denominacion}}">
             </p>
             <p>
                 <label class="w3-text-brown"><b>Id Chofer</b></label>
