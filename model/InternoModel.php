@@ -35,13 +35,16 @@ class InternoModel
             $data["acciones"][4]["habilitar"] = false;
             $data["acciones"][5]["habilitar"] = false;
             $data["acciones"][6]["habilitar"] = false;
-            $data["acciones"][1]["habilitar"] = false;
             $data["acciones"][9]["habilitar"] = false;
             $data["acciones"][10]["habilitar"] = false;
+
         }
         if($data["rol"] != "Administrador" && $data["rol"] != "Mecanico"){
             $data["acciones"][7]["habilitar"] = false;
             $data["acciones"][8]["habilitar"] = false;
+        }
+
+        if($data["rol"] == "Chofer"){
             $data["acciones"][1]["habilitar"] = false;
         }
     }
