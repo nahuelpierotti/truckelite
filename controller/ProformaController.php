@@ -34,7 +34,7 @@ class ProformaController
         $viaje= $_GET["viaje"];
         $data["id_viaje"]= $viaje;
         $this->mostrarProforma($data);
-        $pdf=$this->proformaModel->exportarProformaPDF($data);
+        $pdf=$this->proformaModel->exportarProformaPDF($data,$viaje);
 
         echo $this->render->render("view/proformaView.php", $pdf);
     }
