@@ -23,23 +23,19 @@ class ModificarViajeController
 
     public function modificarViaje(){
         $idCliente = $this->viajeModel->traerIdDelClientePorSuDenominacion($_POST["cliente"]);
-        //die(var_dump($idCliente[0]["id"]));
-        $data = $this->viajeModel->modificarViaje(
-            $_POST["id_viaje"],
-            $_POST["combustible_consumido"],
-            $_POST["combustible_consumido_previsto"],
-            $_POST["fecha"],
-            $_POST["destino"],
-            $_POST["origen"],
-            $_POST["desviacion"],
-            $_POST["tiempo"],
-            $_POST["tiempo_previsto"],
-            $_POST["km_recorrido"],
-            $_POST["km_recorrido_previsto"],
-            $idCliente[0]["id"],
-            $_POST["id_chofer"],
-            $_POST["id_vehiculo"]
-        );
+
+        $data = $this->viajeModel->modificarViaje($_POST["id_viaje"],
+                                                  $_POST["combustible_consumido"],
+                                                  $_POST["combustible_consumido_previsto"],
+                                                  $_POST["fecha"],
+                                                  $_POST["destino"],
+                                                  $_POST["origen"],
+                                                  $_POST["desviacion"],
+                                                  $_POST["tiempo"],
+                                                  $_POST["tiempo_previsto"],
+                                                  $_POST["km_recorrido"],
+                                                  $_POST["km_recorrido_previsto"],
+                                                  $idCliente[0]["id"]);
         if (!$data) {
             $_SESSION["mensaje"] = "No se pudo modificar el viaje";
             header("Location: /truckelite/modificarViaje");

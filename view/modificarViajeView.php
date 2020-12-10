@@ -9,10 +9,8 @@
         <p class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">{{mensaje}}</p>
         {{/mensaje}}
         <form class="" action="modificarViaje/modificarViaje" method="post">
-            <p>
-                <label class="w3-text-brown"><b>ID Viaje</b></label>
-                <input class="w3-input w3-border w3-sand" name="id_viaje" type="number" value="{{viajeBuscado.0.id_viaje}}" required>
-            </p>
+
+            <input  name="id_viaje" type="hidden" value="{{viajeBuscado.0.id_viaje}}" required>
             <p>
                 <label class="w3-text-brown"><b>Combustible Consumido</b></label>
                 <input class="w3-input w3-border w3-sand" name="combustible_consumido" type="text" value="{{viajeBuscado.0.combustible_consumido}}">
@@ -56,14 +54,6 @@
             <p>
                 <label class="w3-text-brown"><b>Cliente</b></label>
                 <input class="w3-input w3-border w3-sand" name="cliente" type="text" value="{{denominacion.0.denominacion}}">
-            </p>
-            <p>
-                <label class="w3-text-brown"><b>Id Chofer</b></label>
-                <input class="w3-input w3-border w3-sand" name="id_chofer" type="number" value="{{viajeBuscado.0.id_chofer}}">
-            </p>
-            <p>
-                <label class="w3-text-brown"><b>Id Vehiculo</b></label>
-                <input class="w3-input w3-border w3-sand" name="id_vehiculo" type="number" value="{{viajeBuscado.0.id_vehiculo}}">
             </p>
 
             <p>

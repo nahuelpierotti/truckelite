@@ -29,7 +29,14 @@ class UsuarioModel
 
     public function modificarUsuario($id,$dni,$nombreYapellido,$telefono,$mail,$clave, $rol,$licencia){
         $this->desvincularRol($id);
-        $resultadoPorModificar = $this->database->execute("UPDATE Usuario SET dni= '$dni',rol = '$rol', nombre='$nombreYapellido', telefono= '$telefono', mail= '$mail', clave= '$clave' WHERE id_usuario= $id");
+        $resultadoPorModificar = $this->database->execute("UPDATE Usuario 
+                                                           SET dni = '$dni',
+                                                               rol  = '$rol', 
+                                                               nombre ='$nombreYapellido', 
+                                                               telefono = '$telefono', 
+                                                               mail = '$mail', 
+                                                               clave = '$clave' 
+                                                           WHERE id_usuario = $id");
         if ($resultadoPorModificar){
             $this->vincularRol($rol, $id, $licencia);
         }

@@ -60,38 +60,20 @@ class ViajeModel
 
     }
 
-    public function modificarViaje(
-        $id_viaje,
-        $combustible_consumido,
-        $combustible_consumido_previsto,
-        $fecha,
-        $destino,
-        $origen,
-        $desviacion,
-        $tiempo,
-        $tiempo_previsto,
-        $km_recorrido,
-        $km_recorrido_previsto,
-        $cliente,
-        $id_chofer,
-        $id_vehiculo
-    ){
-        return $this->database->execute("UPDATE viaje SET 
-                                id_viaje='$id_viaje',
-                                combustible_consumido='$combustible_consumido',
-                                combustible_consumido_previsto='$combustible_consumido_previsto',
-                                fecha='$fecha',
-                                destino='$destino',
-                                origen='$origen',
-                                desviacion='$desviacion',
-                                tiempo='$tiempo',
-                                tiempo_previsto='$tiempo_previsto',
-                                km_recorrido='$km_recorrido',
-                                km_recorrido_previsto='$km_recorrido_previsto',
-                                id_cliente='$cliente',
-                                id_chofer='$id_chofer',
-                                id_vehiculo='$id_vehiculo'
-                                WHERE id_viaje='$id_viaje'");
+    public function modificarViaje($id_viaje, $combustible_consumido, $combustible_consumido_previsto, $fecha, $destino, $origen, $desviacion, $tiempo, $tiempo_previsto, $km_recorrido, $km_recorrido_previsto, $cliente){
+        return $this->database->execute("UPDATE viaje 
+                                         SET combustible_consumido = '$combustible_consumido',
+                                             combustible_consumido_previsto = '$combustible_consumido_previsto',
+                                             fecha = '$fecha',
+                                             destino = '$destino',
+                                             origen = '$origen',
+                                             desviacion = '$desviacion',
+                                             tiempo = '$tiempo',
+                                             tiempo_previsto = '$tiempo_previsto',
+                                             km_recorrido = '$km_recorrido',
+                                             km_recorrido_previsto = '$km_recorrido_previsto',
+                                             id_cliente='$cliente'
+                                         WHERE id_viaje = '$id_viaje'");
     }
 
     public function listarViajes(){
