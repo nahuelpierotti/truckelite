@@ -79,7 +79,11 @@ class ViajeModel
     public function listarViajes(){
         return $this->database->query("SELECT V.id_viaje, V.combustible_consumido_previsto, V.km_recorrido_previsto,
                                               V.destino, V.origen, C.denominacion, Tc.descripcion, V.fecha,
+<<<<<<< Updated upstream
                                               C.direccion, V.origen, C.denominacion, Tc.descripcion, V.fecha,
+=======
+                                              V.origen, C.denominacion, Tc.descripcion, V.fecha,
+>>>>>>> Stashed changes
                                               V.tiempo_previsto, U.nombre, Ve.fk_tractor
                                        FROM Viaje V JOIN Usuario U ON U.id_usuario = V.id_chofer JOIN
                                             Cliente C ON V.id_cliente = C.id JOIN
@@ -133,58 +137,44 @@ class ViajeModel
 
     public function cargarVehiculosDisponiblesTanque(&$data){
         $data["vehiculosTanque"] = $this->database->query("SELECT id_vehiculo, fk_tractor,a.tipo as tipo_acoplado
-                                                     FROM Vehiculo v
-                                                     join tractor t 
-                                                     on v.fk_tractor=t.patente
-                                                     join acoplado a 
-                                                     on t.fk_acoplado=a.patente_acoplado 
-                                                     WHERE a.tipo='Tanque'
-                                                     AND v.id_vehiculo NOT IN (SELECT id_vehiculo
-                                                                               FROM Viaje
-                                                                               WHERE estado = TRUE)
-                                                                               ");
+                                                           FROM Vehiculo v JOIN 
+                                                                Tractor t ON v.fk_tractor=t.patente JOIN 
+                                                                Acoplado a ON t.fk_acoplado=a.patente_acoplado 
+                                                           WHERE a.tipo = 'Tanque' AND v.id_vehiculo NOT IN (SELECT id_vehiculo
+                                                                                                             FROM Viaje
+                                                                                                             WHERE estado = TRUE)");
     }
 
     public function cargarVehiculosDisponiblesGranel(&$data){
         $data["vehiculosGranel"] = $this->database->query("SELECT id_vehiculo, fk_tractor,a.tipo as tipo_acoplado
-                                                     FROM Vehiculo v
-                                                     join tractor t 
-                                                     on v.fk_tractor=t.patente
-                                                     join acoplado a 
-                                                     on t.fk_acoplado=a.patente_acoplado 
-                                                     WHERE a.tipo='Granel'
-                                                     AND v.id_vehiculo NOT IN (SELECT id_vehiculo
-                                                                               FROM Viaje
-                                                                               WHERE estado = TRUE)
-                                                                               ");
+                                                           FROM Vehiculo v JOIN 
+                                                                Tractor t ON v.fk_tractor = t.patente JOIN 
+                                                                Acoplado a ON t.fk_acoplado = a.patente_acoplado 
+                                                           WHERE a.tipo ='Granel' AND v.id_vehiculo NOT IN (SELECT id_vehiculo
+                                                                                                            FROM Viaje
+                                                                                                            WHERE estado = TRUE)");
     }
+
     public function cargarVehiculosDisponiblesJaula(&$data){
         $data["vehiculosJaula"] = $this->database->query("SELECT id_vehiculo, fk_tractor,a.tipo as tipo_acoplado
-                                                     FROM Vehiculo v
-                                                     join tractor t 
-                                                     on v.fk_tractor=t.patente
-                                                     join acoplado a 
-                                                     on t.fk_acoplado=a.patente_acoplado 
-                                                     WHERE a.tipo ='Jaula'
-                                                     AND v.id_vehiculo NOT IN (SELECT id_vehiculo
-                                                                               FROM Viaje
-                                                                               WHERE estado = TRUE)
-                                                                               ");
+                                                          FROM Vehiculo v JOIN 
+                                                               Tractor t ON v.fk_tractor = t.patente JOIN 
+                                                               Acoplado a ON t.fk_acoplado = a.patente_acoplado 
+                                                          WHERE a.tipo = 'Jaula' AND v.id_vehiculo NOT IN (SELECT id_vehiculo
+                                                                                                           FROM Viaje
+                                                                                                           WHERE estado = TRUE)");
     }
 
     public function cargarVehiculosDisponiblesJaulaArania(&$data){
         $data["vehiculosJaulaArania"] = $this->database->query("SELECT id_vehiculo, fk_tractor,a.tipo as tipo_acoplado
-                                                     FROM Vehiculo v
-                                                     join tractor t 
-                                                     on v.fk_tractor=t.patente
-                                                     join acoplado a 
-                                                     on t.fk_acoplado=a.patente_acoplado 
-                                                     WHERE a.tipo in ('Jaula','Araña')
-                                                     AND v.id_vehiculo NOT IN (SELECT id_vehiculo
-                                                                               FROM Viaje
-                                                                               WHERE estado = TRUE)
-                                                                               ");
+                                                                FROM Vehiculo v 
+                                                                JOIN Tractor t ON v.fk_tractor = t.patente JOIN
+                                                                     Acoplado a ON t.fk_acoplado = a.patente_acoplado 
+                                                                WHERE a.tipo in ('Jaula','Araña') AND v.id_vehiculo NOT IN (SELECT id_vehiculo
+                                                                                                                            FROM Viaje
+                                                                                                                            WHERE estado = TRUE)");
     }
+
     public function cargarVehiculosDisponiblesCarCarrier(&$data){
         $data["vehiculosCarCarrier"] = $this->database->query("SELECT id_vehiculo, fk_tractor,a.tipo as tipo_acoplado
                                                      FROM Vehiculo v
@@ -195,9 +185,9 @@ class ViajeModel
                                                      WHERE a.tipo='CarCarrier'
                                                      AND v.id_vehiculo NOT IN (SELECT id_vehiculo
                                                                                FROM Viaje
-                                                                               WHERE estado = TRUE)
-                                                                               ");
+                                                                               WHERE estado = TRUE)");
     }
+
     public function cargarClientesDisponibles(&$data){
         $data["clientes"] = $this->database->query("SELECT id,denominacion
                                                      FROM Cliente

@@ -20,6 +20,13 @@ class VehiculoModel
                                             Vehiculo V ON T.patente = V.fk_tractor ");
     }
 
+    public function mostrarVehiculo($idVehiculo, &$data){
+        $data["vehiculos"] = $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, T.fk_acoplado, V.posicion_actual, V.estado, V.kilometraje 
+                                                     FROM Tractor T JOIN 
+                                                          Vehiculo V ON T.patente = V.fk_tractor
+                                                     WHERE v.id_vehiculo = $idVehiculo");
+    }
+
     public function obtenerPatentePorIdVehiculo($idVehiculo){
         return $this->database->query("SELECT fk_tractor
                                        FROM Vehiculo
@@ -221,10 +228,5 @@ class VehiculoModel
     public function obtenerIdVehiculoPorSuPatente($patente){
         return $this->database->query("SELECT id_vehiculo FROM Vehiculo WHERE fk_tractor='$patente'");
     }
-    public function mostrarVehiculo($idVehiculo, &$data){
-        $data["vehiculos"] = $this->database->query("SELECT T.patente, T.motor, T.chasis, T.modelo, T.marca, T.fk_acoplado, V.posicion_actual, V.estado, V.kilometraje 
-                                                     FROM Tractor T JOIN 
-                                                          Vehiculo V ON T.patente = V.fk_tractor
-                                                     WHERE v.id_vehiculo = $idVehiculo");
-    }
+
 }
