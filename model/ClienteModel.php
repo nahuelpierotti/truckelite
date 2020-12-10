@@ -42,7 +42,7 @@ class ClienteModel
                                      $mail,
                                      $contacto1,
                                      $contacto2){
-    return $this->database->execute("UPDATE Cliente SET denominacion= '$denominacion',cuit = '$cuit', direccion='$direccion', telefono= '$telefono', mail= '$mail', contacto1= '$contacto1', contacto2='$contacto2' WHERE id= $id");
+    return $this->database->execute("UPDATE Cliente SET denominacion= '$denominacion',cuit = '$cuit', direccion='$direccion', telefono= '$telefono', email= '$mail', contacto1= '$contacto1', contacto2='$contacto2' WHERE id= $id");
 
     }
 }

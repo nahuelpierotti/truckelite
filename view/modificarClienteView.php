@@ -2,7 +2,7 @@
 {{> navBar}}
 <div class="w3-display-container">
     <div id="formularioCliente" class="w3-container w3-content w3-card-4 w3-padding"
-         style="margin-bottom: 4em;">
+         style="margin-bottom: 4em;margin-top: 4em;">
         <div class="w3-blue">
             <h2 class="w3-padding">Actualizar Cliente</h2>
         </div>
