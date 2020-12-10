@@ -233,10 +233,23 @@ INSERT INTO Tipo_carga(descripcion)
 
 INSERT INTO Usuario(user_name, nombre, dni, rol, telefono, mail, clave)
 VALUES('npie','Nahuel',31832665,'Administrador',46353072,'npierotti@alumno.unlam.edu.ar','e10adc3949ba59abbe56e057f20f883e'),
-      ("pepe", "Pepe Garcia", 40041115, "Chofer", 44321833,"pepe_argento@hotmail.com", "21232f297a57a5a743894a0e4a801fc3");
+      ("pepe", "Pepe Garcia", 40041115, "Chofer", 44321833,"pepe_argento@hotmail.com", '0abe4fbd0f59745b3b1516cae7fcb3a3'),
+      ("admin", "Matias Romero", 38615940, "Administrador", 44549625,"matiasromero@hotmail.com", "21232f297a57a5a743894a0e4a801fc3"),
+      ("gusmecanico", "Gustavo Vidal", 38615941, "Mecanico", 44549620,"gustavovidal@hotmail.com", "f3fcf52d139a0467bb45593638c6f6a8"),
+      ("diegosupervisor", "Diego Lopez", 38615943, "Supervisor", 44549624,"diegolopez@hotmail.com", "6cf72b8aff4551861c20d5a28ffb4113");
 
 INSERT INTO Chofer(id_usuario,licencia)
             VALUES(2,'Profesional');
+            
+INSERT INTO Administrador(id_usuario)
+            VALUES(1),
+				  (3);
+                  
+INSERT INTO Supervisor(id_usuario)
+            VALUES(5);
+            
+INSERT INTO Mecanico(id_usuario)
+            VALUES(4);
 
 INSERT INTO Cliente(denominacion,cuit,direccion,telefono,email,contacto1,contacto2)
 	         VALUES('Cliente Los Andes', '20333606853', 'Villa Allende', '1199379211', 'losAndes@hotmail.com', 'Contacto 1', 'Contacto 2'),
@@ -267,14 +280,14 @@ INSERT INTO Tractor(patente,motor,chasis,modelo,marca,fk_acoplado)
                   ('AC822QD','60916748','J60916748','Actros 1846','M.BENZ','AD100AQ');
 
 INSERT INTO Vehiculo(fk_tractor,posicion_actual,kilometraje,alarma,estado)
-            VALUES('AA123CD','flota',3023,4670,TRUE),
-                  ('AB198QZ','flota',102.9,5000,TRUE),
-                  ('AD200XS','taller',1100,1000,FALSE),
-                  ('AA211ZX','flota',980.221,1530,TRUE),
-                  ('AD678QD','flota',4512,4900,TRUE),
-                  ('AA534QD','flota',629,700,TRUE),
-                  ('AC438QW','taller',456,400,FALSE),
-                  ('AC989QW','flota',3000,3210,TRUE),
-                  ('AB966QD','flota',531,610,TRUE),
-                  ('AC822QD','flota',18000,18020,TRUE);
+            VALUES('AA123CD','-34.668339,-58.567455',3023,4670,TRUE),
+                  ('AB198QZ','-34.668339,-58.567455',102.9,5000,TRUE),
+                  ('AD200XS','-34.6728225,-58.5616453',1100,1000,FALSE),
+                  ('AA211ZX','-34.668339,-58.567455',980.221,1530,TRUE),
+                  ('AD678QD','-34.668339,-58.567455',4512,4900,TRUE),
+                  ('AA534QD','-34.668339,-58.567455',629,700,TRUE),
+                  ('AC438QW','-34.6728225,-58.5616453',456,400,FALSE),
+                  ('AC989QW','-34.668339,-58.567455',3000,3210,TRUE),
+                  ('AB966QD','-34.668339,-58.567455',531,610,TRUE),
+                  ('AC822QD','-34.668339,-58.567455',18000,18020,TRUE);
 
