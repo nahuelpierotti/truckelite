@@ -221,4 +221,16 @@ class ViajeModel
                                                      ");
     }
 
+    public function traerTimepoPrevistoYreal($idViaje){
+        return $this->database->query("SELECT tiempo_previsto,tiempo
+                                       FROM Viaje
+                                       WHERE id_viaje = '$idViaje'");
+    }
+
+    public function agregarDesviacion($idViaje,$desviacion){
+         return $this->database->query("UPDATE Viaje SET 
+                                 desviacion='$desviacion'
+                                 WHERE id_viaje='$idViaje'");
+    }
+
 }

@@ -19,6 +19,12 @@
         <h4 class="w3-text-blue">Diferencia entre kilometros recorridos previstos y reales: {{kmRecorridosDiferencia}}</h4>
     </article>
     <article class="w3-panel w3-border w3-border-black">
+        <h2>Comparación tiempo</h2>
+        <h4>Tiempo previsto: {{tiempoViaje.0.tiempo_previsto}}</h4>
+        <h4>Tiempo: {{tiempoViaje.0.tiempo}}</h4>
+        <h4 class="w3-text-blue">Diferencia entre tiempo previsto y real: {{tiempoViajeDiferencia}}</h4>
+    </article>
+    <article class="w3-panel w3-border w3-border-black">
         <h2>Costos del viaje</h2>
         <h4>Costo viaticos previstos: {{costosProforma.0.viaticos}}</h4>
         <h4>Costo viaticos: {{costosYcargasReporte.0.costo_hospedaje}}</h4>

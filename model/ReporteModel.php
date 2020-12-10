@@ -22,7 +22,6 @@ class ReporteModel
     }
 
     public function agregarReporte($idViaje,
-                                   $fecha,
                                    $peajes,
                                    $pesajes,
                                    $lugarCargaCombustible,
@@ -33,6 +32,7 @@ class ReporteModel
                                    $posicionActual,
                                    $combustibleConsumido,
                                    $kmRecorrido,
+                                   $tiempo,
                                    $estadoViaje){
         $mensaje = "No se pudo realizar la operacion.";
         $condicion = $this->obtenerEstadoDeViaje($idViaje);
@@ -52,7 +52,8 @@ class ReporteModel
             $sql .= "UPDATE Viaje 
                      SET combustible_consumido = combustible_consumido + $combustibleConsumido,
                          km_recorrido = km_recorrido + $kmRecorrido,
-                         $estadoNuevo
+                         $estadoNuevo,
+                         tiempo = '$tiempo'
                      WHERE id_viaje = $idViaje;";
 
             //INSERTA UN NUEVO REPORTE

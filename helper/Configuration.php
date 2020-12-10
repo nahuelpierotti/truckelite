@@ -18,6 +18,7 @@ include_once ("model/CargaModel.php");
 include_once ("model/CostosModel.php");
 include_once ("model/ProformaModel.php");
 include_once ("model/ReporteModel.php");
+include_once ("model/GraficosComparativosModel.php");
 /*CONTROLLER*/
 include_once ("controller/LoginController.php");
 include_once ("controller/LogOutController.php");
@@ -158,6 +159,14 @@ class Configuration{
         return new InternoModel($database,$vehiculoModel);
     }
 
+    public function getGraficosComparativosModel(){
+        $database = $this->getDatabase();
+        $viajeModel = $this->getViajeModel();
+        $reporteModel = $this->getReporteModel();
+        $proformaModel = $this->getProformaModel();
+        return new GraficosComparativosModel($database,$viajeModel,$reporteModel,$proformaModel);
+    }
+
     /*CONTROLLER*/
     public function getLoginController(){
         $usuarioModel = $this->getUsuarioModel();
@@ -288,10 +297,8 @@ class Configuration{
     }
 
     public function getGraficosComparativosController(){
-        $reporteModel = $this->getReporteModel();
-        $viajeModel = $this->getViajeModel();
-        $proformaModel = $this->getProformaModel();
-        return new GraficosComparativosController($this->getRender(),$reporteModel,$viajeModel,$proformaModel);
+        $graficoModel = $this->getGraficosComparativosModel();
+        return new GraficosComparativosController($this->getRender(),$graficoModel);
     }
 
     public function getVehiculosEnTallerController(){

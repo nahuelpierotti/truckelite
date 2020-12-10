@@ -26,7 +26,6 @@ class CargarDatosViajeController
 
     public function cargarReporte(){
         $mensaje = $this->reporteModel->agregarReporte($_POST["id_viaje"],
-                                                       $_POST["fecha"],
                                                        $_POST["peajes"],
                                                        $_POST["pesajes"],
                                                        $_POST["lugar_carga_combustible"],
@@ -37,6 +36,7 @@ class CargarDatosViajeController
                                                        $_POST["posicion_actual"],
                                                        $_POST["combustible_consumido"],
                                                        $_POST["km_recorrido"],
+                                                       $_POST["tiempo"],
                                                        $_POST["estadoViaje"]);
 
         header("Location: /truckelite/cargarDatosViaje?msj=$mensaje");
