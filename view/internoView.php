@@ -5,7 +5,6 @@
     <h1 class="w3-margin w3-jumbo w3-text-white">TRUCK ELITE</h1>
     <h1 class="w3-margin w3-jumbo w3-text-white">Bienvenido <strong>{{nomYape}}</strong></h1>
     <p class="w3-xlarge w3-text-white">Web de camiones</p>
-   <!-- <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">About us</button>-->
 </header>
 <!-- First Grid -->
 <div class="w3-row-padding w3-padding-64 w3-container">
@@ -50,7 +49,7 @@
                     <td>{{modelo}}</td>
                     <td>{{marca}}</td>
                     <td>{{fk_acoplado}}{{^fk_acoplado}}Sin asignar{{/fk_acoplado}}</td>
-                    <td>{{#estado}}{{posicion_actual}}{{/estado}}{{^estado}}taller{{/estado}}</td>
+                    <td>{{#estado}}{{posicion_actual}}{{/estado}}{{^estado}}{{posicion_actual}}{{/estado}}</td>
                     <td>{{#estado}}En Condiciones{{/estado}}{{^estado}}En mantenimiento{{/estado}}</td>
                     <td>{{kilometraje}}km</td>
                 </tr>
@@ -62,25 +61,5 @@
         </div>
     </div>
 </div>
-<!--Third Grid-->
-<!--<div class="w3-row-padding w3-padding-64 w3-container">
-    <div class="w3-content">
-        <div class="w3-twothird">
-            <A name="flota"><h1>Flota</h1></A>
-            <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.</h5>
-            <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <div class="w3-third w3-center">
-            <i class="fas fa-truck-moving w3-padding-64 w3-text-blue"></i>
-        </div>
-    </div>
-</div>-->
+
 {{> footer}}
