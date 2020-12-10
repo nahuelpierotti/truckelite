@@ -233,10 +233,23 @@ INSERT INTO Tipo_carga(descripcion)
 
 INSERT INTO Usuario(user_name, nombre, dni, rol, telefono, mail, clave)
 VALUES('npie','Nahuel',31832665,'Administrador',46353072,'npierotti@alumno.unlam.edu.ar','e10adc3949ba59abbe56e057f20f883e'),
-      ("pepe", "Pepe Garcia", 40041115, "Chofer", 44321833,"pepe_argento@hotmail.com", "21232f297a57a5a743894a0e4a801fc3");
+      ("pepe", "Pepe Garcia", 40041115, "Chofer", 44321833,"pepe_argento@hotmail.com", '0abe4fbd0f59745b3b1516cae7fcb3a3'),
+      ("admin", "Matias Romero", 38615940, "Administrador", 44549625,"matiasromero@hotmail.com", "21232f297a57a5a743894a0e4a801fc3"),
+      ("gusmecanico", "Gustavo Vidal", 38615941, "Mecanico", 44549620,"gustavovidal@hotmail.com", "f3fcf52d139a0467bb45593638c6f6a8"),
+      ("diegosupervisor", "Diego Lopez", 38615943, "Supervisor", 44549624,"diegolopez@hotmail.com", "6cf72b8aff4551861c20d5a28ffb4113");
 
 INSERT INTO Chofer(id_usuario,licencia)
             VALUES(2,'Profesional');
+            
+INSERT INTO Administrador(id_usuario)
+            VALUES(1),
+				  (3);
+                  
+INSERT INTO Supervisor(id_usuario)
+            VALUES(5);
+            
+INSERT INTO Mecanico(id_usuario)
+            VALUES(4);
 
 INSERT INTO Cliente(denominacion,cuit,direccion,telefono,email,contacto1,contacto2)
 	         VALUES('Cliente Los Andes', '20333606853', 'Villa Allende', '1199379211', 'losAndes@hotmail.com', 'Contacto 1', 'Contacto 2'),
