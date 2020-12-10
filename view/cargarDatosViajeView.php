@@ -11,22 +11,22 @@
         <form class="" action="cargarDatosViaje/cargarReporte" method="post">
 
             <p>
-                <input class="w3-input w3-border w3-sand w3-hide" name="id_viaje" type="number" value="{{id_viaje}}">
+                <input class="w3-input w3-border w3-sand w3-hide" name="id_viaje" type="number" min="1"  value="{{id_viaje}}">
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Combustible Consumido</b></label>
-                <input class="w3-input w3-border w3-sand" name="combustible_consumido" type="number" required>
+                <input class="w3-input w3-border w3-sand" name="combustible_consumido" type="number" min="0" required>
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Cantidad cargado de combustible</b></label>
-                <input class="w3-input w3-border w3-sand" name="cantidad_carga_combustible" type="number" required>
+                <input class="w3-input w3-border w3-sand" name="cantidad_carga_combustible" type="number" min="0" required>
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Costo de combustible cargado</b></label>
-                <input class="w3-input w3-border w3-sand" name="costo_carga_combustible" type="number" required>
+                <input class="w3-input w3-border w3-sand" name="costo_carga_combustible" type="number" min="0" required>
             </p>
 
             <p>
@@ -36,12 +36,12 @@
 
             <p>
                 <label class="w3-text-brown"><b>Costo de peajes</b></label>
-                <input class="w3-input w3-border w3-sand" name="peajes" type="text" required>
+                <input class="w3-input w3-border w3-sand" name="peajes" type="number" min="0" required>
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Costo de pesajes</b></label>
-                <input class="w3-input w3-border w3-sand" name="pesajes" type="text" required>
+                <input class="w3-input w3-border w3-sand" name="pesajes" type="number" min="0" required>
             </p>
 
             <p>
@@ -53,7 +53,7 @@
 
             <p>
                 <label class="w3-text-brown"><b>KM Recorridos</b></label>
-                <input class="w3-input w3-border w3-sand" name="km_recorrido" type="number" required>
+                <input class="w3-input w3-border w3-sand" name="km_recorrido" type="number" min="0" required>
             </p>
 
             <p>
@@ -68,7 +68,7 @@
 
             <p>
                 <label class="w3-text-brown"><b>Costo hospedaje</b></label>
-                <input class="w3-input w3-border w3-sand" name="costo_hospedaje" type="number" required>
+                <input class="w3-input w3-border w3-sand" name="costo_hospedaje" type="number" min="0" required>
             </p>
 
             <p>

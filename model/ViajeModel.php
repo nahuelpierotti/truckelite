@@ -104,6 +104,9 @@ class ViajeModel
     }
 
     public function eliminarViaje($id_viaje){
+        $this->database->execute("DELETE FROM carga WHERE id_viaje= '$id_viaje'");
+        $this->database->execute("DELETE FROM proforma WHERE id_viaje= '$id_viaje'");
+        $this->database->execute("DELETE FROM reporte WHERE id_viaje= '$id_viaje'");
         return $this->database->execute("DELETE FROM viaje WHERE id_viaje= '$id_viaje'");
     }
 

@@ -12,7 +12,7 @@
 
             <p>
                 <label class="w3-text-brown"><b>Patente</b></label>
-                <input class="w3-input w3-border w3-sand" name="patente" type="text" value="{{acoplado.0.patente_acoplado}}">
+                <input class="w3-input w3-border w3-sand" name="patente" type="text" value="{{acoplado.0.patente_acoplado}}" required>
 
             </p>
 
@@ -37,7 +37,7 @@
 
             <p>
                 <label class="w3-text-brown"><b>Chasis</b></label>
-                <input class="w3-input w3-border w3-sand" name="chasis" type="number" value="{{acoplado.0.chasis_acoplado}}" required>
+                <input class="w3-input w3-border w3-sand" name="chasis" type="number" min="0" value="{{acoplado.0.chasis_acoplado}}" required>
             </p>
 
             <p>

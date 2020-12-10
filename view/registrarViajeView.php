@@ -28,7 +28,7 @@
 
                 <p>
                     <label class="w3-text-brown"><b>Peso</b></label>
-                    <input class="w3-input w3-border w3-sand" name="peso" id=peso type="text" required>
+                    <input class="w3-input w3-border w3-sand" name="peso" id=peso type="number" min="0" required>
                 </p>
 
                 <div>
@@ -103,7 +103,7 @@
 
                 <p>
                     <label class="w3-text-brown"><b>Temperatura</b></label>
-                    <input type="text" class="w3-input w3-border w3-sand" name="temperatura" id="temperatura" required>
+                    <input type="text" class="w3-input w3-border w3-sand" name="temperatura" id="temperatura">
                 </p>
                 <br>
                 <button class="w3-btn w3-grey w3-right" id="siguiente1" >SIGUIENTE</button>
@@ -123,7 +123,7 @@
             </label>
             <p>
                 <label class="w3-text-brown"><b>Combustible Consumido Previsto</b></label>
-                <input class="w3-input w3-border w3-sand" name="combustible_consumido_previsto" id="combustible_consumido_previsto" type="text" value="{{viajeBuscado.0.combustible_consumido_previsto}}">
+                <input class="w3-input w3-border w3-sand" name="combustible_consumido_previsto" id="combustible_consumido_previsto" type="number" min="0" value="{{viajeBuscado.0.combustible_consumido_previsto}}">
             </p>
             <p>
                 <label class="w3-text-brown"><b>Origen</b></label>
@@ -140,7 +140,7 @@
 
             <p>
                 <label class="w3-text-brown"><b>KM Recorridos Previsto</b></label>
-                <input class="w3-input w3-border w3-sand" name="km_recorrido_previsto" id="km_recorrido_previsto" type="text" value="{{viajeBuscado.0.km_recorrido_previsto}}">
+                <input class="w3-input w3-border w3-sand" name="km_recorrido_previsto" id="km_recorrido_previsto" type="number" min="0" value="{{viajeBuscado.0.km_recorrido_previsto}}">
             </p>
 
             <label class="w3-text-brown"><b>Choferes disponibles</b>
@@ -215,39 +215,39 @@
 
             <p>
                 <label class="w3-text-brown"><b>Viaticos</b></label>
-                <input class="w3-input w3-border w3-sand" name="viaticos" type="number" id="viaticos" required oninput="calcular()">
+                <input class="w3-input w3-border w3-sand" name="viaticos" type="number" min="0" id="viaticos" required oninput="calcular()">
 
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Costo combustible</b></label>
-                <input class="w3-input w3-border w3-sand" name="costo_combustible" type="number" id="costo_combustible" required oninput="calcular()">
+                <input class="w3-input w3-border w3-sand" name="costo_combustible" type="number" min="0" id="costo_combustible" required oninput="calcular()">
 
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Peajes</b></label>
-                <input class="w3-input w3-border w3-sand" name="peajes" type="number" id="peajes" required oninput="calcular()">
+                <input class="w3-input w3-border w3-sand" name="peajes" type="number" min="0" id="peajes" required oninput="calcular()">
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Pesajes</b></label>
-                <input class="w3-input w3-border w3-sand" name="pesajes" type="number" id="pesajes" required oninput="calcular()">
+                <input class="w3-input w3-border w3-sand" name="pesajes" type="number" min="0" id="pesajes"  required oninput="calcular()">
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Extras</b></label>
-                <input class="w3-input w3-border w3-sand" name="extras" type="number" id="extras" required oninput="calcular()">
+                <input class="w3-input w3-border w3-sand" name="extras" type="number" min="0" id="extras" required oninput="calcular()">
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Fee</b></label>
-                <input class="w3-input w3-border w3-sand" name="fee" type="number" id="fee" required oninput="calcular()">
+                <input class="w3-input w3-border w3-sand" name="fee" type="number" min="0" id="fee" required oninput="calcular()">
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Total</b></label>
-                <input class="w3-input w3-border w3-sand" name="total" type="number" id="total" required>
+                <input class="w3-input w3-border w3-sand" name="total" type="number" min="0" id="total" required>
             </p>
             <p>
                 <button class="w3-btn w3-blue w3-right" id="agregar_viaje">Agregar Viaje</button>

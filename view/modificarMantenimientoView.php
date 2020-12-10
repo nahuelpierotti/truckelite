@@ -10,13 +10,13 @@
 
             <p>
                 <label class="w3-text-brown"><b>Km unidad</b></label>
-                <input class="w3-input w3-border w3-sand" name="kmUnidad" type="number" value="{{mantenimientoBuscado.0.km_unidad}}">
+                <input class="w3-input w3-border w3-sand" name="kmUnidad" type="number" min="0" value="{{mantenimientoBuscado.0.km_unidad}}">
 
             </p>
 
             <p>
                 <label class="w3-text-brown"><b>Costo</b></label>
-                <input class="w3-input w3-border w3-sand" name="costo" type="number" value="{{mantenimientoBuscado.0.costo}}">
+                <input class="w3-input w3-border w3-sand" name="costo" type="number" min="0" value="{{mantenimientoBuscado.0.costo}}">
 
             </p>
 
@@ -74,7 +74,7 @@
 
             <p>
                 <label class="w3-text-brown"><b>Dni mecanico</b></label>
-                <input class="w3-input w3-border w3-sand" name="dniMecanico" type="number" value="{{mantenimientoBuscado.0.dni}}">
+                <input class="w3-input w3-border w3-sand" name="dniMecanico" type="number" min="0" value="{{mantenimientoBuscado.0.dni}}">
 
             </p>
 

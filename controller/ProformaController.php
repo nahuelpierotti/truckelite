@@ -103,7 +103,8 @@ class ProformaController
         $pdf->Cell(0,10,'ETD Estimado: '.$data["datosProforma"][0]["etd"],0,1,'L');
         $pdf->Cell(0,10,'ETA Estimado: '.$data["datosProforma"][0]["eta"],0,1,'L');
         $pdf->Cell(0,10,'Viaticos: $'.$data["datosProforma"][0]["viaticos"],0,1,'L');
-        $pdf->Cell(0,10,'Peaje y Pasajes: $'.$data["datosProforma"][0]["peajes"],0,1,'L');
+        $pdf->Cell(0,10,'Peajes: $'.$data["datosProforma"][0]["peajes"],0,1,'L');
+        $pdf->Cell(0,10,'Pesajes: $'.$data["datosProforma"][0]["pesajes"],0,1,'L');
         $pdf->Cell(0,10,'Extras: $'.$data["datosProforma"][0]["extras"],0,1,'L');
         $pdf->Cell(0,10,'Hazard: '.$data["datosProforma"][0]["hazard"],0,1,'L');
         $pdf->Cell(0,10,'Reefer: '.$data["datosProforma"][0]["reefer"],0,1,'L');

@@ -13,11 +13,11 @@
             <input  name="id_viaje" type="hidden" value="{{viajeBuscado.0.id_viaje}}" required>
             <p>
                 <label class="w3-text-brown"><b>Combustible Consumido</b></label>
-                <input class="w3-input w3-border w3-sand" name="combustible_consumido" type="text" value="{{viajeBuscado.0.combustible_consumido}}">
+                <input class="w3-input w3-border w3-sand" name="combustible_consumido" type="number" min="0" value="{{viajeBuscado.0.combustible_consumido}}">
             </p>
             <p>
                 <label class="w3-text-brown"><b>Combustible Consumido Previsto</b></label>
-                <input class="w3-input w3-border w3-sand" name="combustible_consumido_previsto" type="text" value="{{viajeBuscado.0.combustible_consumido_previsto}}">
+                <input class="w3-input w3-border w3-sand" name="combustible_consumido_previsto" type="number" min="0" value="{{viajeBuscado.0.combustible_consumido_previsto}}">
             </p>
             <p>
                 <label class="w3-text-brown"><b>Fecha</b></label>
@@ -45,11 +45,11 @@
             </p>
             <p>
                 <label class="w3-text-brown"><b>KM Recorridos</b></label>
-                <input class="w3-input w3-border w3-sand" name="km_recorrido" type="text" value="{{viajeBuscado.0.km_recorrido}}">
+                <input class="w3-input w3-border w3-sand" name="km_recorrido" type="number" min="0" value="{{viajeBuscado.0.km_recorrido}}">
             </p>
             <p>
                 <label class="w3-text-brown"><b>KM Recorridos Previsto</b></label>
-                <input class="w3-input w3-border w3-sand" name="km_recorrido_previsto" type="text" value="{{viajeBuscado.0.km_recorrido_previsto}}">
+                <input class="w3-input w3-border w3-sand" name="km_recorrido_previsto" type="number" min="0" value="{{viajeBuscado.0.km_recorrido_previsto}}">
             </p>
             <p>
                 <label class="w3-text-brown"><b>Cliente</b></label>

@@ -16,8 +16,17 @@ class EmailSender
         $retu="ok";
         try {
             $url_cambio_clave="localhost/truckelite/claveNueva?u=$id_usuario";
-            $cuerpo="<h3>Para recuperar su contraseña ingrese en el siguiente link:</h3><br>
-            <a class='w3-btn' href='$url_cambio_clave' target='_blank'>Cambiar Clave</a>" ;
+
+            $cuerpo  = "<html>
+            <body>
+            <h3>Para recuperar su contrase&ntilde;a ingrese en el siguiente link:</h3>
+            <br>
+            <p style='color: #2196f3;line-height: 1.4;'>
+                <a style='border-bottom: 1px solid; background: lightblue;' href=\"$url_cambio_clave\" target='_blank'>Cambiar Clave</a>
+                </p>
+            <br>
+            </body>
+            </html>";
 
             $mail = new PHPMailer(true);
             $mail->isSMTP();
@@ -32,7 +41,9 @@ class EmailSender
             $mail->addAddress($to);
             $mail->Subject = 'Recupero TRUCKELITE';
             $mail->Body = $cuerpo;
-            $mail->AltBody = 'Este es el contenido del mensaje en texto plano';    // Contenido del mensaje alternativo (texto plano)
+            $mail->AltBody = $cuerpo;    // Contenido del mensaje alternativo (texto plano)
+            $mail->addCustomHeader('MIME-Version: 1.0');
+            $mail->addCustomHeader('Content-Type: text/html; charset=ISO-8859-1');
             $mail->send();
 
         }catch (Exception $e) {

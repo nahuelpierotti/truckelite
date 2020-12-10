@@ -13,7 +13,7 @@
 
             <p>
                 <label class="w3-text-brown"><b>ID Usuario</b>
-                <input class="w3-input w3-border w3-sand" name="idUsuario" type="text"
+                <input class="w3-input w3-border w3-sand" name="idUsuario" type="number" min="1"
                        value="{{usuarioBuscado.0.id_usuario}}" required>
                </label>
             </p>
@@ -40,7 +40,7 @@
 
             <p>
                 <label class="w3-text-brown"><b>DNI</b>
-                <input class="w3-input w3-border w3-sand" name="dni" type="number" value="{{usuarioBuscado.0.dni}}" required>
+                <input class="w3-input w3-border w3-sand" name="dni" type="number" min="1" value="{{usuarioBuscado.0.dni}}" required>
                 </label>
             </p>
 
