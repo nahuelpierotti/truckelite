@@ -2,6 +2,21 @@
 {{> navBar}}
 
 <section class="w3-container w3-content" style="margin-top: 4em;">
+    <h1 class="w3-text-blue w3-center">Reporte del viaje</h1>
+    <article class="w3-panel w3-border w3-border-black">
+        <h4>Combustible consumido: {{combustibleConsumido.0.combustible_consumido}}</h4>
+        <h4>Cantidad cargado de combustible: {{costosYcargasReporte.0.cantidad_carga_combustible}}</h4>
+        <h4>Costo combustible cargado: {{costosYcargasReporte.0.costo_carga_combustible}}</h4>
+        <h4>Lugares donde cargo combustible: {{#lugaresCargaCombustible}}{{lugar_carga_combustible}} - {{/lugaresCargaCombustible}}</h4>
+        <h4>Costos peajes: {{costosYcargasReporte.0.peajes}}</h4>
+        <h4>Costos pesajes: {{costosYcargasReporte.0.pesajes}}</h4>
+        <h4>Posicion vehiculo: {{posicionVehiculo.0.posicion_actual}}</h4>
+        <h4>Kilometros recorridos: {{kmRecorridos.0.km_recorrido}}</h4>
+        <h4>Tiempo del viaje: {{tiempoViaje.0.tiempo}}</h4>
+        <h4>Lugares de hospedaje: {{#lugaresHospedaje}}{{lugar_hospedaje}} - {{/lugaresHospedaje}}</h4>
+        <h4>Costo hospedaje: {{costosYcargasReporte.0.costo_hospedaje}}</h4>
+        <h4>Estado viaje: {{#estadoViaje}}En viaje{{/estadoViaje}}{{^estadoViaje}}Finalizado{{/estadoViaje}}</h4>
+    </article>
     <h1 class="w3-text-blue w3-center">Graficos de comparación</h1>
     <article class="w3-panel w3-border w3-border-black">
         <h2>Comparación combustible</h2>

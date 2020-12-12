@@ -53,7 +53,7 @@ class ReporteModel
                      SET combustible_consumido = combustible_consumido + $combustibleConsumido,
                          km_recorrido = km_recorrido + $kmRecorrido,
                          $estadoNuevo,
-                         tiempo = '$tiempo'
+                         tiempo = ADDTIME('$tiempo', tiempo)
                      WHERE id_viaje = $idViaje;";
 
             //INSERTA UN NUEVO REPORTE
@@ -79,6 +79,18 @@ class ReporteModel
                                        SUM(cantidad_carga_combustible)cantidad_carga_combustible 
                                        FROM Reporte
                                        WHERE id_viaje = $idViaje");
+    }
+
+    public function obtenerLugaresHospedaje($idViaje){
+        return $this->database->query("SELECT lugar_hospedaje 
+                                            FROM Reporte 
+                                            WHERE id_viaje=$idViaje AND lugar_hospedaje != 'Ninguno';");
+    }
+
+    public function obtenerLugaresCargaCombustible($idViaje){
+        return $this->database->query("SELECT lugar_carga_combustible 
+                                            FROM Reporte 
+                                            WHERE id_viaje=$idViaje AND lugar_carga_combustible != 'Ninguno';");
     }
 
 }

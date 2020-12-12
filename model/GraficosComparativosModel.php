@@ -37,6 +37,10 @@ class GraficosComparativosModel
         $data["costosProforma"] = $this->proformaModel->traerCostos($idViaje);
         $data["costosYcargasReporte"] = $this->reporteModel->obtenerCostosYcargasTotales($idViaje);
         $data["tiempoViaje"] =$this->viajeModel->traerTimepoPrevistoYreal($idViaje);
+        $data["posicionVehiculo"] = $this->viajeModel->traerPosicionVehiculo($idViaje);
+        $data["estadoViaje"] = $this->reporteModel->obtenerEstadoDeViaje($idViaje);
+        $data["lugaresHospedaje"] = $this->reporteModel->obtenerLugaresHospedaje($idViaje);
+        $data["lugaresCargaCombustible"] = $this->reporteModel->obtenerLugaresCargaCombustible($idViaje);
 
     }
     //LOGICA
@@ -120,4 +124,6 @@ class GraficosComparativosModel
         $tiempoReal = $data["tiempoViaje"][0]["tiempo"];
         $data["tiempoViajeDiferencia"] = $tiempoPrevisto - $tiempoReal;
     }
+
+
 }
