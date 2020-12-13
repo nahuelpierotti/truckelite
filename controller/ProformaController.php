@@ -23,6 +23,7 @@ class ProformaController
 
     public function mostrarProforma(&$data){
         $data["datosProforma"] = $this->proformaModel->traerDatosProforma($data["id_viaje"]);
+        $data["datosProforma"][0]["hazard"] = $data["datosProforma"][0]["hazard"] ? $this->proformaModel->traerHazard($data["id_viaje"]) : "No tiene.";
     }
 
     public function mostrarQr(){

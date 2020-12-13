@@ -41,7 +41,7 @@
         <h4>Tipo de carga: {{datosProforma.0.descripcion}}</h4>
         <h4>Peso neto: {{datosProforma.0.peso}}</h4>
         <h4>Hazard: {{datosProforma.0.hazard}}</h4>
-        <h4>Reefer: {{datosProforma.0.reefer}}</h4>
+        <h4>Reefer:{{#datosProforma.0.reefer}}{{datosProforma.0.temperatura}}°{{/datosProforma.0.reefer}}{{^datosProforma.0.reefer}}No Tiene.{{/datosProforma.0.reefer}}</h4>
     </article>
     <article class="w3-panel w3-border w3-border-black">
         <h2 class="w3-text-blue">Costo estimado</h2>

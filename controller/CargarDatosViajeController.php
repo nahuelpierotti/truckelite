@@ -13,12 +13,10 @@ class CargarDatosViajeController
 
     public function execute()
     {
-        if ($_SESSION["usuario"]["rol"] != "Administrador" && $_SESSION["usuario"]["rol"] != "Chofer") header("Location: /truckelite/interno");
+        if (isset($_GET["id_viaje"])) $_SESSION["id_viaje"] = $_GET["id_viaje"];
+        if (!$this->reporteModel->validarChofer($_SESSION["id_viaje"],$_SESSION["usuario"]["user_name"])) header("Location: /truckelite/interno");
+        if(isset($_GET["msj"])) $data["mensaje"] = $_GET["msj"];
         $data = $_SESSION["usuario"];
-        $data["mensaje"] = $_GET["msj"];
-        if(isset($_GET["id_viaje"])) {
-            $_SESSION["id_viaje"] = $_GET["id_viaje"];
-        }
         $data["id_viaje"] = $_SESSION["id_viaje"];
         $data["estado"] = $this->reporteModel->obtenerEstadoDeViaje($data["id_viaje"]);
         echo $this->render->render("view/cargarDatosViajeView.php",$data);

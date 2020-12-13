@@ -17,7 +17,7 @@ class ProformaModel
            V.km_recorrido,V.combustible_consumido,V.etd_real,V.eta_real,
            C.denominacion,C.cuit,C.direccion,C.telefono,C.email,C.contacto1,
            C.contacto2,P.id,P.viaticos,P.peajes,P.pesajes,P.extras,P.fee,P.total,
-           P.costo_combustible,U.nombre,Tc.descripcion,Car.peso,Car.hazard,Car.reefer
+           P.costo_combustible,U.nombre,Tc.descripcion,Car.peso,Car.hazard,Car.reefer,Car.temperatura
            FROM Usuario U JOIN Viaje V ON U.id_usuario=V.id_chofer JOIN 
            Cliente C ON V.id_cliente=C.id
            JOIN   Proforma P ON V.id_viaje=P.id_viaje JOIN
@@ -117,5 +117,22 @@ class ProformaModel
         $pdf->Image("qr_img.png", 150,100,40, 40, "png");
         $pdf->Output();
         return $pdf;
+    }
+
+    public function traerHazard($idViajeModel){
+        $data = $this->database->query("SELECT IC.tipo,IC.id
+                                        FROM Carga C JOIN
+                                             Imo_class IC ON IC.id = C.imo_class 
+                                        WHERE C.id_viaje = $idViajeModel");
+        $hazard  = $data[0]["tipo"];
+        $idImoClass = $data[0]["id"];
+
+        $data = $this->database->query("SELECT tipo
+                                        FROM Imo_subclass
+                                        WHERE id_class = $idImoClass");
+
+        $hazard .= $data[0]["tipo"] ? " y " . $data[0]["tipo"] : ".";
+
+        return $hazard;
     }
 }

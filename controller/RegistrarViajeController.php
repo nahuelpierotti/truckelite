@@ -34,6 +34,31 @@ class RegistrarViajeController
 
     public function agregarViaje()
     {
+        $imoClass = $_POST["hazard"] ? $_POST["imoClass"] : NULL;
+        switch ($_POST["imoClass"]){
+            case 1:
+                $subClass = $_POST["subClass1"];
+                break;
+            case 2:
+                $subClass = $_POST["subClass2"];
+                break;
+            case 4:
+                $subClass = $_POST["subClass4"];
+                break;
+            case 5:
+                $subClass = $_POST["subClass5"];
+                break;
+            case 6:
+                $subClass = $_POST["subClass6"];
+                break;
+            case 7:
+                $subClass = $_POST["subClass7"];
+                break;
+            default:
+                $subClass = NULL;
+                break;
+        }
+        $temperatura = $_POST["reefer"] ? $_POST["temperatura"] : 0;
         $id_viaje = $this->viajeModel->agregarViaje(
             $_POST["id_cliente"],
             $_POST["combustible_consumido_previsto"],
@@ -52,9 +77,10 @@ class RegistrarViajeController
             $result = $this->cargaModel->insertarCarga($_POST["tipo"],
                 $_POST["peso"],
                 $_POST["hazard"],
-                $_POST["imoClass"],
+                $imoClass,
+                $subClass,
                 $_POST["reefer"],
-                $_POST["temperatura"],
+                $temperatura,
                 $id_viaje);
             $result = $this->costosModel->insertarCostos($_POST["viaticos"],
                 $_POST["costo_combustible"],

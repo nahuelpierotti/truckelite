@@ -17,6 +17,15 @@ class ReporteModel
         return $result ? $result[0]["estado"] : FALSE ;
     }
 
+    public function validarChofer($idViaje,$username){
+        $result = $this->database->query("SELECT 1
+                                          FROM Viaje
+                                          WHERE estado = TRUE AND id_viaje = $idViaje AND id_chofer = (SELECT id_usuario
+                                                                                                       FROM Usuario
+                                                                                                       WHERE user_name = '$username')");
+        return $result[0];
+    }
+
     private function modificarEstadoViaje($estadoViaje){
         return ($estadoViaje == "Viaje Finalizado") ? "estado = FALSE" : "estado = TRUE";
     }

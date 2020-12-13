@@ -92,7 +92,7 @@ $(document).ready(function(){
         if($("#extras").val().length==0){
             msg+="No ingreso Extras\n";
         }
-        if($("#fee").val().length==0){
+        if($("#ffeeee").val().length==0){
             msg+="No ingreso Fee\n";
         }
         if(msg!="") {
@@ -241,6 +241,23 @@ function showSubClass(elemento){
             selSubClass6.style.setProperty('display', 'none', 'important');
             selSubClass7.style.setProperty('display', 'none', 'important');
             break;
+    }
+}
+
+function mostrarYocultar(){
+    var refrigeracion = document.getElementsByName("reefer");
+    var hazard = document.getElementsByName("hazard");
+
+    if (refrigeracion[1].checked){
+        document.getElementById("temperatura").style.display = "none";
+    }else{
+        document.getElementById("temperatura").style.display = "block";
+    }
+
+    if (hazard[1].checked){
+        document.getElementById("imoClass").style.display = "none";
+    }else{
+        document.getElementById("imoClass").style.display = "block";
     }
 }
 

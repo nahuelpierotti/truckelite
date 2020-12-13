@@ -33,15 +33,14 @@
 
                 <div>
                     <p>Hazard</p>
-                    <input class="w3-radio" type="radio" name="hazard" value="true">
+                    <input class="w3-radio" type="radio" name="hazard" value="true" onclick="mostrarYocultar();" checked>
                     <label>Si</label>
-                    <input class="w3-radio" type="radio" name="hazard" value="false" checked>
+                    <input class="w3-radio" type="radio" name="hazard" value="false" onclick="mostrarYocultar();">
                     <label>No</label>
                 </div>
 
                 <select class="w3-select w3-border w3-sand w3-margin-top" name="imoClass" id="imoClass" onChange="showSubClass(this)">
                     <option value="-1" selected>Elije ImoClass</option>
-                    <option value="NULL">no posee</option>
                     <option value="1">Explosives</option>
                     <option value="2">Flammable Gas</option>
                     <option value="3">Flammable Liquids</option>
@@ -95,15 +94,15 @@
 
                 <div>
                     <p>Reefer</p>
-                    <input class="w3-radio" type="radio" name="reefer" value="true">
+                    <input class="w3-radio" type="radio" name="reefer" value="true" onclick="mostrarYocultar();" checked>
                     <label>Si</label>
-                    <input class="w3-radio" type="radio" name="reefer" value="false" checked>
+                    <input class="w3-radio" type="radio" name="reefer" value="false" onclick="mostrarYocultar();">
                     <label>No</label>
                 </div>
 
-                <p>
+                <p id="temperatura">
                     <label class="w3-text-brown"><b>Temperatura</b></label>
-                    <input type="text" class="w3-input w3-border w3-sand" name="temperatura" id="temperatura">
+                    <input type="number" class="w3-input w3-border w3-sand" name="temperatura" id="temperatura">
                 </p>
                 <br>
                 <button class="w3-btn w3-grey w3-right" id="siguiente1" >SIGUIENTE</button>

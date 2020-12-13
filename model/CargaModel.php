@@ -10,15 +10,8 @@ class CargaModel
         $this->database = $database;
     }
 
-    public function insertarCarga($tipo, $peso, $hazard, $imoClass, $reefer, $temperatura, $idViaje){
-        if($temperatura == ""){
-            $result = $this->database->execute("INSERT INTO Carga (tipo_carga, peso, hazard, imo_class, reefer, id_viaje)
-                                         VALUES($tipo, '$peso', $hazard, $imoClass, $reefer, $idViaje)");
-        }else{
-            $result = $this->database->execute("INSERT INTO Carga (tipo_carga, peso, hazard, imo_class, reefer, temperatura, id_viaje)
-                                         VALUES($tipo, '$peso', $hazard, $imoClass, $reefer, '$temperatura', $idViaje)");
-        }
-
-        return $result;
+    public function insertarCarga($tipo, $peso, $hazard, $imoClass,$subClass, $reefer, $temperatura, $idViaje){
+        return $this->database->execute("INSERT INTO Carga (tipo_carga, peso, hazard, imo_class, imo_subclass, reefer, temperatura, id_viaje)
+                                                     VALUES($tipo, '$peso', $hazard, $imoClass,$subClass, $reefer,$temperatura, $idViaje)");
     }
 }
