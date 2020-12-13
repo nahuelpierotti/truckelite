@@ -196,35 +196,6 @@ class VehiculoModel
 
     //METODOS POSIBLES A BORRAR
 
-    public function modificarTractor($patente, $motor, $chasis, $modelo, $marca, $acoplado, $patenteDestino){
-        if($acoplado){
-            $result = $this->database->execute("UPDATE Tractor SET patente = '$patente', 
-                                                motor = '$motor', 
-                                                chasis ='$chasis', 
-                                                modelo = '$modelo',
-                                                marca = '$marca',
-                                                fk_acoplado = '$acoplado'
-                                                WHERE patente = '$patenteDestino'");
-        }else{
-            $result = $this->database->execute("UPDATE Tractor SET patente = '$patente', 
-                                                motor = '$motor', 
-                                                chasis ='$chasis', 
-                                                modelo = '$modelo',
-                                                marca = '$marca',
-                                                fk_acoplado = NULL
-                                                WHERE patente = '$patenteDestino'");
-        }
-        return $result;
-    }
-
-    public function listarTractor(){
-        return $this->database->query("SELECT * FROM Tractor");
-    }
-
-    public function buscarTractor($patente){
-        return $this->database->query("SELECT * FROM Tractor WHERE patente = '$patente'");
-    }
-
     public function obtenerIdVehiculoPorSuPatente($patente){
         return $this->database->query("SELECT id_vehiculo FROM Vehiculo WHERE fk_tractor='$patente'");
     }
