@@ -218,4 +218,11 @@ class ViajeModel
                                        WHERE denominacion = '$denominacion'");
     }
 
+    public function traerPosicionVehiculo($idViaje){
+        return $this->database->query("SELECT V.posicion_actual 
+                                       FROM Viaje Vi JOIN Vehiculo V
+                                       ON Vi.id_vehiculo = V.id_vehiculo
+                                       WHERE Vi.id_viaje= '$idViaje'");
+    }
+
 }
