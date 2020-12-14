@@ -14,12 +14,12 @@ class InternoModel
 
     public function cargarAcciones(&$data){
         $data["acciones"][0] = array("name" => "Consultar Vehiculo" , "habilitar" => true, "url" => "consultarVehiculo");
-        $data["acciones"][1] = array("name" => "Listar Usuarios" , "habilitar" => true, "url" => "listarUsuarios");
+        $data["acciones"][1] = array("name" => "Usuarios" , "habilitar" => true, "url" => "listarUsuarios");
         $data["acciones"][2] = array("name" => "Registrar Viaje" , "habilitar" => true, "url" => "registrarViaje");
-        $data["acciones"][3] = array("name" => "Listar Viajes" , "habilitar" => true, "url" => "listarViajes");
-        $data["acciones"][4] = array("name" => "Ver Acoplados" , "habilitar" => true, "url" => "verAcoplados");
-        $data["acciones"][5] = array("name" => "Ver Vehiculos" , "habilitar" => true, "url" => "verVehiculos");
-        $data["acciones"][6] = array("name" => "Listar Mantenimiento" , "habilitar" => true, "url" => "listarMantenimiento");
+        $data["acciones"][3] = array("name" => "Viajes" , "habilitar" => true, "url" => "listarViajes");
+        $data["acciones"][4] = array("name" => "Acoplados" , "habilitar" => true, "url" => "verAcoplados");
+        $data["acciones"][5] = array("name" => "Vehiculos" , "habilitar" => true, "url" => "verVehiculos");
+        $data["acciones"][6] = array("name" => "Mantenimientos" , "habilitar" => true, "url" => "listarMantenimiento");
         $data["acciones"][7] = array("name" => "Listar Clientes" , "habilitar" => true, "url" => "listarClientes");
         $data["acciones"][8] = array("name" => "Registrar Cliente" , "habilitar" => true, "url" => "registrarCliente");
 
