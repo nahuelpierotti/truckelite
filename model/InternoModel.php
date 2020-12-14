@@ -20,7 +20,7 @@ class InternoModel
         $data["acciones"][4] = array("name" => "Acoplados" , "habilitar" => true, "url" => "verAcoplados");
         $data["acciones"][5] = array("name" => "Vehiculos" , "habilitar" => true, "url" => "verVehiculos");
         $data["acciones"][6] = array("name" => "Mantenimientos" , "habilitar" => true, "url" => "listarMantenimiento");
-        $data["acciones"][7] = array("name" => "Listar Clientes" , "habilitar" => true, "url" => "listarClientes");
+        $data["acciones"][7] = array("name" => "Clientes" , "habilitar" => true, "url" => "listarClientes");
         $data["acciones"][8] = array("name" => "Registrar Cliente" , "habilitar" => true, "url" => "registrarCliente");
 
         if($data["rol"] != "Administrador") {

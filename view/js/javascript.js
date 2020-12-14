@@ -44,10 +44,10 @@ $(document).ready(function(){
         if($("#peso").val().length==0){
             msg+="No ingreso el peso de la carga\n";
         }
-        if($("#imoClass").val()== -1){
+        /*if($("#imoClass").val()== -1){
             msg+="No selecciono IMO Class\n";
         }
-        /*if($("#temperatura").val().length==0){
+        if($("#temperatura").val().length==0){
             msg+="No ingreso temperatura de la carga\n";
         }*/
         if($("#combustible_consumido_previsto").val().length==0){

@@ -236,7 +236,9 @@ VALUES('npie','Nahuel',31832665,'Administrador',46353072,'npierotti@alumno.unlam
       ("pepe", "Pepe Garcia", 40041115, "Chofer", 44321833,"pepe_argento@hotmail.com", '0abe4fbd0f59745b3b1516cae7fcb3a3'),
       ("admin", "Matias Romero", 38615940, "Administrador", 44549625,"matiasromero@hotmail.com", "21232f297a57a5a743894a0e4a801fc3"),
       ("gusmecanico", "Gustavo Vidal", 38615941, "Mecanico", 44549620,"gustavovidal@hotmail.com", "f3fcf52d139a0467bb45593638c6f6a8"),
-      ("diegosupervisor", "Diego Lopez", 38615943, "Supervisor", 44549624,"diegolopez@hotmail.com", "6cf72b8aff4551861c20d5a28ffb4113");
+      ("diegosupervisor", "Diego Lopez", 38615943, "Supervisor", 44549624,"diegolopez@hotmail.com", "6cf72b8aff4551861c20d5a28ffb4113"),
+      ('milito','Diego Milito','40081161',null, '46353072', 'nahuelpierotti@gmail.com', 'e10adc3949ba59abbe56e057f20f883e');
+
 
 INSERT INTO Chofer(id_usuario,licencia)
             VALUES(2,'Profesional');
