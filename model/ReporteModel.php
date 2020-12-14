@@ -27,7 +27,7 @@ class ReporteModel
     }
 
     private function modificarEstadoViaje($estadoViaje){
-        return ($estadoViaje == "Viaje Finalizado") ? "estado = FALSE" : "estado = TRUE";
+        return ($estadoViaje == "Viaje finalizado") ? "estado = FALSE" : "estado = TRUE";
     }
 
     public function agregarReporte($idViaje,
